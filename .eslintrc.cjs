@@ -9,6 +9,6 @@ module.exports = {
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
   rules: {
-    "no-console": "warn"
+    "no-console": "error"
   }
 }
