@@ -12,9 +12,9 @@
     "prepare": "husky install",
     "test": "vitest"
   },
-  "lint-staged":{
-    "src/**/*.{ts,tsx,css}":"prettier --write",
-    "src/**/*.{ts,tsx}":"eslint"
+  "lint-staged": {
+    "*.{ts,tsx,css}": "prettier --write",
+    "*.{ts,tsx}": "eslint"
   },
   "dependencies": {
     "react": "^18.2.0",
