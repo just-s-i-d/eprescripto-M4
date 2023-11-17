@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 
 import "./App.css";
-import PageNotFound from "./pages/PageNotFound";
-import PrivateRoute from "./routes/PrivateRoute";
-import DoctorDashboardLayout from "./layouts/DoctorDashboardLayout";
+import PageNotFound from "@pages/PageNotFound";
+import PrivateRoute from "@routes/PrivateRoute";
+import DoctorDashboardLayout from "@layouts/DoctorDashboardLayout";
 
 function App() {
   return (
