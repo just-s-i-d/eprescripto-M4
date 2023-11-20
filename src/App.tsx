@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
 import { ConfigProvider } from "antd";
 
-import PageNotFound from "./pages/PageNotFound";
-import PrivateRoute from "./routes/PrivateRoute";
-import DashboardLayout from "./layouts/DashboardLayout";
+import PageNotFound from "@pages/PageNotFound";
+import PrivateRoute from "@routes/PrivateRoute";
+import DashboardLayout from "@layouts/DashboardLayout";
 import "./App.css";
-import DoctorDashboardPage from "./pages/DoctorDashboardPage";
+import DoctorDashboardPage from "@pages/DoctorDashboardPage";
 
 function App() {
   return (
