@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { Result, Button } from "antd";
 
 const PageNotFound = () => {
@@ -8,9 +7,9 @@ const PageNotFound = () => {
       title="404"
       subTitle="Sorry the page you visited,does not exist"
       extra={
-        <Link to="/">
-          <Button type="primary">Home</Button>
-        </Link>
+        <Button href="/" type="primary">
+          Home
+        </Button>
       }
     />
   );
