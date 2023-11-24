@@ -2,12 +2,12 @@ import { useContext, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { ConfigProvider, Spin } from "antd";
 
-import "./App.css";
 import PrivateRoute from "@routes/PrivateRoute";
-import DashboardLayout from "@layouts/DashboardLayout";
-import { darkTheme, lightTheme } from "./theme/Theme";
 import { UserContext } from "@context/UserProvider";
+import DashboardLayout from "@layouts/DashboardLayout";
 import RoleBasedRoutes from "@routes/RoleBasedRoutes";
+import { darkTheme, lightTheme } from "./theme/theme.ts";
+import "./App.css";
 
 function App() {
   const [isDarkTheme, setIsDarkTheme] = useState(false);

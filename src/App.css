@@ -1,0 +1,13 @@
+.pending {
+  color: grey;
+}
+
+.cancelled {
+  color: #f0675b;
+  background-color: #feefee;
+}
+
+.done {
+  color: #3fd6ab;
+  background-color: #e6faf5;
+}
