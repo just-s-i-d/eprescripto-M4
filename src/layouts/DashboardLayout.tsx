@@ -25,7 +25,7 @@ const DashboardLayout: React.FC<Props> = ({ setIsDarkTheme }) => {
   const { role } = userContext;
 
   return (
-    <Layout className="min-h-screen h-full relative">
+    <Layout className="min-h-screen h-[100vh] relative overflow-hidden">
       <NavBar
         collapsed={collapsed}
         setCollapsed={setCollapsed}
@@ -40,7 +40,7 @@ const DashboardLayout: React.FC<Props> = ({ setIsDarkTheme }) => {
           collapsed={collapsed}
           setCollapsed={setCollapsed}
         />
-        <Layout className="pb-6 px-6">
+        <Layout className="pb-6 px-6 max-[380px]:px-3 overflow-y-scroll overflow-x-hidden">
           <Space className="flex justify-between" direction="horizontal">
             <Breadcrumb className="text-2xl my-4">
               <Item>{location.pathname.split("/")[1].toUpperCase()}</Item>
