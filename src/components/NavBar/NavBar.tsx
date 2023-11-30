@@ -24,9 +24,6 @@ const NavBar = ({
 }: navBarProps) => {
   const [open, setOpen] = useState(false);
 
-  const handleOpenChange = (newOpen: boolean) => {
-    setOpen(newOpen);
-  };
   return (
     <Header
       className={`px-6 sticky top-0 z-10 flex items-center justify-between h-[8vh]`}
@@ -46,7 +43,7 @@ const NavBar = ({
           content={<ProfilePopOverContent />}
           trigger="click"
           open={open}
-          onOpenChange={handleOpenChange}
+          onOpenChange={(value: boolean) => setOpen(value)}
         >
           <Badge count={0} size="small">
             <Avatar size={42} icon={<UserOutlined />} />
