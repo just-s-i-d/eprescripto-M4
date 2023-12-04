@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 
 import { UserContext } from "@context/UserProvider";
-import UnauthorisedPage from "@pages/UnauthorisedPage";
+import UnauthorisedPage from "@pages/ForbiddenAccessPage";
 import Loading from "@components/ui/Loading";
 
 const PrivateRoute = () => {
