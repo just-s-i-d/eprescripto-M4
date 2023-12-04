@@ -80,7 +80,7 @@ const DoughnutChart = ({
   ];
   return (
     <Card
-      className="w-[32%] max-largeScreen:h-[59vh] max-desktop:w-[48%] max-tablet:w-9/12 max-mobile:w-full max-h-[60vh]"
+      className="w-[32%] max-xxl:h-[59vh] max-xl:w-[48%] max-md:w-9/12 max-sm:w-full max-h-[60vh]"
       bordered={false}
     >
       <ErrorBoundary
@@ -89,7 +89,7 @@ const DoughnutChart = ({
       >
         <CardTitle>{title}</CardTitle>
         {loading ? (
-          <Skeleton.Avatar active size={300} />
+          <Skeleton.Avatar active size={250} />
         ) : (
           <Doughnut data={data} options={options} plugins={plugins} />
         )}

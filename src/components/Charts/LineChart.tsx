@@ -97,7 +97,7 @@ const LineChart = ({
   };
   return (
     <Card
-      className="w-[49%] max-desktop:w-[48%] max-tablet:w-9/12 max-mobile:w-full"
+      className="w-[49%] max-xl:w-[48%] max-md:w-9/12 max-sm:w-full"
       bordered={false}
     >
       <ErrorBoundary
@@ -106,18 +106,13 @@ const LineChart = ({
       >
         <CardTitle>{title}</CardTitle>
         <Select
-          className="w-[200px] max-mobile:w-[150px] float-right mr-2"
+          className="w-[200px] max-sm:w-[150px] float-right mr-2"
           options={selectOptions}
           onChange={handleChange}
           defaultValue={7}
         />
         {loading ? (
-          <Skeleton.Avatar
-            className="mt-2"
-            style={{ width: "full", height: "300px" }}
-            active
-            shape="square"
-          />
+          <Skeleton.Avatar size={200} className="mt-2" active shape="square" />
         ) : (
           <Line data={data} options={options} />
         )}
