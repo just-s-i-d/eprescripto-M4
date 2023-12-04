@@ -1,0 +1,13 @@
+.pending {
+  color: $pendingColor;
+}
+
+.cancelled {
+  color: $cancelledColor;
+  background-color: $cancelledColorBg;
+}
+
+.done {
+  color: $successColor;
+  background-color: $successColorBg;
+}

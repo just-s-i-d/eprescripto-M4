@@ -1,4 +1,4 @@
-import UnauthorisedPage from "@pages/UnauthorisedPage";
+import UnauthorisedPage from "@pages/ForbiddenAccessPage";
 import DoctorRoutes from "./DoctorRoutes";
 import PatientRoutes from "./PatientRoutes";
 
