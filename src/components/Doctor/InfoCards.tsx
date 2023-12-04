@@ -4,50 +4,54 @@ import ErrorBoundary from "@components/ErrorBoundary";
 import CardTitle from "@components/ui/CardTitle";
 import { InfoCardDetailsType } from "@constants/types";
 import { CARD_PROPERTIES } from "@constants/constants";
+import UseStatesHook from "src/hooks/UseStatesHook";
 
 const { Text } = Typography;
 
 type InfoCardsProps = {
   cardDetails: InfoCardDetailsType;
-  error: boolean;
+  infoCards: ReturnType<typeof UseStatesHook<InfoCardDetailsType>>;
 };
-const InfoCards = ({ cardDetails }: InfoCardsProps) => {
+
+const getBgColor = (index: number) => {
+  switch (index + 1) {
+    case 1:
+      return "bg-infoCardColors-color1";
+    case 2:
+      return "bg-infoCardColors-color2";
+    case 3:
+      return "bg-infoCardColors-color3";
+    case 4:
+      return "bg-infoCardColors-color4";
+  }
+};
+const InfoCards = ({ cardDetails, infoCards }: InfoCardsProps) => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     cardDetails && setTimeout(() => setLoading(false), 500);
   }, [cardDetails]);
   return (
     <Card
-      className="w-full h-[22vh] max-tablet:h-full flex justify-center"
-      bodyStyle={{
-        width: "100%",
-        display: "flex",
-        justifyContent: "center",
-        flexWrap: "nowrap",
-      }}
+      className="info-cards-body w-full h-[22vh] max-md:h-full flex justify-center"
       bordered={false}
     >
-      <ErrorBoundary>
+      <ErrorBoundary
+        error={infoCards.error}
+        refreshComponent={() => infoCards.setRefresh((prev) => !prev)}
+      >
         <Row
           gutter={30}
-          className="w-full max-tablet:flex max-tablet:flex-wrap gap-y-6 justify-center max-laptop:flex-nowrap"
+          className="w-full max-md:flex max-md:flex-wrap gap-y-6 justify-center max-lg:flex-nowrap"
         >
           {cardDetails?.map((element, index) => {
             return (
               <ErrorBoundary key={element.title}>
-                <Col className="basis-3/12 max-tablet:basis-6/12 max-mobile:basis-9/12">
+                <Col className="basis-3/12 max-md:basis-6/12 max-sm:basis-9/12">
                   <Card
-                    className={`h-[17vh] py-8 px-4 max-tablet:py-5 max-w-[390px] max-medium:h-[16vh] max-medium:min-w-[135px] max-mobile:h-[150px]`}
+                    className={`info-card h-[17vh] py-8 px-4 max-sm:py-5 max-w-[390px] max-xl:h-[16vh] max-xl:min-w-[135px] max-sm:h-[150px] ${getBgColor(
+                      index,
+                    )} text-white`}
                     bordered={false}
-                    bodyStyle={{
-                      padding: 0,
-                      display: "flex",
-                      alignItems: "center",
-                    }}
-                    style={{
-                      backgroundColor: CARD_PROPERTIES[index].bgColor,
-                      color: CARD_PROPERTIES[index].textColor,
-                    }}
                   >
                     <div>
                       <div className={`flex items-center gap-4 mb-2 mt-2`}>
@@ -57,14 +61,14 @@ const InfoCards = ({ cardDetails }: InfoCardsProps) => {
                           <Image
                             src={CARD_PROPERTIES[index].icon}
                             alt="Icon image"
-                            className="w-[50px] max-desktop:w-[35px] max-tablet:w-[40px]"
+                            className="w-[50px] max-xxl:w-[35px] max-md:w-[40px]"
                             preview={false}
                           />
                         )}
                         {loading ? (
                           <Skeleton.Button />
                         ) : (
-                          <Text className="text-4xl max-desktop:text-3xl text-white max-tablet:text-4xl">
+                          <Text className="text-4xl max-xl:text-3xl text-white max-md:text-4xl">
                             {element.totalCount}
                           </Text>
                         )}
@@ -72,7 +76,7 @@ const InfoCards = ({ cardDetails }: InfoCardsProps) => {
                       {loading ? (
                         <Skeleton.Input active />
                       ) : (
-                        <CardTitle className="max-desktop:text-lg max-medium:text-base max-tablet:text-lg">
+                        <CardTitle className="max-xxl:text-lg max-xl:text-base max-md:text-lg">
                           {element.title}
                         </CardTitle>
                       )}
