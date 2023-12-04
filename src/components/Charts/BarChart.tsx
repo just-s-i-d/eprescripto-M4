@@ -89,7 +89,7 @@ const BarChart = ({
   };
   return (
     <Card
-      className="w-[49%] min-h-[30vh] max-desktop:w-[48%] max-tablet:basis-9/12 max-mobile:basis-[98%] overflow-hidden"
+      className="w-[49%] min-h-[30vh] max-xl:w-[48%] max-md:basis-9/12 max-sm:basis-[98%] overflow-hidden"
       bordered={false}
     >
       <ErrorBoundary
@@ -98,7 +98,12 @@ const BarChart = ({
       >
         <CardTitle className="mb-14">{title}</CardTitle>
         {loading ? (
-          <Skeleton.Avatar className="mt-2 ml-4" active shape="square" />
+          <Skeleton.Avatar
+            className="mt-2 ml-4"
+            active
+            shape="square"
+            size={200}
+          />
         ) : (
           <div className="overflow-scroll">
             <Bar options={options} data={data} width={"100%"} height={"60%"} />
