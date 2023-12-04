@@ -7,6 +7,7 @@ import { UserContext } from "@context/UserProvider";
 import DashboardLayout from "@layouts/DashboardLayout";
 import RoleBasedRoutes from "@routes/RoleBasedRoutes";
 import { darkTheme, lightTheme } from "./theme/theme.ts";
+
 import "./App.scss";
 
 function App() {

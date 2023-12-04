@@ -1,6 +1,6 @@
 import { Result } from "antd";
 
-const UnauthorisedPage: React.FC = () => (
+const ForbiddenAccessPage: React.FC = () => (
   <Result
     status="403"
     title="403"
@@ -8,4 +8,4 @@ const UnauthorisedPage: React.FC = () => (
   />
 );
 
-export default UnauthorisedPage;
+export default ForbiddenAccessPage;
