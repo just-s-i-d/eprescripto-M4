@@ -16,21 +16,12 @@ interface navBarProps {
   colorPrimaryBg: string;
   colorText: string;
 }
-const NavBar = ({
-  collapsed,
-  setCollapsed,
-  colorPrimaryBg,
-  colorText,
-}: navBarProps) => {
+const NavBar = ({ collapsed, setCollapsed }: navBarProps) => {
   const [open, setOpen] = useState(false);
 
-  const handleOpenChange = (newOpen: boolean) => {
-    setOpen(newOpen);
-  };
   return (
     <Header
       className={`px-6 sticky top-0 z-10 flex items-center justify-between h-[8vh]`}
-      style={{ backgroundColor: colorPrimaryBg, color: colorText }}
     >
       <span className="text-3xl text-white">
         <Button
@@ -46,7 +37,7 @@ const NavBar = ({
           content={<ProfilePopOverContent />}
           trigger="click"
           open={open}
-          onOpenChange={handleOpenChange}
+          onOpenChange={setOpen}
         >
           <Badge count={0} size="small">
             <Avatar size={42} icon={<UserOutlined />} />
