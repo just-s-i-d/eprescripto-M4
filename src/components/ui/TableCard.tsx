@@ -15,7 +15,6 @@ type TableCardPropType = {
   pageSize?: number;
   className?: string;
   setRefresh: React.Dispatch<SetStateAction<boolean>>;
-  setError: React.Dispatch<SetStateAction<boolean>>;
   error: boolean;
 };
 const TableCard = ({
@@ -47,8 +46,8 @@ const TableCard = ({
       <div className="margin-bottom-12 align-text-center">
         <Input
           placeholder="Search"
+          className="width-200"
           onChange={(event) => handleSearch(event.target.value)}
-          style={{ width: 200 }}
           prefix={<SearchOutlined />}
         />
       </div>

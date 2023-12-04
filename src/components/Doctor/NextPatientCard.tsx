@@ -61,7 +61,7 @@ const NextPatientCard = ({
   }, [prescriptions.refresh]); //eslint-disable-line
   return (
     <Card
-      className="w-[32%] max-largeScreen:h-[60vh] max-h-[59vh] max-desktop:w-[48%] max-tablet:w-9/12 max-mobile:w-full max-mobile:max-h-[60vh]"
+      className="w-[32%] max-xxl:h-[60vh] max-h-[59vh] max-xl:w-[48%] max-md:w-9/12 max-sm:w-full max-sm:max-h-[60vh]"
       bordered={false}
     >
       <CardTitle>Next Patient</CardTitle>
@@ -84,7 +84,7 @@ const NextPatientCard = ({
             {loading ? (
               <Skeleton.Input active />
             ) : (
-              <span className="desktop:text-[22px] max-desktop:text-[18px] font-extrabold">
+              <span className="desktop:text-[22px] max-xl:text-[18px] font-extrabold">
                 {appointment?.pName}
               </span>
             )}
