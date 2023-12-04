@@ -84,7 +84,7 @@ const NextPatientCard = ({
             {loading ? (
               <Skeleton.Input active />
             ) : (
-              <span className="desktop:text-[22px] max-xl:text-[18px] font-extrabold">
+              <span className="xxl:text-[22px] max-xl:text-[18px] font-extrabold">
                 {appointment?.pName}
               </span>
             )}
