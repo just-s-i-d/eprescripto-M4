@@ -13,8 +13,6 @@ import { Header } from "antd/es/layout/layout";
 interface navBarProps {
   collapsed: boolean;
   setCollapsed: React.Dispatch<SetStateAction<boolean>>;
-  colorPrimaryBg: string;
-  colorText: string;
 }
 const NavBar = ({ collapsed, setCollapsed }: navBarProps) => {
   const [open, setOpen] = useState(false);
