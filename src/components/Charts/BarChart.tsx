@@ -90,7 +90,6 @@ const BarChart = ({
   return (
     <Card
       className="w-[49%] min-h-[30vh] max-desktop:w-[48%] max-tablet:basis-9/12 max-mobile:basis-[98%] overflow-hidden"
-      bodyStyle={{ height: "100%", width: "98%" }}
       bordered={false}
     >
       <ErrorBoundary

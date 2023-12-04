@@ -98,7 +98,6 @@ const LineChart = ({
   return (
     <Card
       className="w-[49%] max-desktop:w-[48%] max-tablet:w-9/12 max-mobile:w-full"
-      bodyStyle={{ height: "100%", width: "98%" }}
       bordered={false}
     >
       <ErrorBoundary
