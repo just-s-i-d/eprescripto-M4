@@ -37,7 +37,7 @@ const NavBar = ({ collapsed, setCollapsed }: navBarProps) => {
           content={<ProfilePopOverContent />}
           trigger="click"
           open={open}
-          onOpenChange={(value: boolean) => setOpen(value)}
+          onOpenChange={setOpen}
         >
           <Badge count={0} size="small">
             <Avatar size={42} icon={<UserOutlined />} />
