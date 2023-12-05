@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { ColumnsType } from "antd/es/table";
 import { Card, Tooltip } from "antd";
 import { PhoneTwoTone, CloseCircleTwoTone } from "@ant-design/icons";
-import { toast } from "react-toastify";
 
 import ErrorBoundary from "@components/ErrorBoundary";
 import useStatesHook from "../../hooks/useStatesHook";
@@ -19,6 +18,7 @@ import {
 } from "@constants/types";
 import TableCard from "@components/ui/TableCard";
 import PopModal from "@components/ui/PopModal";
+import { showToast } from "@utils/common";
 
 const DoctorAppointmentsPage = () => {
   const appointmentsTable = useStatesHook<DoctorAppointmentsDataType>();
@@ -31,8 +31,7 @@ const DoctorAppointmentsPage = () => {
   const confirmHandler = async () => {
     if (selectedPatient) {
       const response = await cancelAppointment(selectedPatient);
-      response?.type === "success" && toast.success(response.message);
-      response?.type === "error" && toast.error(response.message);
+      response && showToast(response.message, response.type);
     }
   };
   useEffect(() => {
