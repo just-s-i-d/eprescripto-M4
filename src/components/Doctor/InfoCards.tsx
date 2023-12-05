@@ -1,16 +1,17 @@
-import { Row, Col, Card, Image, Typography, Skeleton } from "antd";
 import { useEffect, useState } from "react";
+import { Row, Col, Card, Image, Typography, Skeleton } from "antd";
+
 import ErrorBoundary from "@components/ErrorBoundary";
 import CardTitle from "@components/ui/CardTitle";
 import { InfoCardDetailsType } from "@constants/types";
 import { CARD_PROPERTIES } from "@constants/constants";
-import UseStatesHook from "src/hooks/UseStatesHook";
+import useStatesHook from "../../hooks/useStatesHook";
 
 const { Text } = Typography;
 
 type InfoCardsProps = {
   cardDetails: InfoCardDetailsType;
-  infoCards: ReturnType<typeof UseStatesHook<InfoCardDetailsType>>;
+  infoCards: ReturnType<typeof useStatesHook<InfoCardDetailsType>>;
 };
 
 const getBgColor = (index: number) => {

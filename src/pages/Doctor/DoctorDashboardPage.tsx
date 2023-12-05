@@ -16,8 +16,7 @@ import {
   lineChartDataEndPoint,
   pieChartDataEndPoint,
 } from "@utils/Doctor";
-
-import UseStatesHook from "../../hooks/useStatesHook";
+import useStatesHook from "../../hooks/useStatesHook";
 import {
   AppointmentsDataType,
   ChartDataType,
@@ -26,11 +25,11 @@ import {
 } from "@constants/types";
 
 const DoctorDashboardPage: React.FC = () => {
-  const infoCards = UseStatesHook<InfoCardDetailsType>();
-  const appointments = UseStatesHook<AppointmentsDataType>();
-  const doughnutChart = UseStatesHook<ChartDataType>();
-  const barChart = UseStatesHook<ChartDataType>();
-  const lineChart = UseStatesHook<LineChartApiResDataType>();
+  const infoCards = useStatesHook<InfoCardDetailsType>();
+  const appointments = useStatesHook<AppointmentsDataType>();
+  const doughnutChart = useStatesHook<ChartDataType>();
+  const barChart = useStatesHook<ChartDataType>();
+  const lineChart = useStatesHook<LineChartApiResDataType>();
   useEffect(() => {
     getInfoCardsData()
       .then((res) => {
