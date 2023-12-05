@@ -54,10 +54,10 @@ export const getInfoCardsData = async (): Promise<InfoCardDetailsType> => {
           resolve(res.data.infoCardsData);
         })
         .catch(() => {
-          reject("hello");
+          reject("Cannot get data");
         });
     } catch {
-      return { message: "Server Error", type: "error" };
+      reject("Server error");
     }
   });
 };
@@ -71,10 +71,10 @@ export const getAppointmentData = async (): Promise<AppointmentsDataType> => {
           resolve(res.data.appointments);
         })
         .catch(() => {
-          reject("hello");
+          reject("Cannot get data");
         });
     } catch {
-      return { message: "Server Error", type: "error" };
+      reject("Server error");
     }
   });
 };
@@ -90,7 +90,7 @@ export const getChartData = async (
           resolve(res.data);
         })
         .catch(() => {
-          reject("hello");
+          reject("Cannot get data");
         });
     } catch (error) {
       reject("Server Connection Error");
@@ -107,7 +107,7 @@ export const getPrescriptions = async (): Promise<PrescrtionsDataType> => {
           resolve(res.data.prescriptions);
         })
         .catch(() => {
-          reject("hello");
+          reject("Cannot get data");
         });
     } catch (error) {
       reject("Server Connection Error");
@@ -166,10 +166,10 @@ export const getDoctorAppointmentsData =
             resolve(res.data.appointments);
           })
           .catch(() => {
-            reject("hello");
+            reject("Cannot get data");
           });
       } catch {
-        return { message: "Server Error", type: "error" };
+        reject("Server error");
       }
     });
   };
@@ -183,10 +183,10 @@ export const getReviewsData = async (): Promise<ReviewsDataType> => {
           resolve(res.data.reviews);
         })
         .catch(() => {
-          reject("hello");
+          reject("Cannot get data");
         });
     } catch {
-      return { message: "Server Error", type: "error" };
+      reject("Server error");
     }
   });
 };
