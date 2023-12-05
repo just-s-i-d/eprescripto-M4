@@ -6,14 +6,14 @@ import CardTitle from "@components/ui/CardTitle";
 import PopModal from "@components/ui/PopModal";
 import { AppointmentDataType, AppointmentsDataType } from "@constants/types";
 import { cancelAppointment } from "@utils/Doctor";
-import { ToastContainer, toast } from "react-toastify";
 import ErrorBoundary from "@components/ErrorBoundary";
-import UseStatesHook from "src/hooks/UseStatesHook";
+import useStatesHook from "src/hooks/useStatesHook";
+import { showToast } from "@utils/common";
 
 type AppointmentCardPropsType = {
   appointments: AppointmentsDataType;
   loading: boolean;
-  appointmentsState: ReturnType<typeof UseStatesHook<AppointmentsDataType>>;
+  appointmentsState: ReturnType<typeof useStatesHook<AppointmentsDataType>>;
 };
 
 const AppoinmentsCard = ({
@@ -30,8 +30,7 @@ const AppoinmentsCard = ({
   const confirmHandler = async () => {
     if (selectedPatient) {
       const response = await cancelAppointment(selectedPatient);
-      response?.type === "success" && toast.success(response.message);
-      response?.type === "error" && toast.error(response.message);
+      response && showToast(response.message, response.type);
     }
   };
   return (
@@ -127,17 +126,6 @@ const AppoinmentsCard = ({
           <Button className="float-right mt-2" type="default">
             View All
           </Button>
-          <ToastContainer
-            position="top-right"
-            autoClose={3000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnHover={false}
-            pauseOnFocusLoss={false}
-            draggable
-          />
         </ErrorBoundary>
       </Card>
     </>

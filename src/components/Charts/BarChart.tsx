@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 import { Card, Skeleton } from "antd";
 import {
   Chart as ChartJS,
@@ -15,8 +17,7 @@ import type { ChartOptions } from "chart.js";
 import ErrorBoundary from "@components/ErrorBoundary";
 import CardTitle from "@components/ui/CardTitle";
 import { ChartDataType } from "@constants/types";
-import { useEffect, useState } from "react";
-import UseStatesHook from "src/hooks/UseStatesHook";
+import useStatesHook from "../../hooks/useStatesHook";
 
 ChartJS.register(
   CategoryScale,
@@ -34,7 +35,7 @@ type PieChartPropsType = {
   label: string;
   xAxesTitle: string;
   yAxesTitle: string;
-  barChart: ReturnType<typeof UseStatesHook<ChartDataType>>;
+  barChart: ReturnType<typeof useStatesHook<ChartDataType>>;
 };
 
 const BarChart = ({

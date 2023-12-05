@@ -22,6 +22,14 @@ export default {
           color2: "#c8b6ff",
           color3: "#5fa8d3",
           color4: "#fe6d73"
+        },
+        success: {
+          bgColor: "#f6ffed",
+          borderColor: "#52c41b",
+        },
+        error: {
+          bgColor: "#fff2f0",
+          borderColor: "#fe4d50",
         }
       },
       animation: {

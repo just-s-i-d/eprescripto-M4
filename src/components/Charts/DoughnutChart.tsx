@@ -3,11 +3,12 @@ import { useEffect, useState } from "react";
 import { Card, Skeleton } from "antd";
 import { ArcElement, Chart as ChartJs, Legend, Tooltip } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
+import type { ChartOptions, Chart } from "chart.js";
+
 import CardTitle from "@components/ui/CardTitle";
 import ErrorBoundary from "@components/ErrorBoundary";
-import type { ChartOptions, Chart } from "chart.js";
 import { ChartDataType } from "@constants/types";
-import UseStatesHook from "src/hooks/UseStatesHook";
+import useStatesHook from "src/hooks/useStatesHook";
 
 ChartJs.register(ArcElement, Tooltip, Legend);
 export const options: ChartOptions = {
@@ -22,7 +23,7 @@ type PieChartPropsType = {
   chartData: ChartDataType | undefined;
   title: string;
   label: string;
-  doughnutChart: ReturnType<typeof UseStatesHook<ChartDataType>>;
+  doughnutChart: ReturnType<typeof useStatesHook<ChartDataType>>;
 };
 const colors: string[] = [
   "#f7a825",

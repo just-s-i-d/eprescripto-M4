@@ -1,9 +1,8 @@
+import { useEffect, useState } from "react";
+
 import { Card, Image, Space, Skeleton, Button } from "antd";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 import CardTitle from "@components/ui/CardTitle";
-import { useEffect, useState } from "react";
 import PopModal from "@components/ui/PopModal";
 import TableCard from "@components/ui/TableCard";
 import ErrorBoundary from "@components/ErrorBoundary";
@@ -15,11 +14,12 @@ import {
 import { cancelAppointment, getPrescriptions } from "@utils/Doctor";
 import useStatesHook from "../../hooks/useStatesHook";
 import { columns } from "@constants/constants";
+import { showToast } from "@utils/common";
 
 type NextPatientCardProps = {
   appointment: AppointmentDataType | undefined;
   error: boolean;
-  appointments: ReturnType<typeof UseStatesHook<AppointmentsDataType>>;
+  appointments: ReturnType<typeof useStatesHook<AppointmentsDataType>>;
 };
 
 const NextPatientCard = ({
@@ -49,8 +49,7 @@ const NextPatientCard = ({
   const confirmHandler = async () => {
     if (appointment) {
       const response = await cancelAppointment(appointment);
-      response?.type === "success" && toast.success(response.message);
-      response?.type === "error" && toast.error(response.message);
+      response && showToast(response.message, response.type);
     }
   };
   useEffect(() => {
@@ -180,17 +179,6 @@ const NextPatientCard = ({
             />
           </ErrorBoundary>
         </PopModal>
-        <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnHover={false}
-          pauseOnFocusLoss={false}
-          draggable
-        />
       </ErrorBoundary>
     </Card>
   );

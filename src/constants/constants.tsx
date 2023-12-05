@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 
+import { ColumnsType } from "antd/es/table";
 import {
   FormOutlined,
   HomeOutlined,
@@ -8,35 +9,39 @@ import {
   ProfileOutlined,
 } from "@ant-design/icons";
 
-import patientPng from "@assets/patients.png";
+import profileAvatar from "@assets/profilepic.png";
+import patientPng from "@assets/profile.png";
 import appointmentPng from "@assets/appointment.png";
-import starPng from "@assets/star.png";
+import starPng from "@assets/star-rating.png";
+import { PrescriptionDataType } from "./types";
 
-export const NEXT_PATIENT_INFORMATION = [
-  { label: "Patient Name", value: "Siddharth Paneri" },
-  { label: "Patient Id", value: "ABC1" },
-  { label: "Time Slot", value: "10 am to 11 am" },
-  { label: "Email", value: "abc@abc.com" },
-  { label: "Last appointment", value: "12-11-2023" },
-  { label: "Contact", value: "91+99xxxxxx99" },
-];
+export const NEXT_PATIENT_INFORMATION = {
+  avatar: profileAvatar,
+  pName: "Siddharth Paneri",
+  email: "abc@abc.com",
+  pId: "ABC1",
+  timeSlot: "10 am to 11 am",
+  lastVisited: "12-11-2023",
+  contact: "91+99xxxxxx99",
+  gender: "Male",
+};
 
-export interface DataType {
+export interface PatientAppointmentDataType {
   key: string;
   pName: string;
   timeSlot: string;
   contact: string;
-  status: "Done" | "Pending" | "Cancelled";
+  status: "Completed" | "Pending" | "Cancelled";
   profilePic: string;
 }
 
-export const APPOINTMENT_TABLE_DATA: DataType[] = [
+export const APPOINTMENT_TABLE_DATA: PatientAppointmentDataType[] = [
   {
     key: "1",
     pName: "John Brown",
     timeSlot: "10 am to 11 am",
     contact: "+919999999999",
-    status: "Done",
+    status: "Completed",
     profilePic:
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=a72ca28288878f8404a795f39642a46f",
   },
@@ -69,52 +74,96 @@ export const APPOINTMENT_TABLE_DATA: DataType[] = [
   },
 ];
 
-type details = {
-  totalCount: number;
-  title: string;
-  icon: string;
-  color: string;
-}[];
-export const INFO_CARD_DETAILS: details = [
-  {
-    totalCount: 22,
-    title: "Total Patients",
-    icon: patientPng,
-    color: "#E8FBEE",
-  },
-  {
-    totalCount: 4,
-    title: "Appointments for Today",
-    icon: appointmentPng,
-    color: "#F0EDFD",
-  },
-  {
-    totalCount: 4.7,
-    title: "Avg. Stars Review",
-    icon: starPng,
-    color: "#FFF3D6",
-  },
-  {
-    totalCount: 10,
-    title: "New Patients",
-    icon: patientPng,
-    color: "#FCEDF2",
-  },
-];
+type NavLinksType = { label: string; icon: ReactNode; key: string }[];
 
-type navLinksType = { label: string; icon: ReactNode; key: string }[];
-
-export const DOCTOR_NAV_LINKS: navLinksType = [
+export const DOCTOR_NAV_LINKS: NavLinksType = [
   { label: "Dashboard", icon: <HomeOutlined />, key: "dashboard" },
   { label: "Write Prescription", icon: <FormOutlined />, key: "prescription" },
   { label: "Appointments", icon: <ScheduleOutlined />, key: "appointments" },
   { label: "Reviews", icon: <StarOutlined />, key: "reviews" },
   { label: "Profile", icon: <ProfileOutlined />, key: "profile" },
 ];
-export const PATIENT_NAV_LINKS: navLinksType = [
+export const PATIENT_NAV_LINKS: NavLinksType = [
   { label: "Dashboard", icon: <HomeOutlined />, key: "dashboard" },
   { label: "Prescriptions", icon: <FormOutlined />, key: "prescriptions" },
   { label: "Appointments", icon: <ScheduleOutlined />, key: "appointments" },
   { label: "Doctors", icon: <StarOutlined />, key: "doctors" },
   { label: "Profile", icon: <ProfileOutlined />, key: "profile" },
+];
+
+export const formattedDate = () => {
+  const todayDate = new Date();
+  const date = todayDate.getDate();
+  const month = todayDate.getMonth();
+  const year = todayDate.getFullYear();
+  return `${date}/${month}/${year}`;
+};
+
+export const getLabels = (days: number) => {
+  const todayDate = new Date();
+  const month = todayDate.getMonth() + 1;
+  const endDate = todayDate.getDate();
+  const startDate = endDate - days;
+  const dates = [];
+  for (let i = startDate + 1; i <= endDate; i++) {
+    dates.push(`${i}/${month}`);
+  }
+  return dates;
+};
+
+export const columns: ColumnsType<PrescriptionDataType> = [
+  {
+    title: "Id",
+    dataIndex: "prescriptionId",
+  },
+  {
+    title: "Name",
+    dataIndex: "name",
+  },
+  {
+    title: "Date",
+    dataIndex: "date",
+  },
+  {
+    title: "Duration",
+    dataIndex: "duration",
+  },
+  {
+    title: "Status",
+    dataIndex: "status",
+    render: (status: string) => (
+      <span
+        className={`${status.toLowerCase()} padding-y-2 padding-x-2 radius-round`}
+      >
+        {status}
+      </span>
+    ),
+    filters: [
+      {
+        text: "Active",
+        value: "Active",
+      },
+      {
+        text: "Completed",
+        value: "Completed",
+      },
+      {
+        text: "On Hold",
+        value: "On Hold",
+      },
+    ],
+    onFilter: (value, record) => record.status.indexOf(value) === 0,
+  },
+  {
+    title: "Notes",
+    dataIndex: "notes",
+  },
+];
+
+type CardPropertiesType = string[];
+export const CARD_PROPERTIES: CardPropertiesType = [
+  patientPng,
+  appointmentPng,
+  starPng,
+  patientPng,
 ];
