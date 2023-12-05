@@ -13,7 +13,7 @@ import {
   PrescrtionsDataType,
 } from "@constants/types";
 import { cancelAppointment, getPrescriptions } from "@utils/Doctor";
-import UseStatesHook from "../../hooks/UseStatesHook";
+import useStatesHook from "../../hooks/useStatesHook";
 import { columns } from "@constants/constants";
 
 type NextPatientCardProps = {
@@ -29,7 +29,7 @@ const NextPatientCard = ({
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [visibililty, setVisibility] = useState(false);
-  const prescriptions = UseStatesHook<PrescrtionsDataType>();
+  const prescriptions = useStatesHook<PrescrtionsDataType>();
   const setPrescriptionsData = () => {
     getPrescriptions()
       .then((res) => {
