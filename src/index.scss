@@ -11,7 +11,9 @@
   .width-1000 {
     @apply min-w-[1000px];
   }
-
+  .width-200 {
+    @apply w-[200px];
+  }
   .minHeight-74 {
     @apply min-h-[74vh];
   }
