@@ -8,7 +8,6 @@ import DashboardLayout from "@layouts/DashboardLayout";
 import RoleBasedRoutes from "@routes/RoleBasedRoutes";
 import { darkTheme, lightTheme } from "./theme/theme.ts";
 
-import "./variables.scss";
 import "./App.scss";
 
 function App() {
