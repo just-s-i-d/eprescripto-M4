@@ -60,7 +60,7 @@ const InfoCards = ({ cardDetails, infoCards }: InfoCardsProps) => {
                           <Skeleton.Avatar active shape="square" size={50} />
                         ) : (
                           <Image
-                            src={CARD_PROPERTIES[index].icon}
+                            src={CARD_PROPERTIES[index]}
                             alt="Icon image"
                             className="w-[50px] max-xxl:w-[35px] max-md:w-[40px]"
                             preview={false}
