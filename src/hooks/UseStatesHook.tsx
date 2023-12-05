@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function UseStatesHook<Type>() {
+export default function useStatesHook<Type>() {
   const [data, setData] = useState<Type>();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);

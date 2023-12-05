@@ -1,3 +1,6 @@
+import { ReactNode } from "react";
+
+import { ColumnsType } from "antd/es/table";
 import {
   FormOutlined,
   HomeOutlined,
@@ -10,9 +13,7 @@ import profileAvatar from "@assets/profilepic.png";
 import patientPng from "@assets/profile.png";
 import appointmentPng from "@assets/appointment.png";
 import starPng from "@assets/star-rating.png";
-import { ColumnsType } from "antd/es/table";
 import { PrescriptionDataType } from "./types";
-import { ReactNode } from "react";
 
 export const NEXT_PATIENT_INFORMATION = {
   avatar: profileAvatar,
@@ -73,16 +74,16 @@ export const APPOINTMENT_TABLE_DATA: PatientAppointmentDataType[] = [
   },
 ];
 
-type navLinksType = { label: string; icon: ReactNode; key: string }[];
+type NavLinksType = { label: string; icon: ReactNode; key: string }[];
 
-export const DOCTOR_NAV_LINKS: navLinksType = [
+export const DOCTOR_NAV_LINKS: NavLinksType = [
   { label: "Dashboard", icon: <HomeOutlined />, key: "dashboard" },
   { label: "Write Prescription", icon: <FormOutlined />, key: "prescription" },
   { label: "Appointments", icon: <ScheduleOutlined />, key: "appointments" },
   { label: "Reviews", icon: <StarOutlined />, key: "reviews" },
   { label: "Profile", icon: <ProfileOutlined />, key: "profile" },
 ];
-export const PATIENT_NAV_LINKS: navLinksType = [
+export const PATIENT_NAV_LINKS: NavLinksType = [
   { label: "Dashboard", icon: <HomeOutlined />, key: "dashboard" },
   { label: "Prescriptions", icon: <FormOutlined />, key: "prescriptions" },
   { label: "Appointments", icon: <ScheduleOutlined />, key: "appointments" },

@@ -1,6 +1,13 @@
-import ErrorBoundary from "@components/ErrorBoundary";
-import UseStatesHook from "../../hooks/UseStatesHook";
 import { useEffect, useState } from "react";
+
+import { ColumnsType } from "antd/es/table";
+import { Card, Tooltip } from "antd";
+import { PhoneTwoTone, CloseCircleTwoTone } from "@ant-design/icons";
+import { toast } from "react-toastify";
+
+import ErrorBoundary from "@components/ErrorBoundary";
+import useStatesHook from "../../hooks/useStatesHook";
+
 import {
   cancelAppointment,
   formatDateReadable,
@@ -12,13 +19,9 @@ import {
 } from "@constants/types";
 import TableCard from "@components/ui/TableCard";
 import PopModal from "@components/ui/PopModal";
-import { ColumnsType } from "antd/es/table";
-import { Card, Tooltip } from "antd";
-import { PhoneTwoTone, CloseCircleTwoTone } from "@ant-design/icons";
-import { toast } from "react-toastify";
 
 const DoctorAppointmentsPage = () => {
-  const appointmentsTable = UseStatesHook<DoctorAppointmentsDataType>();
+  const appointmentsTable = useStatesHook<DoctorAppointmentsDataType>();
   const [open, setOpen] = useState(false);
   const [selectedPatient, setSelectedPatient] = useState<AppointmentDataType>();
   const handlerCancleAppointment = (patient: AppointmentDataType) => {

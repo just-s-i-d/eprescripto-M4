@@ -15,7 +15,7 @@ import type { ChartOptions } from "chart.js";
 import ErrorBoundary from "@components/ErrorBoundary";
 import { useEffect, useState } from "react";
 import { LineChartApiResDataType, LineChartDataType } from "@constants/types";
-import UseStatesHook from "src/hooks/UseStatesHook";
+import useStatesHook from "src/hooks/useStatesHook";
 
 ChartJs.register(LineElement, CategoryScale, LinearScale, PointElement, scales);
 
@@ -24,7 +24,7 @@ type LineChartProps = {
   title: string;
   xAxesTitle: string;
   yAxesTitle: string;
-  lineChart: ReturnType<typeof UseStatesHook<LineChartApiResDataType>>;
+  lineChart: ReturnType<typeof useStatesHook<LineChartApiResDataType>>;
   getDataForLineGraph: (
     data: LineChartApiResDataType,
     days?: number,
