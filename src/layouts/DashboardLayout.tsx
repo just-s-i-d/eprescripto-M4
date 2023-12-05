@@ -18,7 +18,7 @@ const DashboardLayout: React.FC<Props> = ({ setIsDarkTheme }) => {
   const location = useLocation();
   const [collapsed, setCollapsed] = useState<boolean>(false);
   const {
-    token: { colorText, colorTextSecondary, colorPrimaryBg },
+    token: { colorTextSecondary },
   } = theme.useToken();
 
   if (userContext === null) return <Loading />;
@@ -26,13 +26,8 @@ const DashboardLayout: React.FC<Props> = ({ setIsDarkTheme }) => {
 
   return (
     <Layout className="min-h-screen h-screen relative overflow-hidden">
-      <NavBar
-        collapsed={collapsed}
-        setCollapsed={setCollapsed}
-        colorPrimaryBg={colorPrimaryBg}
-        colorText={colorText}
-      />
-      <Layout className="relative">
+      <NavBar collapsed={collapsed} setCollapsed={setCollapsed} />
+      <Layout className="flex flex-row">
         <SideBar
           role={role}
           textColor={colorTextSecondary}
