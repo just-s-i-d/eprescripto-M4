@@ -29,7 +29,7 @@ span.active {
 .ant-select-selector:focus,
 .ant-select-selector:active,
 .ant-select-open .ant-select-selector {
-  border-color: #d9d9d9 !important;
+  border-color: $primaryBorderActiveColor !important;
   box-shadow: none !important;
 }
 .info-cards-body > .ant-card-body {
@@ -43,7 +43,7 @@ span.active {
   .ant-dropdown-menu-item-selected
   .ant-checkbox-wrapper
   + span {
-  color: white;
+  color: $secondaryTextColor;
 }
 
 .appointment-table-card > .ant-card-body {
@@ -55,16 +55,17 @@ span.active {
   align-items: center;
 }
 .custom-table .ant-pagination-item:not(.ant-pagination-item-active):hover a {
-  color: white;
+  color: $secondaryTextColor;
 }
 .ant-pagination .ant-pagination-prev:hover .ant-pagination-item-link,
 .ant-pagination .ant-pagination-next:hover .ant-pagination-item-link {
-  color: white;
+  color: $secondaryTextColor;
 }
 .custom-table
   .ant-pagination
   .ant-pagination-item.ant-pagination-item-active
   :where(a, li) {
-  color: white;
-  border-color: white;
-  background-color: #19504c;
+  color: $secondaryTextColor;
+  border-color: $secondaryTextColor;
+  background-color: $primaryBgColor;
+}
