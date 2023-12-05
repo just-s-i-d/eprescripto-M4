@@ -26,9 +26,6 @@ const PopModal = ({
     setOpen(false);
   };
 
-  const handleCancel = () => {
-    setOpen(false);
-  };
   return (
     <Modal
       className={className}
@@ -37,7 +34,7 @@ const PopModal = ({
       centered
       okText={okButtonText || "Sure"}
       onOk={handleOk}
-      onCancel={handleCancel}
+      onCancel={() => setOpen(false)}
       footer={
         footer
           ? (_, { OkBtn, CancelBtn }) => (

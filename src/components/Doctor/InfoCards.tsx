@@ -1,16 +1,17 @@
-import { Row, Col, Card, Image, Typography, Skeleton } from "antd";
 import { useEffect, useState } from "react";
+import { Row, Col, Card, Image, Typography, Skeleton } from "antd";
+
 import ErrorBoundary from "@components/ErrorBoundary";
 import CardTitle from "@components/ui/CardTitle";
 import { InfoCardDetailsType } from "@constants/types";
 import { CARD_PROPERTIES } from "@constants/constants";
-import UseStatesHook from "src/hooks/UseStatesHook";
+import useStatesHook from "../../hooks/useStatesHook";
 
 const { Text } = Typography;
 
 type InfoCardsProps = {
   cardDetails: InfoCardDetailsType;
-  infoCards: ReturnType<typeof UseStatesHook<InfoCardDetailsType>>;
+  infoCards: ReturnType<typeof useStatesHook<InfoCardDetailsType>>;
 };
 
 const getBgColor = (index: number) => {
@@ -59,7 +60,7 @@ const InfoCards = ({ cardDetails, infoCards }: InfoCardsProps) => {
                           <Skeleton.Avatar active shape="square" size={50} />
                         ) : (
                           <Image
-                            src={CARD_PROPERTIES[index].icon}
+                            src={CARD_PROPERTIES[index]}
                             alt="Icon image"
                             className="w-[50px] max-xxl:w-[35px] max-md:w-[40px]"
                             preview={false}

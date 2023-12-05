@@ -8,7 +8,7 @@ import { AppointmentDataType, AppointmentsDataType } from "@constants/types";
 import { cancelAppointment } from "@utils/Doctor";
 import { ToastContainer, toast } from "react-toastify";
 import ErrorBoundary from "@components/ErrorBoundary";
-import UseStatesHook from "src/hooks/UseStatesHook";
+import UseStatesHook from "src/hooks/useStatesHook";
 
 type AppointmentCardPropsType = {
   appointments: AppointmentsDataType;

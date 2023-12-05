@@ -160,30 +160,10 @@ export const columns: ColumnsType<PrescriptionDataType> = [
   },
 ];
 
-type CardPropertiesType = {
-  textColor: string;
-  bgColor: string;
-  icon: string;
-}[];
+type CardPropertiesType = string[];
 export const CARD_PROPERTIES: CardPropertiesType = [
-  {
-    textColor: "white",
-    bgColor: "#02c39a",
-    icon: patientPng,
-  },
-  {
-    textColor: "white",
-    bgColor: "#c8b6ff",
-    icon: appointmentPng,
-  },
-  {
-    textColor: "white",
-    bgColor: "#5fa8d3",
-    icon: starPng,
-  },
-  {
-    textColor: "white",
-    bgColor: "#fe6d73",
-    icon: patientPng,
-  },
+  patientPng,
+  appointmentPng,
+  starPng,
+  patientPng,
 ];
