@@ -123,7 +123,6 @@ const DoctorAppointmentsPage = () => {
           <TableCard
             className="min-w-[1100px]"
             columns={doctorAppointmentsTableColumns}
-            table={appointmentsTable}
             tableData={appointmentsTable.data}
             pageSize={8}
           />

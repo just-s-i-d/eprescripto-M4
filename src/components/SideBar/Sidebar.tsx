@@ -15,12 +15,11 @@ type SideBarProps = {
 };
 const SideBar: React.FC<SideBarProps> = ({
   role,
-  textColor,
   setIsDarkTheme,
   collapsed,
   setCollapsed,
 }) => {
-  const [pathname, setPathname] = useState<string>("prescription");
+  const [pathname, setPathname] = useState<string>("");
   const location = useLocation();
   const [collapsedWidth, setCollapsedWidth] = useState<number>(80);
   const sideBarLinks = role === "doctor" ? DOCTOR_NAV_LINKS : PATIENT_NAV_LINKS;
@@ -35,7 +34,7 @@ const SideBar: React.FC<SideBarProps> = ({
 
   return (
     <Sider
-      className="h-[92vh] max-desktop:top-[8vh] left-0 max-desktop:sticky max-[991px]:fixed z-10"
+      className="h-[92vh] max-xl:top-[8vh] left-0 max-xl:sticky max-lg:fixed z-10"
       width={250}
       breakpoint="lg"
       onBreakpoint={(broken) => {
@@ -55,9 +54,6 @@ const SideBar: React.FC<SideBarProps> = ({
         mode="inline"
         className="h-full text-xl px-2 relative"
         selectedKeys={[pathname]}
-        style={{
-          color: textColor,
-        }}
       >
         {sideBarLinks.map((element) => (
           <Menu.Item
