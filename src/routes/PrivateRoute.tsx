@@ -1,21 +1,27 @@
-import { useContext, useEffect, useState } from "react";
-import { Outlet } from "react-router-dom";
+import { useContext } from "react";
+import { Navigate, Outlet } from "react-router-dom";
 
 import { UserContext } from "@context/UserProvider";
-import UnauthorisedPage from "@pages/ForbiddenAccessPage";
 import Loading from "@components/ui/Loading";
 
-const PrivateRoute = () => {
+type PrivateRouteProps = {
+  allowedRoles: string[];
+};
+const PrivateRoute = ({ allowedRoles }: PrivateRouteProps) => {
   const userContext = useContext(UserContext);
-  const [loading, setLoading] = useState<boolean>(true);
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-  }, []);
+
   if (userContext === null) return <Loading />;
-  const { isLoggedIn } = userContext;
-  return loading ? <Loading /> : isLoggedIn ? <Outlet /> : <UnauthorisedPage />;
+  const { isLoggedIn, role } = userContext;
+
+  return (
+    <>
+      {!isLoggedIn && <Navigate to="/unauthorized" />}
+      {isLoggedIn && allowedRoles.includes(role) && <Outlet />}
+      {isLoggedIn && !allowedRoles.includes(role) && (
+        <Navigate to="/forbidden" />
+      )}
+    </>
+  );
 };
 
 export default PrivateRoute;
