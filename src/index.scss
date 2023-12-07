@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;1,600&display=swap");
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer components {
+  .width-100 {
+    @apply w-full;
+  }
+
+  .width-1000 {
+    @apply min-w-[1000px];
+  }
+  .width-200 {
+    @apply w-[200px];
+  }
+  .minHeight-74 {
+    @apply min-h-[74vh];
+  }
+
+  .margin-bottom-12 {
+    @apply mb-[12px];
+  }
+  .align-text-center {
+    @apply text-center;
+  }
+  .width-max {
+    @apply w-max;
+  }
+
+  .padding-y-2 {
+    @apply py-2;
+  }
+
+  .padding-x-2 {
+    @apply px-2;
+  }
+
+  .radius-round {
+    @apply rounded-lg;
+  }
+  .scroll {
+    @apply overflow-scroll;
+  }
+}
+
+* {
+  font-family: "Raleway";
+}

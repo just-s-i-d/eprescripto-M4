@@ -1,0 +1,71 @@
+@import "./variable.scss";
+
+.pending {
+  color: $colorTextPending;
+}
+
+span.completed {
+  color: $colorTextCompleted;
+  background-color: $colorBgCompleted;
+}
+
+.cancelled {
+  color: $colorTextCancelled;
+  background-color: $colorBgCancelled;
+}
+
+.on.hold {
+  color: $colorTextOnHold;
+  background-color: $colorBgOnHold;
+}
+
+.attended,
+span.active {
+  color: $colorTextActive;
+  background-color: $colorBgActive;
+}
+
+.ant-select-focused .ant-select-selector,
+.ant-select-selector:focus,
+.ant-select-selector:active,
+.ant-select-open .ant-select-selector {
+  border-color: $primaryBorderActiveColor !important;
+  box-shadow: none !important;
+}
+.info-cards-body > .ant-card-body {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+:where(.css-dev-only-do-not-override-x2px2j).ant-dropdown
+  .ant-table-filter-dropdown
+  .ant-dropdown-menu-item-selected
+  .ant-checkbox-wrapper
+  + span {
+  color: $secondaryTextColor;
+}
+
+.appointment-table-card > .ant-card-body {
+  padding-bottom: 0;
+}
+.info-card > .ant-card-body {
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+.custom-table .ant-pagination-item:not(.ant-pagination-item-active):hover a {
+  color: $secondaryTextColor;
+}
+.ant-pagination .ant-pagination-prev:hover .ant-pagination-item-link,
+.ant-pagination .ant-pagination-next:hover .ant-pagination-item-link {
+  color: $secondaryTextColor;
+}
+.custom-table
+  .ant-pagination
+  .ant-pagination-item.ant-pagination-item-active
+  :where(a, li) {
+  color: $secondaryTextColor;
+  border-color: $secondaryTextColor;
+  background-color: $primaryBgColor;
+}
