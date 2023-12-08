@@ -20,8 +20,6 @@ import "./App.scss";
 
 function App() {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
-  const [spinnng, setSpinning] = useState(false);
-  const [role, setRole] = useState("");
   const userContext = useContext(UserContext);
   const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {

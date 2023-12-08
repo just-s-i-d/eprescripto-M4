@@ -1,4 +1,4 @@
-@import "./variable.scss";
+@import "./variables.scss";
 
 .pending {
   color: $colorTextPending;
@@ -38,12 +38,12 @@ span.active {
   width: 100%;
 }
 
-:where(.css-dev-only-do-not-override-x2px2j).ant-dropdown
+:where(.css-dev-only-do-not-override-m477y0).ant-dropdown
   .ant-table-filter-dropdown
   .ant-dropdown-menu-item-selected
   .ant-checkbox-wrapper
   + span {
-  color: $secondaryTextColor;
+  color: $primaryBgColor;
 }
 
 .appointment-table-card > .ant-card-body {
@@ -68,4 +68,15 @@ span.active {
   color: $secondaryTextColor;
   border-color: $secondaryTextColor;
   background-color: $primaryBgColor;
+}
+
+:where(.css-dev-only-do-not-override-m477y0).ant-dropdown
+  .ant-dropdown-menu
+  .ant-dropdown-menu-item-selected {
+  background-color: $secondayBgColor;
+}
+:where(.css-dev-only-do-not-override-m477y0).ant-dropdown
+  .ant-dropdown-menu
+  .ant-dropdown-menu-item-selected:hover {
+  background-color: $secondayBgColorLight;
 }
