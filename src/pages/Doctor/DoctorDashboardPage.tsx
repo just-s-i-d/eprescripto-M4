@@ -8,30 +8,33 @@ import BarChart from "@components/Charts/BarChart";
 import AppoinmentsCard from "@components/Doctor/AppoinmentsCard";
 import DoughnutChart from "@components/Charts/DoughnutChart";
 import {
+  appointmentsEndPoint,
   barChartDataEndPoint,
-  getAppointmentData,
-  getChartData,
+  doughnutChartDataEndPoint,
+  getData,
   getDataForLineGraph,
-  getInfoCardsData,
+  infoCardDataEndPoint,
   lineChartDataEndPoint,
-  pieChartDataEndPoint,
 } from "@utils/Doctor";
 import useStatesHook from "../../hooks/useStatesHook";
 import {
-  AppointmentsDataType,
+  ApiResponseData,
+  ApiResponseDataType,
+  AppointmentDataType,
   ChartDataType,
   InfoCardDetailsType,
   LineChartApiResDataType,
 } from "@constants/types";
 
 const DoctorDashboardPage: React.FC = () => {
-  const infoCards = useStatesHook<InfoCardDetailsType>();
-  const appointments = useStatesHook<AppointmentsDataType>();
-  const doughnutChart = useStatesHook<ChartDataType>();
-  const barChart = useStatesHook<ChartDataType>();
-  const lineChart = useStatesHook<LineChartApiResDataType>();
+  const infoCards = useStatesHook<ApiResponseData<InfoCardDetailsType>>();
+  const appointments = useStatesHook<ApiResponseData<AppointmentDataType>>();
+  const doughnutChart = useStatesHook<ApiResponseDataType<ChartDataType>>();
+  const barChart = useStatesHook<ApiResponseDataType<ChartDataType>>();
+  const lineChart =
+    useStatesHook<ApiResponseDataType<LineChartApiResDataType>>();
   useEffect(() => {
-    getInfoCardsData()
+    getData(infoCardDataEndPoint)
       .then((res) => {
         infoCards.setData(res);
         infoCards.setError(false);
@@ -42,7 +45,7 @@ const DoctorDashboardPage: React.FC = () => {
   }, [infoCards.refresh]); //eslint-disable-line
 
   useEffect(() => {
-    getAppointmentData()
+    getData(appointmentsEndPoint)
       .then((res) => {
         appointments.setData(res);
         appointments.setLoading(false);
@@ -55,9 +58,10 @@ const DoctorDashboardPage: React.FC = () => {
   }, [appointments.refresh]); //eslint-disable-line
 
   useEffect(() => {
-    getChartData(pieChartDataEndPoint)
+    getData(doughnutChartDataEndPoint)
       .then((res) => {
-        doughnutChart.setData(res.pieChartData);
+        doughnutChart.setData(res);
+        doughnutChart.setLoading(false);
         doughnutChart.setError(false);
       })
       .catch(() => {
@@ -66,9 +70,9 @@ const DoctorDashboardPage: React.FC = () => {
   }, [doughnutChart.refresh]); //eslint-disable-line
 
   useEffect(() => {
-    getChartData(lineChartDataEndPoint)
+    getData(lineChartDataEndPoint)
       .then((res) => {
-        lineChart.setData(res.lineChartData);
+        lineChart.setData(res);
         lineChart.setError(false);
       })
       .catch(() => {
@@ -77,9 +81,9 @@ const DoctorDashboardPage: React.FC = () => {
   }, [lineChart.refresh]); //eslint-disable-line
 
   useEffect(() => {
-    getChartData(barChartDataEndPoint)
+    getData(barChartDataEndPoint)
       .then((res) => {
-        barChart.setData(res.barChartData);
+        barChart.setData(res);
         barChart.setError(false);
       })
       .catch(() => {

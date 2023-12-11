@@ -1,21 +1,18 @@
-export type InfoCardDetailsType =
-  | {
-      totalCount: number;
-      title: string;
-    }[]
-  | undefined;
+export type InfoCardDetailsType = {
+  totalCount: number;
+  title: string;
+};
 
+export type InfoCardsDataType = InfoCardDetailsType[] | undefined;
 export type ErrorType = {
   message: string;
-  type: string;
+  type: "success" | "error";
 };
 export type AppointmentDataType = {
   pId: string;
   email: string;
   lastVisited: string;
-  avatar: string;
   gender: string;
-  key: number;
   pName: string;
   timeSlot: string;
   contact: string;
@@ -26,7 +23,16 @@ export type AppointmentDataType = {
 };
 
 export type AppointmentsDataType = AppointmentDataType[] | undefined;
-
+export type AppointmentApiResponseDataType = {
+  id: number;
+  attributes: AppointmentDataType;
+};
+export type ApiResponseDataType<Type> = {
+  id: number;
+  attributes: Type;
+};
+export type ApiResponseData<Type> = ApiResponseDataType<Type>[];
+export type AppointmentsApiResonseType = AppointmentApiResponseDataType[];
 export type PrescriptionDataType = {
   key: React.Key;
   prescriptionId: string;
