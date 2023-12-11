@@ -14,17 +14,23 @@ import type { ChartOptions } from "chart.js";
 
 import ErrorBoundary from "@components/ErrorBoundary";
 import { useEffect, useState } from "react";
-import { LineChartApiResDataType, LineChartDataType } from "@constants/types";
+import {
+  ApiResponseDataType,
+  LineChartApiResDataType,
+  LineChartDataType,
+} from "@constants/types";
 import useStatesHook from "src/hooks/useStatesHook";
 
 ChartJs.register(LineElement, CategoryScale, LinearScale, PointElement, scales);
 
 type LineChartProps = {
-  chartData: LineChartApiResDataType | undefined;
+  chartData?: ApiResponseDataType<LineChartApiResDataType>;
   title: string;
   xAxesTitle: string;
   yAxesTitle: string;
-  lineChart: ReturnType<typeof useStatesHook<LineChartApiResDataType>>;
+  lineChart: ReturnType<
+    typeof useStatesHook<ApiResponseDataType<LineChartApiResDataType>>
+  >;
   getDataForLineGraph: (
     data: LineChartApiResDataType,
     days?: number,
@@ -48,13 +54,13 @@ const LineChart = ({
   const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
     if (chartData) {
-      setCurrentLineChartData(getDataForLineGraph(chartData));
+      setCurrentLineChartData(getDataForLineGraph(chartData.attributes));
       setLoading(false);
     }
   }, [chartData, getDataForLineGraph]);
   const handleChange = (value: number) => {
     if (chartData)
-      setCurrentLineChartData(getDataForLineGraph(chartData, value));
+      setCurrentLineChartData(getDataForLineGraph(chartData.attributes, value));
   };
   const data = {
     labels: currentLineChartData?.labels,

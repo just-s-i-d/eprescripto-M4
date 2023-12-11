@@ -16,10 +16,10 @@ const PrivateRoute = ({ allowedRoles }: PrivateRouteProps) => {
   return (
     <>
       {!isLoggedIn && <Navigate to="/unauthorized" />}
-      {isLoggedIn && allowedRoles.includes(role) && <Outlet />}
       {isLoggedIn && !allowedRoles.includes(role) && (
         <Navigate to="/forbidden" />
       )}
+      {isLoggedIn && allowedRoles.includes(role) && <Outlet />}
     </>
   );
 };
