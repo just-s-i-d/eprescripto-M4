@@ -4,16 +4,22 @@ import { CloseCircleTwoTone, PhoneTwoTone } from "@ant-design/icons";
 
 import CardTitle from "@components/ui/CardTitle";
 import PopModal from "@components/ui/PopModal";
-import { AppointmentDataType, AppointmentsDataType } from "@constants/types";
+import {
+  ApiResponseData,
+  ApiResponseDataType,
+  AppointmentDataType,
+} from "@constants/types";
 import { cancelAppointment } from "@utils/Doctor";
 import ErrorBoundary from "@components/ErrorBoundary";
 import useStatesHook from "src/hooks/useStatesHook";
 import { showToast } from "@utils/common";
 
 type AppointmentCardPropsType = {
-  appointments: AppointmentsDataType;
+  appointments: ApiResponseData<AppointmentDataType> | undefined;
   loading: boolean;
-  appointmentsState: ReturnType<typeof useStatesHook<AppointmentsDataType>>;
+  appointmentsState: ReturnType<
+    typeof useStatesHook<ApiResponseData<AppointmentDataType>>
+  >;
 };
 
 const AppoinmentsCard = ({
@@ -22,8 +28,11 @@ const AppoinmentsCard = ({
   appointmentsState,
 }: AppointmentCardPropsType) => {
   const [open, setOpen] = useState<boolean>(false);
-  const [selectedPatient, setSelectedPatient] = useState<AppointmentDataType>();
-  const handlerCancleAppointment = (patient: AppointmentDataType) => {
+  const [selectedPatient, setSelectedPatient] =
+    useState<ApiResponseDataType<AppointmentDataType>>();
+  const handlerCancleAppointment = (
+    patient: ApiResponseDataType<AppointmentDataType>,
+  ) => {
     setOpen(true);
     setSelectedPatient(patient);
   };
@@ -56,7 +65,7 @@ const AppoinmentsCard = ({
                       {loading ? (
                         <Skeleton.Avatar active size={48} />
                       ) : (
-                        <Avatar size={48} src={item.profilePic} />
+                        <Avatar size={48} src={item.attributes?.profilePic} />
                       )}
                       <Skeleton
                         loading={loading}
@@ -67,10 +76,10 @@ const AppoinmentsCard = ({
                       >
                         <div>
                           <span className="block text-base text-gray-700">
-                            {item.pName}
+                            {item.attributes?.pName}
                           </span>
                           <span className="block text-sm text-gray-600">
-                            {item.timeSlot}
+                            {item.attributes?.timeSlot}
                           </span>
                         </div>
                       </Skeleton>
@@ -79,9 +88,9 @@ const AppoinmentsCard = ({
                       <Skeleton.Button active />
                     ) : (
                       <span
-                        className={`py-1 px-2 rounded-lg ${item.status.toLowerCase()}`}
+                        className={`py-1 px-2 rounded-lg ${item.attributes?.status.toLowerCase()}`}
                       >
-                        {item.status}
+                        {item.attributes?.status}
                       </span>
                     )}
                   </div>
@@ -90,17 +99,17 @@ const AppoinmentsCard = ({
                       <span className="mr-1 py-1 text-gray-500 font-semibold">
                         Referrer
                       </span>
-                      {item.referrer}
+                      {item.attributes.referrer || "NA"}
                     </span>
                     <div className="flex justify-end gap-4 text-lg">
-                      <Tooltip title={item.contact}>
+                      <Tooltip title={item.attributes?.contact}>
                         <PhoneTwoTone
                           className="rotate-90 cursor-pointer"
-                          href={`tel:${item.contact}`}
+                          href={`tel:${item.attributes?.contact}`}
                         />
                       </Tooltip>
 
-                      {item.status === "Pending" && (
+                      {item.attributes.status === "Pending" && (
                         <CloseCircleTwoTone
                           className="cursor-pointer"
                           onClick={() => handlerCancleAppointment(item)}
@@ -116,7 +125,7 @@ const AppoinmentsCard = ({
                       confirmHandler={confirmHandler}
                     >
                       Are you sure,you want to cancel the appoinment for{" "}
-                      {selectedPatient?.pName}?
+                      {selectedPatient?.attributes.pName}?
                     </PopModal>
                   </div>
                 </li>

@@ -7,19 +7,24 @@ import PopModal from "@components/ui/PopModal";
 import TableCard from "@components/ui/TableCard";
 import ErrorBoundary from "@components/ErrorBoundary";
 import {
-  AppointmentDataType,
-  AppointmentsDataType,
+  AppointmentApiResponseDataType,
+  AppointmentsApiResonseType,
   PrescrtionsDataType,
 } from "@constants/types";
-import { cancelAppointment, getPrescriptions } from "@utils/Doctor";
+import {
+  cancelAppointment,
+  formatDateReadable,
+  getData,
+  prescriptionsDataEndPoint,
+} from "@utils/Doctor";
 import useStatesHook from "../../hooks/useStatesHook";
 import { columns } from "@constants/constants";
 import { showToast } from "@utils/common";
 
 type NextPatientCardProps = {
-  appointment: AppointmentDataType | undefined;
+  appointment: AppointmentApiResponseDataType | undefined;
   error: boolean;
-  appointments: ReturnType<typeof useStatesHook<AppointmentsDataType>>;
+  appointments: ReturnType<typeof useStatesHook<AppointmentsApiResonseType>>;
 };
 
 const NextPatientCard = ({
@@ -31,9 +36,10 @@ const NextPatientCard = ({
   const [visibililty, setVisibility] = useState(false);
   const prescriptions = useStatesHook<PrescrtionsDataType>();
   const setPrescriptionsData = () => {
-    getPrescriptions()
+    getData(prescriptionsDataEndPoint)
       .then((res) => {
-        prescriptions.setData(res);
+        const data = res.map((element) => element.attributes);
+        prescriptions.setData(data);
         prescriptions.setLoading(false);
         prescriptions.setError(false);
       })
@@ -73,7 +79,7 @@ const NextPatientCard = ({
             <Skeleton.Avatar active size={100} />
           ) : (
             <Image
-              src={appointment?.profilePic}
+              src={appointment?.attributes.profilePic}
               preview={false}
               width={100}
               className="rounded-[50%]"
@@ -84,13 +90,15 @@ const NextPatientCard = ({
               <Skeleton.Input active />
             ) : (
               <span className="xxl:text-[22px] max-xl:text-[18px] font-extrabold">
-                {appointment?.pName}
+                {appointment?.attributes.pName}
               </span>
             )}
             {loading ? (
               <Skeleton.Input active />
             ) : (
-              <span className="text-base font-bold">{appointment?.email}</span>
+              <span className="text-base font-bold">
+                {appointment?.attributes.email}
+              </span>
             )}
           </Space>
           <Space className="flex items-start text-lg mt-2">
@@ -107,14 +115,16 @@ const NextPatientCard = ({
                     <td className="px-2 py-1 text-gray-500 font-semibold">
                       Patient Id
                     </td>
-                    <td className="px-2 py-1 text-lg">{appointment?.pId}</td>
+                    <td className="px-2 py-1 text-lg">
+                      {appointment?.attributes.pId}
+                    </td>
                   </tr>
                   <tr>
                     <td className="px-2 py-1 text-gray-500 font-semibold">
                       Time Slot
                     </td>
                     <td className="px-2 py-1 text-lg">
-                      {appointment?.timeSlot}
+                      {appointment?.attributes.timeSlot}
                     </td>
                   </tr>
                   <tr>
@@ -122,7 +132,8 @@ const NextPatientCard = ({
                       Last Visited
                     </td>
                     <td className="px-2 py-1 text-lg">
-                      {appointment?.lastVisited}
+                      {appointment &&
+                        formatDateReadable(appointment.attributes.lastVisited)}
                     </td>
                   </tr>
                   <tr>
@@ -130,14 +141,16 @@ const NextPatientCard = ({
                       Phone
                     </td>
                     <td className="px-2 py-1 text-lg">
-                      {appointment?.contact}
+                      {appointment?.attributes.contact}
                     </td>
                   </tr>
                   <tr>
                     <td className="px-2 py-1 text-gray-500 font-semibold">
                       Gender
                     </td>
-                    <td className="px-2 py-1 text-lg">{appointment?.gender}</td>
+                    <td className="px-2 py-1 text-lg">
+                      {appointment?.attributes.gender}
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -159,7 +172,7 @@ const NextPatientCard = ({
           confirmHandler={confirmHandler}
         >
           Are you sure,you want to cancel the appoinment for{" "}
-          {appointment?.pName}?
+          {appointment?.attributes.pName}?
         </PopModal>
         <PopModal
           className="width-1000"
