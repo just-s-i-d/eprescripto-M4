@@ -8,11 +8,13 @@ import ErrorBoundary from "@components/ErrorBoundary";
 import useStatesHook from "../../hooks/useStatesHook";
 
 import {
+  appointmentsEndPoint,
   cancelAppointment,
   formatDateReadable,
-  getDoctorAppointmentsData,
+  getData,
 } from "@utils/Doctor";
 import {
+  ApiResponseDataType,
   AppointmentDataType,
   DoctorAppointmentsDataType,
 } from "@constants/types";
@@ -23,8 +25,11 @@ import { showToast } from "@utils/common";
 const DoctorAppointmentsPage = () => {
   const appointmentsTable = useStatesHook<DoctorAppointmentsDataType>();
   const [open, setOpen] = useState(false);
-  const [selectedPatient, setSelectedPatient] = useState<AppointmentDataType>();
-  const handlerCancleAppointment = (patient: AppointmentDataType) => {
+  const [selectedPatient, setSelectedPatient] =
+    useState<ApiResponseDataType<AppointmentDataType>>();
+  const handlerCancleAppointment = (
+    patient: ApiResponseDataType<AppointmentDataType>,
+  ) => {
     setOpen(true);
     setSelectedPatient(patient);
   };
@@ -35,9 +40,15 @@ const DoctorAppointmentsPage = () => {
     }
   };
   useEffect(() => {
-    getDoctorAppointmentsData()
+    getData(appointmentsEndPoint)
       .then((res) => {
-        appointmentsTable.setData(res);
+        const data = res.map(({ id, attributes }) => {
+          return {
+            id,
+            ...attributes,
+          };
+        });
+        appointmentsTable.setData(data);
         appointmentsTable.setError(false);
         appointmentsTable.setLoading(false);
       })
@@ -75,7 +86,8 @@ const DoctorAppointmentsPage = () => {
     },
     {
       title: "Referrer",
-      dataIndex: "referer",
+      dataIndex: "referrer",
+      render: (referrer: string) => referrer || "NA",
       width: 100,
     },
     {
@@ -120,10 +132,11 @@ const DoctorAppointmentsPage = () => {
       <ErrorBoundary>
         <Card className="appointment-table-card h-min w-full overflow-x-scroll">
           <TableCard
-            className="min-w-[1100px]"
+            className="min-w-[1000px]"
             columns={doctorAppointmentsTableColumns}
             tableData={appointmentsTable.data}
-            pageSize={8}
+            pageSize={7}
+            loading={appointmentsTable.loading}
           />
           <PopModal
             setOpen={setOpen}

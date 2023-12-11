@@ -3,7 +3,7 @@ export type InfoCardDetailsType = {
   title: string;
 };
 
-export type InfoCardsDataType = InfoCardDetailsType[] | undefined;
+export type InfoCardsDataType = InfoCardDetailsType[];
 export type ErrorType = {
   message: string;
   type: "success" | "error";
@@ -22,7 +22,7 @@ export type AppointmentDataType = {
   date: string;
 };
 
-export type AppointmentsDataType = AppointmentDataType[] | undefined;
+export type AppointmentsDataType = AppointmentDataType[];
 export type AppointmentApiResponseDataType = {
   id: number;
   attributes: AppointmentDataType;
@@ -43,7 +43,7 @@ export type PrescriptionDataType = {
   notes: string;
 };
 
-export type PrescrtionsDataType = PrescriptionDataType[] | undefined;
+export type PrescrtionsDataType = PrescriptionDataType[];
 
 export type ChartDataType = {
   labels: string[];
