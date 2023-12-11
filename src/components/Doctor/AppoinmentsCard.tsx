@@ -15,7 +15,7 @@ import useStatesHook from "src/hooks/useStatesHook";
 import { showToast } from "@utils/common";
 
 type AppointmentCardPropsType = {
-  appointments: ApiResponseData<AppointmentDataType> | undefined;
+  appointments?: ApiResponseData<AppointmentDataType>;
   loading: boolean;
   appointmentsState: ReturnType<
     typeof useStatesHook<ApiResponseData<AppointmentDataType>>

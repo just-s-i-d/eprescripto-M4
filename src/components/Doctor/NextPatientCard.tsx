@@ -22,7 +22,7 @@ import { columns } from "@constants/constants";
 import { showToast } from "@utils/common";
 
 type NextPatientCardProps = {
-  appointment: AppointmentApiResponseDataType | undefined;
+  appointment?: AppointmentApiResponseDataType;
   error: boolean;
   appointments: ReturnType<typeof useStatesHook<AppointmentsApiResonseType>>;
 };
