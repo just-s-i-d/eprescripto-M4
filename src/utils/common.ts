@@ -6,5 +6,6 @@ export const showToast = (message: string, type: "success" | "error") => {
     description: message,
     type: type,
     className: `bg-${type}-bgColor border rounded border-${type}-borderColor`,
+    duration: 3,
   });
 };

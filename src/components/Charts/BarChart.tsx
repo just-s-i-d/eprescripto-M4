@@ -16,7 +16,7 @@ import type { ChartOptions } from "chart.js";
 
 import ErrorBoundary from "@components/ErrorBoundary";
 import CardTitle from "@components/ui/CardTitle";
-import { ChartDataType } from "@constants/types";
+import { ApiResponseDataType, ChartDataType } from "@constants/types";
 import useStatesHook from "../../hooks/useStatesHook";
 
 ChartJS.register(
@@ -30,12 +30,14 @@ ChartJS.register(
 );
 
 type PieChartPropsType = {
-  chartData: ChartDataType | undefined;
+  chartData?: ApiResponseDataType<ChartDataType>;
   title: string;
   label: string;
   xAxesTitle: string;
   yAxesTitle: string;
-  barChart: ReturnType<typeof useStatesHook<ChartDataType>>;
+  barChart: ReturnType<
+    typeof useStatesHook<ApiResponseDataType<ChartDataType>>
+  >;
 };
 
 const BarChart = ({
@@ -79,11 +81,11 @@ const BarChart = ({
     },
   };
   const data = {
-    labels: chartData?.labels,
+    labels: chartData?.attributes.labels,
     datasets: [
       {
         label: label,
-        data: chartData?.data,
+        data: chartData?.attributes.data,
         backgroundColor: "#96CCA3",
       },
     ],

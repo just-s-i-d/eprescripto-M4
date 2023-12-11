@@ -7,7 +7,7 @@ import type { ChartOptions, Chart } from "chart.js";
 
 import CardTitle from "@components/ui/CardTitle";
 import ErrorBoundary from "@components/ErrorBoundary";
-import { ChartDataType } from "@constants/types";
+import { ApiResponseDataType, ChartDataType } from "@constants/types";
 import useStatesHook from "src/hooks/useStatesHook";
 
 ChartJs.register(ArcElement, Tooltip, Legend);
@@ -20,10 +20,12 @@ export const options: ChartOptions = {
 };
 
 type PieChartPropsType = {
-  chartData: ChartDataType | undefined;
+  chartData?: ApiResponseDataType<ChartDataType>;
   title: string;
   label: string;
-  doughnutChart: ReturnType<typeof useStatesHook<ChartDataType>>;
+  doughnutChart: ReturnType<
+    typeof useStatesHook<ApiResponseDataType<ChartDataType>>
+  >;
 };
 const colors: string[] = [
   "#f7a825",
@@ -43,11 +45,11 @@ const DoughnutChart = ({
     if (chartData) setLoading(false);
   }, [chartData]);
   const data = {
-    labels: chartData?.labels,
+    labels: chartData?.attributes?.labels,
     datasets: [
       {
         label: label,
-        data: chartData?.data,
+        data: chartData?.attributes?.data,
         backgroundColor: colors,
         borderColor: colors,
         borderWidth: 1,
@@ -71,7 +73,7 @@ const DoughnutChart = ({
         ctx.fillText(text1, textX1, textY1);
         fontSize = (height / 100).toFixed(2);
         ctx.font = fontSize + "em sans-serif";
-        const text2 = `${chartData?.totalCount}`,
+        const text2 = `${chartData?.attributes?.totalCount}`,
           textX2 = Math.round((width - ctx.measureText(text2).width) / 2),
           textY2 = height / 2.2;
         ctx.fillText(text2, textX2, textY2);
