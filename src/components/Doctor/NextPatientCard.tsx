@@ -7,9 +7,10 @@ import PopModal from "@components/ui/PopModal";
 import TableCard from "@components/ui/TableCard";
 import ErrorBoundary from "@components/ErrorBoundary";
 import {
+  ApiResponseData,
   AppointmentApiResponseDataType,
   AppointmentsApiResonseType,
-  PrescrtionsDataType,
+  PrescriptionDataType,
 } from "@constants/types";
 import {
   cancelAppointment,
@@ -34,7 +35,7 @@ const NextPatientCard = ({
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [visibililty, setVisibility] = useState(false);
-  const prescriptions = useStatesHook<PrescrtionsDataType>();
+  const prescriptions = useStatesHook<ApiResponseData<PrescriptionDataType>>();
   const setPrescriptionsData = () => {
     getData(prescriptionsDataEndPoint)
       .then((res) => {
