@@ -4,7 +4,7 @@ import { Card, Table } from "antd";
 import { ColumnsType } from "antd/es/table";
 
 import { ReviewDataType, ReviewsDataType } from "@constants/types";
-import { getReviewsData } from "@utils/Doctor";
+import { getData, reviewsDataEndPoint } from "@utils/Doctor";
 import useStatesHook from "../../hooks/useStatesHook";
 import starPng from "@assets/star.png";
 import ErrorBoundary from "@components/ErrorBoundary";
@@ -68,9 +68,10 @@ const DoctorReviewsPage = () => {
     },
   ];
   useEffect(() => {
-    getReviewsData()
+    getData(reviewsDataEndPoint)
       .then((res) => {
-        reviews.setData(res);
+        const data = res.map((element) => element.attributes);
+        reviews.setData(data);
         reviews.setError(false);
         reviews.setLoading(false);
       })

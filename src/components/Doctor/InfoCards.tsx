@@ -3,15 +3,17 @@ import { Row, Col, Card, Image, Typography, Skeleton } from "antd";
 
 import ErrorBoundary from "@components/ErrorBoundary";
 import CardTitle from "@components/ui/CardTitle";
-import { InfoCardDetailsType } from "@constants/types";
+import { ApiResponseData, InfoCardDetailsType } from "@constants/types";
 import { CARD_PROPERTIES } from "@constants/constants";
 import useStatesHook from "../../hooks/useStatesHook";
 
 const { Text } = Typography;
 
 type InfoCardsProps = {
-  cardDetails: InfoCardDetailsType;
-  infoCards: ReturnType<typeof useStatesHook<InfoCardDetailsType>>;
+  cardDetails?: ApiResponseData<InfoCardDetailsType>;
+  infoCards: ReturnType<
+    typeof useStatesHook<ApiResponseData<InfoCardDetailsType>>
+  >;
 };
 
 const getBgColor = (index: number) => {
@@ -46,7 +48,7 @@ const InfoCards = ({ cardDetails, infoCards }: InfoCardsProps) => {
         >
           {cardDetails?.map((element, index) => {
             return (
-              <ErrorBoundary key={element.title}>
+              <ErrorBoundary key={element.attributes.title}>
                 <Col className="basis-3/12 max-md:basis-6/12 max-sm:basis-9/12">
                   <Card
                     className={`info-card h-[17vh] py-8 px-4 max-sm:py-5 max-w-[390px] max-xl:h-[16vh] max-xl:min-w-[135px] max-sm:h-[150px] ${getBgColor(
@@ -70,7 +72,7 @@ const InfoCards = ({ cardDetails, infoCards }: InfoCardsProps) => {
                           <Skeleton.Button />
                         ) : (
                           <Text className="text-4xl max-xl:text-3xl text-white max-md:text-4xl">
-                            {element.totalCount}
+                            {element.attributes.totalCount}
                           </Text>
                         )}
                       </div>
@@ -78,7 +80,7 @@ const InfoCards = ({ cardDetails, infoCards }: InfoCardsProps) => {
                         <Skeleton.Input active />
                       ) : (
                         <CardTitle className="max-xxl:text-lg max-xl:text-base max-md:text-lg">
-                          {element.title}
+                          {element.attributes.title}
                         </CardTitle>
                       )}
                     </div>
