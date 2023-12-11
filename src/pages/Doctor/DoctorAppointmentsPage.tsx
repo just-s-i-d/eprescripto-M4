@@ -87,7 +87,7 @@ const DoctorAppointmentsPage = () => {
     {
       title: "Referrer",
       dataIndex: "referrer",
-      render: (referrer: string) => (referrer ? referrer : "NA"),
+      render: (referrer: string) => referrer || "NA",
       width: 100,
     },
     {

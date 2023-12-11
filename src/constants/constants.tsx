@@ -64,7 +64,7 @@ export const columns: ColumnsType<PrescriptionDataType> = [
   {
     title: "Date",
     dataIndex: "date",
-    render: (date: string) => formatDateReadable(date),
+    render: formatDateReadable,
   },
   {
     title: "Duration",
