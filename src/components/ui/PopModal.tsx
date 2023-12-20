@@ -1,5 +1,5 @@
 import { Modal } from "antd";
-import { ReactNode, SetStateAction } from "react";
+import { ReactNode, SetStateAction, useState } from "react";
 
 type ConfirmModalPropsType = {
   title: string;
@@ -21,9 +21,15 @@ const PopModal = ({
   className,
   confirmHandler,
 }: ConfirmModalPropsType) => {
+  const [loading, setLoading] = useState(false);
   const handleOk = () => {
-    if (confirmHandler) confirmHandler();
-    setOpen(false);
+    setLoading(true);
+    if (confirmHandler)
+      setTimeout(() => {
+        confirmHandler();
+        setLoading(false);
+        setOpen(false);
+      }, 1000);
   };
 
   return (
@@ -35,6 +41,7 @@ const PopModal = ({
       okText={okButtonText || "Sure"}
       onOk={handleOk}
       onCancel={() => setOpen(false)}
+      confirmLoading={loading}
       footer={
         footer
           ? (_, { OkBtn, CancelBtn }) => (

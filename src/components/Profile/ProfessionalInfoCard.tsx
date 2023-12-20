@@ -1,14 +1,19 @@
-import CardTitle from "@components/ui/CardTitle";
-import { updateUserData } from "@utils/Doctor";
-import { Button, Card, Form, Input, Select, Space } from "antd";
-import { useForm, useWatch } from "antd/es/form/Form";
 import { useEffect, useState } from "react";
 
-const ProfessionalInfoCard = ({ userData }) => {
+import { useForm, useWatch } from "antd/es/form/Form";
+import { Button, Card, Form, Input, Select, Space } from "antd";
+
+import CardTitle from "@components/ui/CardTitle";
+import { updateUserData } from "@utils/Doctor";
+import ErrorBoundary from "@components/ErrorBoundary";
+import { UserDataPropsType } from "./PersonalInfoCard";
+
+const ProfessionalInfoCard = ({ userData }: UserDataPropsType) => {
   const [disabled, setDisabled] = useState(true);
   const [buttonLoading, setButtonLoading] = useState(false);
   const [professionalInfoForm] = useForm();
   const formValues = useWatch([], professionalInfoForm);
+  const [formButtonDisabled, setFormButtonDisabled] = useState(false);
   const onSubmitHandler = () => {
     setButtonLoading(true);
     const newUserData = { ...userData, ...formValues };
@@ -19,90 +24,106 @@ const ProfessionalInfoCard = ({ userData }) => {
       }, 2000);
     });
   };
+  const cancelHandler = () => {
+    professionalInfoForm.resetFields();
+    setDisabled(true);
+  };
   useEffect(() => {
     professionalInfoForm.resetFields();
   }, [userData]);
+  useEffect(() => {
+    professionalInfoForm.validateFields({ validateOnly: true }).then(
+      () => {
+        setFormButtonDisabled(false);
+      },
+      () => {
+        setFormButtonDisabled(true);
+      },
+    );
+  }, [formValues]);
   return (
     <Card>
       <CardTitle>Professional Information</CardTitle>
-      <Form
-        form={professionalInfoForm}
-        className="custom-form w-full flex flex-col gap-2 mb-4"
-        layout="vertical"
-        initialValues={userData}
-      >
-        <div className="flex gap-4 xs:flex-wrap md:flex-nowrap">
-          <Form.Item
-            className="xs:w-full sm:w-5/12 md:w-4/12 lg:w-[23%] xl:w-[18%]"
-            name="licenseNo"
-            label="Licesnse Number"
-            rules={[
-              {
-                required: true,
-                message: "please enter your license no.!",
-              },
-              {
-                len: 4,
-                message: "Only 4 digits allowed",
-              },
-            ]}
-          >
-            <Input disabled={disabled} />
-          </Form.Item>
-          <Form.Item
-            className="xs:w-full sm:w-5/12 md:w-4/12 lg:w-[21%] xl:w-[18%]"
-            name="speciality"
-            label="Speciality"
-            rules={[
-              {
-                required: true,
-                message: "Please enter your speciality!",
-              },
-              {
-                pattern: /^[a-zA-Z\s&-]+$/u,
-                message: "Special characters not allowed",
-              },
-            ]}
-          >
-            <Input disabled={disabled} />
-          </Form.Item>
-          <Form.Item
-            className="xs:w-full sm:w-5/12 md:w-4/12 lg:w-[21%] xl:w-[18%]"
-            name="experience"
-            label="Experience"
-            rules={[
-              {
-                required: true,
-                message: "Please enter your experiance!",
-              },
-            ]}
-          >
-            <Input type="number" disabled={disabled} />
-          </Form.Item>
-        </div>
-        <div className="flex gap-7 xs:flex-wrap sm:flex-nowrap">
-          <Form.Item
-            className="xs:w-full lg:w-[33%] xl:w-[27%]"
-            name="organizationType"
-            label="Organization Type"
-            rules={[
-              {
-                required: true,
-                message: "Please select the organization type!",
-              },
-            ]}
-          >
-            <Select
-              disabled={disabled}
-              options={[
-                { value: "default", label: "Select an option" },
-                { value: "hospital", label: "Hospital" },
-                { value: "clinic", label: "Clinic" },
+      <ErrorBoundary>
+        <Form
+          form={professionalInfoForm}
+          className="custom-form custom-form-profile w-full flex flex-col gap-2 mb-4"
+          layout="vertical"
+          initialValues={userData}
+        >
+          <div className="flex xs:flex-col sm:flex-row xs:gap-2 sm:gap-6 sm:w-full md:w-9/12 xl:w-8/12">
+            <Form.Item
+              className="xs:w-full xl:w-5/12"
+              name="licenseNo"
+              label="License Number"
+              rules={[
+                {
+                  required: true,
+                  message: "please enter your license no.!",
+                },
+                {
+                  len: 4,
+                  message: "Only 4 digits allowed",
+                },
               ]}
-            />
-          </Form.Item>
+            >
+              <Input disabled={disabled} />
+            </Form.Item>
+            <Form.Item
+              className="xs:w-full xl:w-5/12"
+              name="speciality"
+              label="Speciality"
+              rules={[
+                {
+                  required: true,
+                  message: "Please enter your speciality!",
+                },
+                {
+                  pattern: /^[a-zA-Z\s&-]+$/u,
+                  message: "Special characters not allowed",
+                },
+              ]}
+            >
+              <Input disabled={disabled} />
+            </Form.Item>
+          </div>
+          <div className="flex xs:flex-col sm:flex-row xs:gap-2 sm:gap-6 sm:w-full md:w-9/12 xl:w-8/12">
+            <Form.Item
+              className="xs:w-full xl:w-5/12"
+              name="experience"
+              label="Experience"
+              rules={[
+                {
+                  required: true,
+                  message: "Please enter your experiance!",
+                },
+              ]}
+            >
+              <Input type="number" disabled={disabled} />
+            </Form.Item>
+            <Form.Item
+              className="xs:w-full xl:w-5/12"
+              name="organizationType"
+              label="Organization Type"
+              rules={[
+                {
+                  required: true,
+                  message: "Please select the organization type!",
+                },
+              ]}
+            >
+              <Select
+                disabled={disabled}
+                options={[
+                  { value: "default", label: "Select an option" },
+                  { value: "hospital", label: "Hospital" },
+                  { value: "clinic", label: "Clinic" },
+                ]}
+              />
+            </Form.Item>
+          </div>
           <Form.Item
-            className="xs:w-full lg:w-[33%] xl:w-[27%]"
+            className="xs:full sm:w-[49%] md:w-[36%] xl:w-[28%]"
             name="organizationName"
             label="Organization Name"
             rules={[
@@ -118,26 +139,27 @@ const ProfessionalInfoCard = ({ userData }) => {
           >
             <Input disabled={disabled} />
           </Form.Item>
-        </div>
-      </Form>
-      <Space>
-        {disabled ? (
-          <Button onClick={() => setDisabled(false)}>Edit Details</Button>
-        ) : (
-          <>
-            <Button
-              onClick={onSubmitHandler}
-              loading={buttonLoading}
-              className="min-w-[90px]"
-            >
-              Save
-            </Button>
-            <Button onClick={() => setDisabled(true)} className="min-w-[90px]">
-              Cancel
-            </Button>
-          </>
-        )}
-      </Space>
+        </Form>
+        <Space>
+          {disabled ? (
+            <Button onClick={() => setDisabled(false)}>Edit Details</Button>
+          ) : (
+            <>
+              <Button
+                onClick={onSubmitHandler}
+                loading={buttonLoading}
+                className="min-w-[90px]"
+                disabled={formButtonDisabled}
+              >
+                Save
+              </Button>
+              <Button onClick={cancelHandler} className="min-w-[90px]">
+                Cancel
+              </Button>
+            </>
+          )}
+        </Space>
+      </ErrorBoundary>
     </Card>
   );
 };
