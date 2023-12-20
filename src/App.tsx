@@ -17,9 +17,12 @@ import ForbiddenAccessPage from "@pages/ForbiddenAccessPage.tsx";
 import PageNotFound from "@pages/PageNotFound.tsx";
 import RouteWrapperComponent from "@routes/RouteWrapperComponent.tsx";
 import "./App.scss";
+import DoctorPrescriptionPage from "@pages/Doctor/DoctorPrescriptionPage.tsx";
+import GuestRoute from "@routes/GuestRoute.tsx";
+import GoogleAuthInterceptor from "@pages/Auth/GoogleLogin.tsx";
+import AuthPage from "@pages/Auth/AuthPage.tsx";
 
 function App() {
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
   const userContext = useContext(UserContext);
   const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
@@ -28,6 +31,7 @@ function App() {
     }, 1000);
   }, []); //temporary for showing loading, will be removed afterwards
   if (userContext === null || loading) return <Loading />;
+  const { isDarkTheme, setIsDarkTheme } = userContext;
   return (
     <ConfigProvider theme={isDarkTheme ? darkTheme : lightTheme}>
       <Routes>
@@ -41,7 +45,7 @@ function App() {
               element={
                 <RouteWrapperComponent
                   components={{
-                    doctor: <DoctorDashboardPage />,
+                    doctor: <DoctorDashboardPage darkMode={isDarkTheme} />,
                     patient: <PatientDashboardPage />,
                   }}
                 />
@@ -52,7 +56,7 @@ function App() {
               element={
                 <RouteWrapperComponent
                   components={{
-                    doctor: <h1>Doctor Prescriptions Page</h1>,
+                    doctor: <DoctorPrescriptionPage />,
                   }}
                 />
               }
@@ -113,6 +117,10 @@ function App() {
               }
             />
           </Route>
+        </Route>
+        <Route path="" element={<GuestRoute />}>
+          <Route path="auth" element={<AuthPage />} />
+          <Route path="auth/google" element={<GoogleAuthInterceptor />} />
         </Route>
         <Route path="/forbidden" element={<ForbiddenAccessPage />} />
         <Route path="*" element={<PageNotFound />} />

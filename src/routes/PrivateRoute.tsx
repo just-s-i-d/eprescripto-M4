@@ -10,12 +10,12 @@ type PrivateRouteProps = {
 const PrivateRoute = ({ allowedRoles }: PrivateRouteProps) => {
   const userContext = useContext(UserContext);
 
-  if (userContext === null) return <Loading />;
+  if (!userContext) return <Loading />;
   const { isLoggedIn, role } = userContext;
 
   return (
     <>
-      {!isLoggedIn && <Navigate to="/unauthorized" />}
+      {!isLoggedIn && <Navigate to="/auth" />}
       {isLoggedIn && !allowedRoles.includes(role) && (
         <Navigate to="/forbidden" />
       )}
