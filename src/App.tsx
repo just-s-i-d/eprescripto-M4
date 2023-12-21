@@ -17,9 +17,10 @@ import ForbiddenAccessPage from "@pages/ForbiddenAccessPage.tsx";
 import PageNotFound from "@pages/PageNotFound.tsx";
 import RouteWrapperComponent from "@routes/RouteWrapperComponent.tsx";
 import "./App.scss";
-import GuestRoute from "./routes/GuestRoute.tsx";
-import AuthPage from "./pages/Auth/AuthPage.tsx";
-import GoogleAuthPage from "./pages/Auth/GoogleAuthPage.tsx";
+import GuestRoute from "@routes/GuestRoute.tsx";
+import AuthPage from "@pages/Auth/AuthPage.tsx";
+import GoogleAuthPage from "@pages/Auth/GoogleAuthPage.tsx";
+import DoctorPrescriptionPage from "@pages/Doctor/DoctorPrescriptionPage.tsx";
 
 function App() {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
@@ -55,7 +56,7 @@ function App() {
               element={
                 <RouteWrapperComponent
                   components={{
-                    doctor: <h1>Doctor Prescriptions Page</h1>,
+                    doctor: <DoctorPrescriptionPage />,
                   }}
                 />
               }
