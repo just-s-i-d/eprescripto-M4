@@ -8,7 +8,7 @@ export type ErrorType = {
   message: string;
   type: "success" | "error";
 };
-export type AppointmentDataType = {
+export type AppointmentType = {
   pId: string;
   email: string;
   lastVisited: string;
@@ -21,6 +21,7 @@ export type AppointmentDataType = {
   referrer: string;
   date: string;
 };
+export type AppointmentDataType = AppointmentType & { id: number };
 
 export type AppointmentsDataType = AppointmentDataType[];
 export type AppointmentApiResponseDataType = {
@@ -30,6 +31,10 @@ export type AppointmentApiResponseDataType = {
 export type ApiResponseDataType<Type> = {
   id: number;
   attributes: Type;
+};
+export type GenericApiResponseType = {
+  id: number;
+  attributes: GenericObjectType;
 };
 export type ApiResponseData<Type> = ApiResponseDataType<Type>[];
 export type AppointmentsApiResonseType = AppointmentApiResponseDataType[];
@@ -78,3 +83,74 @@ export type ReviewDataType = {
   comment: string;
 };
 export type ReviewsDataType = ReviewDataType[];
+
+export type UserDetailsType = {
+  docName: string;
+  email: string;
+  gender: string;
+  age: number;
+};
+
+export type UserCredentialsType = {
+  email: string;
+  password: string;
+};
+export type UserRegisterDataType = {
+  docName: string;
+  email: string;
+};
+export type UserDataGenericType = {
+  [key: string]: string | number;
+};
+export type CommonPropsTypeDarkMode = {
+  darkMode: boolean;
+};
+
+export type PatientDataType = {
+  pName: string;
+  email: string;
+  dob: string;
+  gender: string;
+  contactNo: string;
+  allergies?: string;
+};
+export type PatientInfoType = {
+  id: number;
+} & PatientDataType;
+
+export type ApiUserDataResponseType = {
+  blocked: boolean;
+  city: string;
+  confirmed: true;
+  country: string;
+  createdAt: string;
+  dob: string;
+  docName: string;
+  email: string;
+  experience: 10;
+  gender: string;
+  id: number;
+  licenseNo: number;
+  organizationName: string;
+  organizationType: string;
+  provider: string;
+  speciality: string;
+  state: string;
+  updatedAt: string;
+  username: string;
+  profilePic?: string;
+};
+export type GenericObjectType = {
+  [key: string]: string;
+};
+export type SelectOptionsType = {
+  value: number | string;
+  label: string;
+}[];
+export type MedicationType = {
+  id: number;
+  medicine: string;
+  dosage: string;
+  timesPerDay: string;
+  instruction: string;
+};

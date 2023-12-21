@@ -5,7 +5,7 @@ import { Card, Tooltip } from "antd";
 import { PhoneTwoTone, CloseCircleTwoTone } from "@ant-design/icons";
 
 import ErrorBoundary from "@components/ErrorBoundary";
-import useStatesHook from "../../hooks/useStatesHook";
+import useStatesHook from "@hooks/useStatesHook";
 
 import {
   appointmentsEndPoint,
@@ -14,33 +14,21 @@ import {
   getData,
 } from "@utils/Doctor";
 import {
-  ApiResponseDataType,
+  ApiResponseData,
   AppointmentDataType,
-  DoctorAppointmentsDataType,
+  AppointmentType,
+  GenericObjectType,
 } from "@constants/types";
 import TableCard from "@components/ui/TableCard";
 import PopModal from "@components/ui/PopModal";
 import { showToast } from "@utils/common";
 
 const DoctorAppointmentsPage = () => {
-  const appointmentsTable = useStatesHook<DoctorAppointmentsDataType>();
+  const appointmentsTable = useStatesHook<AppointmentDataType[]>();
   const [open, setOpen] = useState(false);
-  const [selectedPatient, setSelectedPatient] =
-    useState<ApiResponseDataType<AppointmentDataType>>();
-  const handlerCancleAppointment = (
-    patient: ApiResponseDataType<AppointmentDataType>,
-  ) => {
-    setOpen(true);
-    setSelectedPatient(patient);
-  };
-  const confirmHandler = async () => {
-    if (selectedPatient) {
-      const response = await cancelAppointment(selectedPatient);
-      response && showToast(response.message, response.type);
-    }
-  };
-  useEffect(() => {
-    getData(appointmentsEndPoint)
+  const [selectedPatient, setSelectedPatient] = useState<AppointmentDataType>();
+  const getDataForAppointments = () => {
+    getData<ApiResponseData<AppointmentType>>(appointmentsEndPoint)
       .then((res) => {
         const data = res.map(({ id, attributes }) => {
           return {
@@ -56,6 +44,25 @@ const DoctorAppointmentsPage = () => {
         appointmentsTable.setError(true);
         appointmentsTable.setLoading(false);
       });
+  };
+  const handlerCancleAppointment = (patient: AppointmentDataType) => {
+    setOpen(true);
+    setSelectedPatient(patient);
+  };
+  const confirmHandler = async () => {
+    if (selectedPatient) {
+      cancelAppointment(selectedPatient)
+        .then((res) => {
+          showToast(res.message, res.type);
+          getDataForAppointments();
+        })
+        .catch((error) => {
+          showToast(error.message, error.type);
+        });
+    }
+  };
+  useEffect(() => {
+    getDataForAppointments();
   }, []);
   const doctorAppointmentsTableColumns: ColumnsType<AppointmentDataType> = [
     {
@@ -130,14 +137,20 @@ const DoctorAppointmentsPage = () => {
   return (
     <>
       <ErrorBoundary>
-        <Card className="appointment-table-card h-min w-full overflow-x-scroll">
+        <Card className="appointment-table-card h-min w-full overflow-scroll">
           <TableCard
-            className="min-w-[1000px]"
-            columns={doctorAppointmentsTableColumns}
-            tableData={appointmentsTable.data}
+            className="min-w-[1200px]"
+            setRefresh={appointmentsTable.setRefresh}
+            error={appointmentsTable.error}
+            columns={
+              doctorAppointmentsTableColumns as ColumnsType<GenericObjectType>
+            }
+            tableData={appointmentsTable.data as GenericObjectType[]}
             pageSize={7}
+            setLoading={appointmentsTable.setLoading}
             loading={appointmentsTable.loading}
           />
+
           <PopModal
             setOpen={setOpen}
             open={open}
