@@ -145,7 +145,7 @@ span.active {
 .dark .ant-input[disabled],
 .dark .ant-btn-default:disabled,
 .ant-btn-default.ant-btn-disabled {
-  color: $buttonDisabledColor;
+  color: $buttonDisabledColorDark;
 }
 
 :where(.css-dev-only-do-not-override-1yr7evd).ant-dropdown
