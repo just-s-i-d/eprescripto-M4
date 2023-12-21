@@ -19,6 +19,7 @@ import RouteWrapperComponent from "@routes/RouteWrapperComponent.tsx";
 import "./App.scss";
 import GuestRoute from "./routes/GuestRoute.tsx";
 import AuthPage from "./pages/Auth/AuthPage.tsx";
+import GoogleAuthPage from "./pages/Auth/GoogleAuthPage.tsx";
 
 function App() {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
@@ -118,7 +119,7 @@ function App() {
         </Route>
         <Route path="" element={<GuestRoute />}>
           <Route path="auth" element={<AuthPage />} />
-          <Route path="auth/google" element={<GoogleAuthInterceptor />} />
+          <Route path="auth/google" element={<GoogleAuthPage />} />
         </Route>
         <Route path="/forbidden" element={<ForbiddenAccessPage />} />
         <Route path="*" element={<PageNotFound />} />
