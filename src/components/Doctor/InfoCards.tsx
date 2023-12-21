@@ -51,7 +51,7 @@ const InfoCards = ({ cardDetails, infoCards }: InfoCardsProps) => {
               <ErrorBoundary key={element.attributes.title}>
                 <Col className="basis-3/12 max-md:basis-6/12 max-sm:basis-9/12">
                   <Card
-                    className={`info-card h-[17vh] py-8 px-4 max-sm:py-5 max-w-[390px] max-xl:h-[16vh] max-xl:min-w-[135px] max-sm:h-[150px] ${getBgColor(
+                    className={`custom-card h-[17vh] py-8 px-4 max-sm:py-5 max-w-[390px] max-xl:h-[16vh] max-xl:min-w-[135px] max-sm:h-[150px] ${getBgColor(
                       index,
                     )} text-white`}
                     bordered={false}

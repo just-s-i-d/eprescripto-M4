@@ -47,7 +47,7 @@ const TableCard = ({
       <div className="margin-bottom-12">
         <Input
           placeholder="Search"
-          className="width-200"
+          className="custom-search"
           onChange={(event) => handleSearch(event.target.value)}
           prefix={<SearchOutlined />}
         />
