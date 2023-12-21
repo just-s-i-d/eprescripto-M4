@@ -14,7 +14,10 @@ import appointmentPng from "@assets/appointment.png";
 import starPng from "@assets/star-rating.png";
 import { PrescriptionDataType } from "./types";
 import { formatDateReadable } from "@utils/Doctor";
-
+import PersonalInfoForm from "@pages/Auth/SignUp/PersonalInfoForm";
+import AddressForm from "@pages/Auth/SignUp/AddressForm";
+import ProfessionalInfoForm from "@pages/Auth/SignUp/ProfessionalInfoForm";
+import PasswordForm from "@pages/Auth/SignUp/PasswordForm";
 type NavLinksType = { label: string; icon: ReactNode; key: string }[];
 
 export const DOCTOR_NAV_LINKS: NavLinksType = [
@@ -40,15 +43,20 @@ export const formattedDate = () => {
   return `${date}/${month}/${year}`;
 };
 
-export const getLabels = (days: number) => {
+export const getLabels = (days: number): string[] => {
   const todayDate = new Date();
-  const month = todayDate.getMonth() + 1;
-  const endDate = todayDate.getDate();
-  const startDate = endDate - days;
   const dates = [];
-  for (let i = startDate + 1; i <= endDate; i++) {
-    dates.push(`${i}/${month}`);
+
+  for (let i = 0; i < days; i++) {
+    const currentDate = new Date(todayDate);
+    currentDate.setDate(todayDate.getDate() - i);
+
+    const day = currentDate.getDate().toString().padStart(2, "0");
+    const month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
+
+    dates.unshift(`${day}/${month}`);
   }
+
   return dates;
 };
 
@@ -94,11 +102,14 @@ export const columns: ColumnsType<PrescriptionDataType> = [
         value: "On Hold",
       },
     ],
-    onFilter: (value, record) => record.status.indexOf(value) === 0,
+    onFilter: (value, record) => record.status.indexOf(value.toString()) === 0,
   },
   {
     title: "Notes",
     dataIndex: "notes",
+    render: (notes: string) => (
+      <span className="max-w-[50px]">{notes || "NA"}</span>
+    ),
   },
 ];
 
@@ -108,4 +119,43 @@ export const CARD_PROPERTIES: CardPropertiesType = [
   appointmentPng,
   starPng,
   patientPng,
+];
+
+export const steps = [
+  {
+    title: "Step 1",
+    description: "Personal Info",
+  },
+  {
+    title: "Step 2",
+    description: "Personal Address",
+  },
+  {
+    title: "Step 3",
+    description: "Professional Info",
+  },
+  { title: "Step 4", description: "Finish" },
+];
+
+export const StepsForm = [
+  {
+    title: "Personal Information",
+    description: "Please enter your personal information",
+    content: <PersonalInfoForm />,
+  },
+  {
+    title: "Personal Address",
+    description: "Please enter your address",
+    content: <AddressForm />,
+  },
+  {
+    title: "Professional Information",
+    description: "Please enter your professtional information",
+    content: <ProfessionalInfoForm />,
+  },
+  {
+    title: "New Password",
+    description: "Please enter new password",
+    content: <PasswordForm />,
+  },
 ];
