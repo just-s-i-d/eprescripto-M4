@@ -18,6 +18,7 @@ export default {
     extend: {
       colors: {
         primary: "#5ac1c7",
+        secondary: "#19504c",
         infoCardColors: {
           color1: "#02c39a",
           color2: "#c8b6ff",
