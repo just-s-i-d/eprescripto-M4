@@ -118,7 +118,7 @@ function App() {
         </Route>
         <Route path="" element={<GuestRoute />}>
           <Route path="auth" element={<AuthPage />} />
-          {/* <Route path="auth/google" element={<GoogleAuthInterceptor />} /> */}
+          <Route path="auth/google" element={<GoogleAuthInterceptor />} />
         </Route>
         <Route path="/forbidden" element={<ForbiddenAccessPage />} />
         <Route path="*" element={<PageNotFound />} />
