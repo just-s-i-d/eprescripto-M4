@@ -1,5 +1,6 @@
 export const lightTheme = {
   token: {
+    colorPrimary: "#19504C",
     colorPrimaryBg: "#19504C",
     colorText: "#0E1446",
     colorPrimaryText: "#19504C",
@@ -53,21 +54,29 @@ export const lightTheme = {
 
 export const darkTheme = {
   token: {
-    colorPrimaryBg: "#1d232c",
+    colorPrimaryBg: "#515151",
     colorText: "white",
     colorPrimaryText: "#2fbfa0",
-    colorBgTextHover: "#032030",
+    colorBgTextHover: "#515151",
     colorLink: "white",
     colorTextSecondary: "white",
-    colorBgContainer: "#1A202C",
+    colorBgContainer: "#363636",
     colorFillContent: "#006494",
-    colorBgLayout: "#161b21",
+    colorBgLayout: "#1B1B1B",
+    colorBgContainerDisabled: "rgba(255, 255, 255, 0.04)",
+    colorTextPlaceholder: "rgba(255, 255, 255, 0.4)",
+    colorTextDisabled: "rgba(255, 255, 255, 0.4)",
   },
   components: {
     Layout: {
-      headerBg: "#1d232c",
+      headerBg: "#232323",
     },
-    Modal: { titleFontSize: 24 },
+    Modal: {
+      titleFontSize: 24,
+      headerBg: "#363636",
+      contentBg: "#363636",
+      footerBg: "#363636",
+    },
     Button: {
       defaultBg: "#032030",
     },
@@ -78,6 +87,10 @@ export const darkTheme = {
     },
     Popover: {
       fontSize: 18,
+    },
+    Skeleton: {
+      gradientFromColor: "#f6f6f6",
+      gradientToColor: "#EDEDED",
     },
   },
 };

@@ -42,7 +42,7 @@ span.active {
   .ant-dropdown-menu-item-selected
   .ant-checkbox-wrapper
   + span {
-  color: $primaryBgColor;
+  color: $secondaryTextColor;
 }
 
 .appointment-table-card > .ant-card-body {
@@ -113,16 +113,70 @@ span.active {
   align-items: center;
 }
 .ant-steps .ant-steps-item-finish .ant-steps-item-icon > .ant-steps-icon {
-  color: white;
+  color: $secondaryTextColor;
 }
 .ant-steps
   .ant-steps-item-finish
   > .ant-steps-item-container
   > .ant-steps-item-tail::after {
-  background-color: white;
+  background-color: $secondaryTextColor;
 }
-// .custom-form :where(.ant-input-affix-wrapper, .ant-input),
-// .custom-form .ant-select:not(.ant-select-customize-input) .ant-select-selector {
-//   border: 0;
-//   border-bottom: 1px solid black;
-// }
+.custom-form-profile .ant-input,
+.custom-form-profile
+  .ant-select-single:not(.ant-select-customize-input)
+  .ant-select-selector {
+  border-radius: 8px;
+}
+.ant-dropdown .ant-dropdown-menu .ant-dropdown-menu-item-selected,
+:where(.css-dev-only-do-not-override-1yr7evd).ant-dropdown-menu-submenu
+  .ant-dropdown-menu
+  .ant-dropdown-menu-item-selected,
+:where(.css-dev-only-do-not-override-1yr7evd).ant-dropdown
+  .ant-dropdown-menu
+  .ant-dropdown-menu-submenu-title-selected,
+:where(.css-dev-only-do-not-override-1yr7evd).ant-dropdown-menu-submenu
+  .ant-dropdown-menu
+  .ant-dropdown-menu-submenu-title-selected {
+  background-color: $secondaryTextColor;
+}
+.ant-table-wrapper .ant-table {
+  min-height: 63vh;
+}
+.dark .ant-input[disabled],
+.dark .ant-btn-default:disabled,
+.ant-btn-default.ant-btn-disabled {
+  color: $buttonDisabledColor;
+}
+
+:where(.css-dev-only-do-not-override-1yr7evd).ant-dropdown
+  .ant-dropdown-menu
+  .ant-dropdown-menu-item-selected:hover,
+:where(.css-dev-only-do-not-override-1yr7evd).ant-dropdown-menu-submenu
+  .ant-dropdown-menu
+  .ant-dropdown-menu-item-selected:hover,
+:where(.css-dev-only-do-not-override-1yr7evd).ant-dropdown
+  .ant-dropdown-menu
+  .ant-dropdown-menu-submenu-title-selected:hover,
+:where(.css-dev-only-do-not-override-1yr7evd).ant-dropdown-menu-submenu
+  .ant-dropdown-menu
+  .ant-dropdown-menu-submenu-title-selected:hover,
+:where(.css-dev-only-do-not-override-1yr7evd).ant-dropdown
+  .ant-dropdown-menu
+  .ant-dropdown-menu-item-selected-active,
+:where(.css-dev-only-do-not-override-1yr7evd).ant-dropdown-menu-submenu
+  .ant-dropdown-menu
+  .ant-dropdown-menu-item-selected-active,
+:where(.css-dev-only-do-not-override-1yr7evd).ant-dropdown
+  .ant-dropdown-menu
+  .ant-dropdown-menu-submenu-title-selected-active,
+:where(.css-dev-only-do-not-override-1yr7evd).ant-dropdown-menu-submenu
+  .ant-dropdown-menu
+  .ant-dropdown-menu-submenu-title-selected-active {
+  background-color: $secondayBgColorLight;
+}
+.ant-picker-large {
+  width: 100%;
+}
+.ant-picker-focused.ant-picker {
+  box-shadow: none;
+}
