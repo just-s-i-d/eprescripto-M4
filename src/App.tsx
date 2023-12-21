@@ -17,6 +17,8 @@ import ForbiddenAccessPage from "@pages/ForbiddenAccessPage.tsx";
 import PageNotFound from "@pages/PageNotFound.tsx";
 import RouteWrapperComponent from "@routes/RouteWrapperComponent.tsx";
 import "./App.scss";
+import GuestRoute from "./routes/GuestRoute.tsx";
+import AuthPage from "./pages/Auth/AuthPage.tsx";
 
 function App() {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
@@ -113,6 +115,10 @@ function App() {
               }
             />
           </Route>
+        </Route>
+        <Route path="" element={<GuestRoute />}>
+          <Route path="auth" element={<AuthPage />} />
+          {/* <Route path="auth/google" element={<GoogleAuthInterceptor />} /> */}
         </Route>
         <Route path="/forbidden" element={<ForbiddenAccessPage />} />
         <Route path="*" element={<PageNotFound />} />
