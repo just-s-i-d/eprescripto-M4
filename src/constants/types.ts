@@ -118,7 +118,13 @@ export type PatientInfoType = {
   id: number;
 } & PatientDataType;
 
+export type UserRoleType = {
+  id: number;
+  name: string;
+  type: string;
+};
 export type ApiUserDataResponseType = {
+  role?: UserRoleType;
   blocked: boolean;
   city: string;
   confirmed: true;
