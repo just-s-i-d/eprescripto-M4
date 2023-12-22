@@ -3,18 +3,14 @@ import { useEffect } from "react";
 import { Card, Table } from "antd";
 import { ColumnsType } from "antd/es/table";
 
-import {
-  ApiResponseData,
-  GenericObjectType,
-  ReviewDataType,
-} from "@constants/types";
+import { ApiResponseData, ReviewDataType } from "@constants/types";
 import { getData, reviewsDataEndPoint } from "@utils/Doctor";
 import useStatesHook from "../../hooks/useStatesHook";
 import starPng from "@assets/star.png";
 import ErrorBoundary from "@components/ErrorBoundary";
 
 const DoctorReviewsPage = () => {
-  const reviews = useStatesHook<GenericObjectType[]>();
+  const reviews = useStatesHook<Record<string, string | number>[]>();
   const columns: ColumnsType<ReviewDataType> = [
     {
       title: "S. No",
@@ -72,7 +68,9 @@ const DoctorReviewsPage = () => {
     },
   ];
   useEffect(() => {
-    getData<ApiResponseData<GenericObjectType>>(reviewsDataEndPoint)
+    getData<ApiResponseData<Record<string, string | number>>>(
+      reviewsDataEndPoint,
+    )
       .then((res) => {
         const data = res.map((element) => element.attributes);
         reviews.setData(data);
@@ -93,7 +91,7 @@ const DoctorReviewsPage = () => {
         >
           <Table
             className="custom-table min-w-[800px]"
-            columns={columns as ColumnsType<GenericObjectType>}
+            columns={columns as ColumnsType<Record<string, string | number>>}
             dataSource={reviews.data}
             loading={reviews.loading}
           />
