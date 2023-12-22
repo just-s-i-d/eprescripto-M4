@@ -41,7 +41,7 @@ function App() {
               element={
                 <RouteWrapperComponent
                   components={{
-                    doctor: <DoctorDashboardPage />,
+                    doctor: <DoctorDashboardPage darkMode={isDarkTheme} />,
                     patient: <PatientDashboardPage />,
                   }}
                 />
@@ -84,7 +84,7 @@ function App() {
               element={
                 <RouteWrapperComponent
                   components={{
-                    doctor: <ProfilePage />,
+                    doctor: <ProfilePage darkMode={isDarkTheme} />,
                     patient: <h1>Profile</h1>,
                   }}
                 />
