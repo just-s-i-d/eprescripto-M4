@@ -14,7 +14,7 @@ const DoctorReviewsPage = () => {
   const columns: ColumnsType<ReviewDataType> = [
     {
       title: "S. No",
-      render: (_, _1, index) => index + 1,
+      render: (_, _record, index) => index + 1,
     },
     {
       title: "Rating",
