@@ -28,21 +28,13 @@ span.active {
 .ant-select-selector:focus,
 .ant-select-selector:active,
 .ant-select-open .ant-select-selector {
-  border-color: $primaryBorderActiveColor !important;
-  box-shadow: none !important;
+  border-color: $primaryBorderActiveColor;
+  box-shadow: none;
 }
 .info-cards-body > .ant-card-body {
   display: flex;
   justify-content: center;
   width: 100%;
-}
-
-:where(.css-dev-only-do-not-override-m477y0).ant-dropdown
-  .ant-table-filter-dropdown
-  .ant-dropdown-menu-item-selected
-  .ant-checkbox-wrapper
-  + span {
-  color: $secondaryTextColor;
 }
 
 .appointment-table-card > .ant-card-body {
@@ -53,9 +45,11 @@ span.active {
   display: flex;
   align-items: center;
 }
+
 .custom-card-login > .ant-card-body {
   height: 100%;
 }
+
 @media (min-width: 375px) and (max-width: 787px) {
   .custom-card-login > .ant-card-body {
     flex-direction: column;
@@ -65,13 +59,14 @@ span.active {
     visibility: hidden;
   }
 }
+
 .ant-form-item .ant-form-item-explain-error {
   position: absolute;
 }
 .ant-btn-default:disabled,
 .ant-btn-default.ant-btn-disabled {
-  color: rgba(0, 0, 0, 0.25);
-  background-color: rgba(0, 0, 0, 0.04);
+  color: $buttonDisabledColorLight;
+  background-color: $buttonDisabledColorLightBg;
 }
 .custom-table .ant-pagination-item:not(.ant-pagination-item-active):hover a {
   color: $secondaryTextColor;
@@ -89,14 +84,10 @@ span.active {
   background-color: $primaryBgColor;
 }
 
-:where(.css-dev-only-do-not-override-m477y0).ant-dropdown
-  .ant-dropdown-menu
-  .ant-dropdown-menu-item-selected {
+.ant-dropdown .ant-dropdown-menu .ant-dropdown-menu-item-selected {
   background-color: $secondayBgColor;
 }
-:where(.css-dev-only-do-not-override-m477y0).ant-dropdown
-  .ant-dropdown-menu
-  .ant-dropdown-menu-item-selected:hover {
+.ant-dropdown .ant-dropdown-menu .ant-dropdown-menu-item-selected:hover {
   background-color: $secondayBgColorLight;
 }
 
@@ -115,6 +106,7 @@ span.active {
 .ant-steps .ant-steps-item-finish .ant-steps-item-icon > .ant-steps-icon {
   color: $secondaryTextColor;
 }
+
 .ant-steps
   .ant-steps-item-finish
   > .ant-steps-item-container
@@ -127,18 +119,6 @@ span.active {
   .ant-select-selector {
   border-radius: 8px;
 }
-.ant-dropdown .ant-dropdown-menu .ant-dropdown-menu-item-selected,
-:where(.css-dev-only-do-not-override-1yr7evd).ant-dropdown-menu-submenu
-  .ant-dropdown-menu
-  .ant-dropdown-menu-item-selected,
-:where(.css-dev-only-do-not-override-1yr7evd).ant-dropdown
-  .ant-dropdown-menu
-  .ant-dropdown-menu-submenu-title-selected,
-:where(.css-dev-only-do-not-override-1yr7evd).ant-dropdown-menu-submenu
-  .ant-dropdown-menu
-  .ant-dropdown-menu-submenu-title-selected {
-  background-color: $secondaryTextColor;
-}
 .ant-table-wrapper .ant-table {
   min-height: 63vh;
 }
@@ -148,32 +128,6 @@ span.active {
   color: $buttonDisabledColorDark;
 }
 
-:where(.css-dev-only-do-not-override-1yr7evd).ant-dropdown
-  .ant-dropdown-menu
-  .ant-dropdown-menu-item-selected:hover,
-:where(.css-dev-only-do-not-override-1yr7evd).ant-dropdown-menu-submenu
-  .ant-dropdown-menu
-  .ant-dropdown-menu-item-selected:hover,
-:where(.css-dev-only-do-not-override-1yr7evd).ant-dropdown
-  .ant-dropdown-menu
-  .ant-dropdown-menu-submenu-title-selected:hover,
-:where(.css-dev-only-do-not-override-1yr7evd).ant-dropdown-menu-submenu
-  .ant-dropdown-menu
-  .ant-dropdown-menu-submenu-title-selected:hover,
-:where(.css-dev-only-do-not-override-1yr7evd).ant-dropdown
-  .ant-dropdown-menu
-  .ant-dropdown-menu-item-selected-active,
-:where(.css-dev-only-do-not-override-1yr7evd).ant-dropdown-menu-submenu
-  .ant-dropdown-menu
-  .ant-dropdown-menu-item-selected-active,
-:where(.css-dev-only-do-not-override-1yr7evd).ant-dropdown
-  .ant-dropdown-menu
-  .ant-dropdown-menu-submenu-title-selected-active,
-:where(.css-dev-only-do-not-override-1yr7evd).ant-dropdown-menu-submenu
-  .ant-dropdown-menu
-  .ant-dropdown-menu-submenu-title-selected-active {
-  background-color: $secondayBgColorLight;
-}
 .ant-picker-large {
   width: 100%;
 }
