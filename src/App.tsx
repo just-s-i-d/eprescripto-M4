@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 
 import { ConfigProvider } from "antd";
 import { Route, Routes } from "react-router-dom";
@@ -8,7 +8,6 @@ import { UserContext } from "@context/UserProvider";
 import DashboardLayout from "@layouts/DashboardLayout";
 import { darkTheme, lightTheme } from "./theme/theme.ts";
 import DoctorDashboardPage from "@pages/Doctor/DoctorDashboardPage.tsx";
-import Loading from "@components/ui/Loading.tsx";
 import PatientDashboardPage from "@pages/PatientDashboardPage.tsx";
 import DoctorAppointmentsPage from "@pages/Doctor/DoctorAppointmentsPage.tsx";
 import ProfilePage from "@pages/ProfilePage.tsx";
@@ -17,17 +16,12 @@ import ForbiddenAccessPage from "@pages/ForbiddenAccessPage.tsx";
 import PageNotFound from "@pages/PageNotFound.tsx";
 import RouteWrapperComponent from "@routes/RouteWrapperComponent.tsx";
 import "./App.scss";
+import GuestRoute from "./routes/GuestRoute.tsx";
+import AuthPage from "./pages/Auth/AuthPage.tsx";
+import GoogleAuthPage from "./pages/Auth/GoogleAuthPage.tsx";
 
 function App() {
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
-  const userContext = useContext(UserContext);
-  const [loading, setLoading] = useState<boolean>(true);
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-  }, []); //temporary for showing loading, will be removed afterwards
-  if (userContext === null || loading) return <Loading />;
+  const { isDarkTheme, setIsDarkTheme } = useContext(UserContext);
   return (
     <ConfigProvider theme={isDarkTheme ? darkTheme : lightTheme}>
       <Routes>
@@ -113,6 +107,10 @@ function App() {
               }
             />
           </Route>
+        </Route>
+        <Route path="auth" element={<GuestRoute />}>
+          <Route index element={<AuthPage />} />
+          <Route path="google" element={<GoogleAuthPage />} />
         </Route>
         <Route path="/forbidden" element={<ForbiddenAccessPage />} />
         <Route path="*" element={<PageNotFound />} />
