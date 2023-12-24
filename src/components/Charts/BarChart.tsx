@@ -12,7 +12,6 @@ import {
   scales,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
-import type { ChartOptions } from "chart.js";
 
 import ErrorBoundary from "@components/ErrorBoundary";
 import CardTitle from "@components/ui/CardTitle";
@@ -52,11 +51,11 @@ const BarChart = ({
   useEffect(() => {
     if (chartData) setLoading(false);
   }, [chartData]);
-  const options: ChartOptions | undefined = {
+  const options = {
     responsive: true,
     plugins: {
       legend: {
-        position: "top",
+        display: false,
       },
       title: {
         display: false,
@@ -92,7 +91,7 @@ const BarChart = ({
   };
   return (
     <Card
-      className="w-[49%] min-h-[30vh] max-xl:w-[48%] max-md:basis-9/12 max-sm:basis-[98%] overflow-hidden"
+      className="w-[49%] max-xl:w-[48%] max-xxl:w-[48%] max-md:w-9/12 max-sm:w-full"
       bordered={false}
     >
       <ErrorBoundary
@@ -108,9 +107,7 @@ const BarChart = ({
             size={200}
           />
         ) : (
-          <div className="overflow-scroll">
-            <Bar options={options} data={data} width={"100%"} height={"60%"} />
-          </div>
+          <Bar options={options} data={data} />
         )}
       </ErrorBoundary>
     </Card>

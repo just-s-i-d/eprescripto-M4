@@ -3,18 +3,18 @@ import { useEffect } from "react";
 import { Card, Table } from "antd";
 import { ColumnsType } from "antd/es/table";
 
-import { ReviewDataType, ReviewsDataType } from "@constants/types";
+import { ApiResponseData, ReviewDataType } from "@constants/types";
 import { getData, reviewsDataEndPoint } from "@utils/Doctor";
 import useStatesHook from "../../hooks/useStatesHook";
 import starPng from "@assets/star.png";
 import ErrorBoundary from "@components/ErrorBoundary";
 
 const DoctorReviewsPage = () => {
-  const reviews = useStatesHook<ReviewsDataType>();
+  const reviews = useStatesHook<Record<string, string | number>[]>();
   const columns: ColumnsType<ReviewDataType> = [
     {
       title: "S. No",
-      render: (_, record, index) => index + 1,
+      render: (_, _record, index) => index + 1,
     },
     {
       title: "Rating",
@@ -68,7 +68,9 @@ const DoctorReviewsPage = () => {
     },
   ];
   useEffect(() => {
-    getData(reviewsDataEndPoint)
+    getData<ApiResponseData<Record<string, string | number>>>(
+      reviewsDataEndPoint,
+    )
       .then((res) => {
         const data = res.map((element) => element.attributes);
         reviews.setData(data);
@@ -82,14 +84,14 @@ const DoctorReviewsPage = () => {
   }, [reviews.refresh]);
   return (
     <>
-      <Card>
+      <Card className="overflow-scroll min-h-[50vh]">
         <ErrorBoundary
           error={reviews.error}
           refreshComponent={() => reviews.setRefresh((prev) => !prev)}
         >
           <Table
-            className="custom-table"
-            columns={columns}
+            className="custom-table min-w-[800px]"
+            columns={columns as ColumnsType<Record<string, string | number>>}
             dataSource={reviews.data}
             loading={reviews.loading}
           />
