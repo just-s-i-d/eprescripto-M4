@@ -94,7 +94,7 @@ export const columns: ColumnsType<PrescriptionDataType> = [
         value: "On Hold",
       },
     ],
-    onFilter: (value, record) => record.status.indexOf(value) === 0,
+    onFilter: (value, record) => record.status.indexOf(value.toString()) === 0,
   },
   {
     title: "Notes",
@@ -108,4 +108,10 @@ export const CARD_PROPERTIES: CardPropertiesType = [
   appointmentPng,
   starPng,
   patientPng,
+];
+
+export const SELECT_GENDER_OPTIONS = [
+  { value: "male", label: "Male" },
+  { value: "female", label: "Female" },
+  { value: "other", label: "Other" },
 ];
