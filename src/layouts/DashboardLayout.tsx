@@ -2,7 +2,6 @@ import { SetStateAction, useContext, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 
 import { Breadcrumb, Layout, theme, Space } from "antd";
-import Item from "antd/es/list/Item";
 
 import NavBar from "@components/NavBar/NavBar";
 import SideBar from "@components/SideBar/Sidebar";
@@ -38,7 +37,9 @@ const DashboardLayout: React.FC<Props> = ({ setIsDarkTheme }) => {
         <Layout className="pb-6 px-6 max-sm:px-3 overflow-y-scroll overflow-x-hidden">
           <Space className="flex justify-between" direction="horizontal">
             <Breadcrumb className="text-2xl my-4">
-              <Item>{location.pathname.split("/")[1].toUpperCase()}</Item>
+              <Breadcrumb.Item>
+                {location.pathname.split("/")[1].toUpperCase()}
+              </Breadcrumb.Item>
             </Breadcrumb>
           </Space>
           <Outlet />

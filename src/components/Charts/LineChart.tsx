@@ -103,24 +103,27 @@ const LineChart = ({
   };
   return (
     <Card
-      className="w-[49%] max-xl:w-[48%] max-md:w-9/12 max-sm:w-full"
+      className="w-[49%] max-xl:w-[48%] max-xxl:w-[48%] max-md:w-9/12 max-sm:w-full"
       bordered={false}
     >
       <ErrorBoundary
         refreshComponent={() => lineChart.setRefresh((prev) => !prev)}
         error={lineChart.error}
       >
-        <CardTitle>{title}</CardTitle>
-        <Select
-          className="w-[200px] max-sm:w-[150px] float-right mr-2"
-          options={selectOptions}
-          onChange={handleChange}
-          defaultValue={7}
-        />
+        <div className="flex justify-between">
+          <CardTitle>{title}</CardTitle>
+          <Select
+            className="xs:w-[120px] xxl:w-[200px] float-right mr-2"
+            options={selectOptions}
+            onChange={handleChange}
+            defaultValue={7}
+          />
+        </div>
+
         {loading ? (
           <Skeleton.Avatar size={200} className="mt-2" active shape="square" />
         ) : (
-          <Line data={data} options={options} />
+          <Line data={data} options={options} className="overflow-scroll" />
         )}
       </ErrorBoundary>
     </Card>

@@ -17,7 +17,7 @@ const ProfessionalInfoCard = ({ userData }: UserDataPropsType) => {
   const onSubmitHandler = () => {
     setButtonLoading(true);
     const newUserData = { ...userData, ...formValues };
-    updateUserData(newUserData).then(() => {
+    updateUserData(newUserData).finally(() => {
       setTimeout(() => {
         setButtonLoading(false);
         setDisabled(true);
@@ -67,7 +67,7 @@ const ProfessionalInfoCard = ({ userData }: UserDataPropsType) => {
                 },
               ]}
             >
-              <Input disabled={disabled} />
+              <Input type="number" disabled={disabled} />
             </Form.Item>
             <Form.Item
               className="xs:w-full xl:w-5/12"
@@ -113,9 +113,14 @@ const ProfessionalInfoCard = ({ userData }: UserDataPropsType) => {
               ]}
             >
               <Select
+                defaultValue="default"
                 disabled={disabled}
                 options={[
-                  { value: "default", label: "Select an option" },
+                  {
+                    value: "default",
+                    label: "Select an option",
+                    disabled: true,
+                  },
                   { value: "hospital", label: "Hospital" },
                   { value: "clinic", label: "Clinic" },
                 ]}
@@ -148,7 +153,7 @@ const ProfessionalInfoCard = ({ userData }: UserDataPropsType) => {
               <Button
                 onClick={onSubmitHandler}
                 loading={buttonLoading}
-                className="min-w-[90px]"
+                className="text-white w-[90px] bg-secondary disabled:opacity-50"
                 disabled={formButtonDisabled}
               >
                 Save
