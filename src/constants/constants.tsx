@@ -158,7 +158,8 @@ export const SIGNUP_FORM_STEPS = [
     description: "Please enter new password",
     content: <PasswordForm />,
   },
-  
+];
+
 export const SELECT_GENDER_OPTIONS = [
   { value: "male", label: "Male" },
   { value: "female", label: "Female" },

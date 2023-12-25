@@ -7,7 +7,7 @@ import { SetStateAction, useEffect, useState } from "react";
 import CardSider from "../CardSider";
 import { checkUserAlreadyExists, registerUser } from "@utils/Doctor";
 import { showToast } from "@utils/common";
-import useDirectionHook from "src/hooks/useDirectionHook";
+import useDirectionHook from "@hooks/useDirectionHook";
 
 type SignUpPropsType = {
   setShowSignIn: React.Dispatch<SetStateAction<boolean>>;
