@@ -45,15 +45,10 @@ export function formatDateReadable(dateString: string) {
   return formattedDate;
 }
 
-const headers = {
-  Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`,
-};
 export const getData = async <Type>(endPoint: string): Promise<Type> => {
   return new Promise((resolve, reject) => {
     axiosInstance
-      .get(endPoint, {
-        headers,
-      })
+      .get(endPoint)
       .then((res) => {
         resolve(res.data.data);
       })

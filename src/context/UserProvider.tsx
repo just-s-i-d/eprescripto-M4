@@ -1,4 +1,3 @@
-import { showToast } from "@utils/common";
 import {
   PropsWithChildren,
   SetStateAction,
@@ -6,6 +5,9 @@ import {
   useEffect,
   useState,
 } from "react";
+
+import { getUserData } from "@utils/Doctor";
+import { showToast } from "@utils/common";
 
 type UserContextType = {
   isLoggedIn?: boolean;
@@ -24,6 +26,7 @@ export const UserProvider = ({ children }: PropsWithChildren) => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [isDarkTheme, setIsDarkTheme] = useState<boolean>(false);
   const [role, setRole] = useState<string>();
+
   const getRole = () => {
     getUserData()
       .then((res) => {
