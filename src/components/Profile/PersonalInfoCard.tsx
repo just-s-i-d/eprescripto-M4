@@ -6,6 +6,7 @@ import { useForm, useWatch } from "antd/es/form/Form";
 import { updateUserData } from "@utils/Doctor";
 import ErrorBoundary from "@components/ErrorBoundary";
 import { ApiUserDataResponseType } from "@constants/types";
+import { SELECT_GENDER_OPTIONS } from "@constants/constants";
 
 export type UserDataPropsType = {
   userData?: ApiUserDataResponseType;
@@ -162,11 +163,7 @@ const PersonalInfoCard = ({ userData }: UserDataPropsType) => {
                   <Select
                     placeholder="Select your gender"
                     disabled={disabled}
-                    options={[
-                      { value: "male", label: "Male" },
-                      { value: "female", label: "Female" },
-                      { value: "other", label: "Other" },
-                    ]}
+                    options={SELECT_GENDER_OPTIONS}
                   />
                 </Form.Item>
               </div>

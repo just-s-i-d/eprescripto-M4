@@ -1,3 +1,4 @@
+import { SELECT_GENDER_OPTIONS } from "@constants/constants";
 import { Form, Input, Select } from "antd";
 
 const PersonalInfoForm = () => {
@@ -53,11 +54,7 @@ const PersonalInfoForm = () => {
         >
           <Select
             placeholder="Select a gender"
-            options={[
-              { value: "male", label: "Male" },
-              { value: "female", label: "Female" },
-              { value: "other", label: "Other" },
-            ]}
+            options={SELECT_GENDER_OPTIONS}
           />
         </Form.Item>
         <Form.Item

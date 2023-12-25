@@ -54,23 +54,6 @@ const AddressForm = () => {
       >
         <Input />
       </Form.Item>
-      {/* <Form.Item
-          label="Pincode"
-          name="pincode"
-          required
-          rules={[
-            {
-              required: true,
-              message: "Field cannot be empty",
-            },
-            {
-              len: 6,
-              message: "Enter a valid pincode",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item> */}
     </>
   );
 };

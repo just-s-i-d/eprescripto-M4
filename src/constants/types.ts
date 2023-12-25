@@ -34,7 +34,7 @@ export type ApiResponseDataType<Type> = {
 };
 export type GenericApiResponseType = {
   id: number;
-  attributes: GenericObjectType;
+  attributes: Record<string, string | number>;
 };
 export type ApiResponseData<Type> = ApiResponseDataType<Type>[];
 export type AppointmentsApiResonseType = AppointmentApiResponseDataType[];
@@ -140,9 +140,7 @@ export type ApiUserDataResponseType = {
   username: string;
   profilePic?: string;
 };
-export type GenericObjectType = {
-  [key: string]: string;
-};
+
 export type SelectOptionsType = {
   value: number | string;
   label: string;

@@ -101,9 +101,7 @@ export const cancelAppointment = async (
   return new Promise((resolve, reject) => {
     const { id } = appointment;
     axiosInstance
-      .delete(`${appointmentsEndPoint}/${id}`, {
-        headers,
-      })
+      .delete(`${appointmentsEndPoint}/${id}`)
       .then((res) => {
         if (res.status >= 200 && res.status <= 299)
           resolve({ message: "Appointment Cancelled", type: "success" });
@@ -126,13 +124,7 @@ export const cancelAppointment = async (
 export const registerUser = (user: GenericObjectType): Promise<ErrorType> => {
   return new Promise((resolve, reject) => {
     axios
-      .post(
-        usersEndpoint,
-        { ...user, username: user.email, role: 3 },
-        {
-          headers,
-        },
-      )
+      .post(usersEndpoint, { ...user, username: user.email, role: 3 })
       .then(() => {
         userLogin({ email: user.email, password: user.password })
           .then(() => {
@@ -154,9 +146,7 @@ export const registerUser = (user: GenericObjectType): Promise<ErrorType> => {
 export const checkUserAlreadyExists = (email: string) => {
   return new Promise((resolve, reject) => {
     axios
-      .get(`${usersEndpoint}?filters[email][$eq]=${email.toLowerCase()}`, {
-        headers,
-      })
+      .get(`${usersEndpoint}?filters[email][$eq]=${email.toLowerCase()}`)
       .then((res) => {
         if (res.data.length) reject("Email already exists");
         resolve("done");
@@ -203,7 +193,7 @@ export const logout = () => {
 export const getUserData = (): Promise<ApiUserDataResponseType> => {
   return new Promise((resolve, reject) => {
     axiosInstance
-      .get(`${usersEndpoint}/me`)
+      .get(`${usersEndpoint}/me?populate=*`)
       .then((res) => {
         resolve(res.data);
       })
@@ -325,7 +315,7 @@ export const createOptions = (data: PatientInfoType[]) => {
   }));
 };
 
-let inputFieldCount = 1;
+let inputFieldCount = 0;
 export const medicationInputFieldGenerator = (): MedicationType => {
   ++inputFieldCount;
   return {

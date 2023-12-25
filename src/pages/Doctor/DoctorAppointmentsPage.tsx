@@ -17,7 +17,6 @@ import {
   ApiResponseData,
   AppointmentDataType,
   AppointmentType,
-  GenericObjectType,
 } from "@constants/types";
 import TableCard from "@components/ui/TableCard";
 import PopModal from "@components/ui/PopModal";
@@ -143,9 +142,13 @@ const DoctorAppointmentsPage = () => {
             setRefresh={appointmentsTable.setRefresh}
             error={appointmentsTable.error}
             columns={
-              doctorAppointmentsTableColumns as ColumnsType<GenericObjectType>
+              doctorAppointmentsTableColumns as ColumnsType<
+                Record<string, string | number>
+              >
             }
-            tableData={appointmentsTable.data as GenericObjectType[]}
+            tableData={
+              appointmentsTable.data as Record<string, string | number>[]
+            }
             pageSize={7}
             setLoading={appointmentsTable.setLoading}
             loading={appointmentsTable.loading}

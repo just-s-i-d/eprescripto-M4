@@ -1,5 +1,5 @@
 import Description from "@components/ui/Description";
-import { StepsForm, steps } from "@constants/constants";
+import { SIGNUP_FORM_STEPS, STEPPER_STEPS } from "@constants/constants";
 import { UserDetailsType } from "@constants/types";
 import { Button, Form, Space, Steps } from "antd";
 import { useForm, useWatch } from "antd/es/form/Form";
@@ -7,6 +7,7 @@ import { SetStateAction, useEffect, useState } from "react";
 import CardSider from "../CardSider";
 import { checkUserAlreadyExists, registerUser } from "@utils/Doctor";
 import { showToast } from "@utils/common";
+import useDirectionHook from "src/hooks/useDirectionHook";
 
 type SignUpPropsType = {
   setShowSignIn: React.Dispatch<SetStateAction<boolean>>;
@@ -18,20 +19,7 @@ const SignUp = ({ setShowSignIn }: SignUpPropsType) => {
   const [loading, setLoading] = useState(false);
   const [signUpForm] = useForm();
   const formValues = useWatch([], signUpForm);
-  const [direction, setDirection] = useState<"horizontal" | "vertical">(
-    "vertical",
-  );
-  useEffect(() => {
-    const handleResize = () => {
-      const newDirection = window.innerWidth < 787 ? "horizontal" : "vertical";
-      setDirection(newDirection);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  const direction = useDirectionHook(787);
   const onFinish = (values: UserDetailsType) => {
     setUserDetails((prev) => ({ ...prev, ...values }));
     if (!current) {
@@ -47,7 +35,7 @@ const SignUp = ({ setShowSignIn }: SignUpPropsType) => {
     }
   };
   const onClickHanlderNext = () => {
-    if (current < steps.length - 1) setCurrent((prev) => prev + 1);
+    if (current < STEPPER_STEPS.length - 1) setCurrent((prev) => prev + 1);
   };
   const onClickHanlderPrevious = () => {
     if (current > 0) setCurrent((prev) => prev - 1);
@@ -80,7 +68,7 @@ const SignUp = ({ setShowSignIn }: SignUpPropsType) => {
       <CardSider hidden={true}>
         <Steps
           className="xs:mt-8 md:mt-0 md:h-[35vh]"
-          items={steps}
+          items={STEPPER_STEPS}
           current={current}
           direction={direction}
           responsive={false}
@@ -89,8 +77,10 @@ const SignUp = ({ setShowSignIn }: SignUpPropsType) => {
       <Space direction="vertical" className="w-full h-5/6 px-8">
         <div className="text-[34px]">Create Account</div>
         <div>
-          <h2 className="text-xl font-bold mb-1">{StepsForm[current].title}</h2>
-          <Description>{StepsForm[current].description}</Description>
+          <h2 className="text-xl font-bold mb-1">
+            {SIGNUP_FORM_STEPS[current].title}
+          </h2>
+          <Description>{SIGNUP_FORM_STEPS[current].description}</Description>
         </div>
         <Form
           form={signUpForm}
@@ -100,7 +90,7 @@ const SignUp = ({ setShowSignIn }: SignUpPropsType) => {
           onFinish={onFinish}
           initialValues={userDetails}
         >
-          {StepsForm[current].content}
+          {SIGNUP_FORM_STEPS[current].content}
           <Space className="absolute bottom-8 right-8">
             {current > 0 && (
               <Button
@@ -110,7 +100,7 @@ const SignUp = ({ setShowSignIn }: SignUpPropsType) => {
                 Previous
               </Button>
             )}
-            {current < steps.length - 1 && (
+            {current < STEPPER_STEPS.length - 1 && (
               <Button
                 className="text-white w-[90px] bg-primary disabled:opacity-50"
                 htmlType="submit"
@@ -120,7 +110,7 @@ const SignUp = ({ setShowSignIn }: SignUpPropsType) => {
                 Next
               </Button>
             )}
-            {current === steps.length - 1 && (
+            {current === STEPPER_STEPS.length - 1 && (
               <Button
                 className="text-white w-[90px] bg-primary disabled:opacity-50"
                 onClick={onSubmitHandler}
