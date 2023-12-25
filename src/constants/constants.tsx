@@ -121,7 +121,7 @@ export const CARD_PROPERTIES: CardPropertiesType = [
   patientPng,
 ];
 
-export const steps = [
+export const STEPPER_STEPS = [
   {
     title: "Step 1",
     description: "Personal Info",
@@ -137,7 +137,7 @@ export const steps = [
   { title: "Step 4", description: "Finish" },
 ];
 
-export const StepsForm = [
+export const SIGNUP_FORM_STEPS = [
   {
     title: "Personal Information",
     description: "Please enter your personal information",
@@ -158,4 +158,9 @@ export const StepsForm = [
     description: "Please enter new password",
     content: <PasswordForm />,
   },
+  
+export const SELECT_GENDER_OPTIONS = [
+  { value: "male", label: "Male" },
+  { value: "female", label: "Female" },
+  { value: "other", label: "Other" },
 ];

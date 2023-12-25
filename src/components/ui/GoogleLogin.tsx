@@ -8,7 +8,7 @@ const GoogleLogin = () => {
       <div className="flex justify-center">
         <Button
           className="flex items-center gap-2 py-5 px-8 text-base bg-white"
-          href="http://localhost:1337/api/connect/google"
+          href={`${import.meta.env.VITE_HOST}api/connect/google`}
         >
           <Image src={googleSvg} width={20} preview={false} /> Sign in with
           Google

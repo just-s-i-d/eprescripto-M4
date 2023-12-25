@@ -26,14 +26,8 @@ import {
   createOptions,
   medicationInputFieldGenerator,
 } from "../../utils/Doctor";
+import { SELECT_GENDER_OPTIONS } from "@constants/constants";
 
-const medicationInputFieldsDefault: MedicationType = {
-  id: 1,
-  medicine: `medicine1`,
-  dosage: `dosage1`,
-  timesPerDay: `timesPerDay1`,
-  instruction: `instructions1`,
-};
 const DoctorPrescriptionPage = () => {
   const [open, setOpen] = useState(false);
   const [showAllergies, setShowAllergies] = useState(false);
@@ -47,7 +41,7 @@ const DoctorPrescriptionPage = () => {
   const prescriptionFormValues = useWatch([], prescriptionForm);
   const [medicationInputFields, setMedicationInputFiels] = useState<
     MedicationType[]
-  >([medicationInputFieldsDefault]);
+  >([medicationInputFieldGenerator()]);
   const addMedicationInput = () => {
     const inputField = medicationInputFieldGenerator();
     setMedicationInputFiels((prev) => [...prev, inputField]);
@@ -121,6 +115,7 @@ const DoctorPrescriptionPage = () => {
       },
     );
   }, [prescriptionFormValues]);
+
   return (
     <ErrorBoundary>
       <Card>
@@ -181,11 +176,7 @@ const DoctorPrescriptionPage = () => {
               <Select
                 disabled
                 placeholder="Select a gender"
-                options={[
-                  { value: "male", label: "Male" },
-                  { value: "female", label: "Female" },
-                  { value: "other", label: "Other" },
-                ]}
+                options={SELECT_GENDER_OPTIONS}
               />
             </FormItem>
             <FormItem
@@ -242,7 +233,6 @@ const DoctorPrescriptionPage = () => {
               </Button>
             </div>
           </div>
-
           <div className="flex gap-4">
             <Button
               onClick={prescriptionFormSubmitHandler}

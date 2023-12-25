@@ -204,8 +204,12 @@ const NextPatientCard = ({
         >
           <ErrorBoundary>
             <TableCard
-              tableData={prescriptions.data as GenericObjectType[]}
-              columns={columns as ColumnGroupType<GenericObjectType>[]}
+              tableData={
+                prescriptions.data as Record<string, string | number>[]
+              }
+              columns={
+                columns as ColumnGroupType<Record<string, string | number>>[]
+              }
               error={prescriptions.error}
               setRefresh={prescriptions.setRefresh}
               loading={prescriptions.loading}

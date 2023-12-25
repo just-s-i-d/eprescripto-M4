@@ -1,7 +1,7 @@
-import { MedicationType } from "@pages/Doctor/DoctorPrescriptionPage";
 import { Input, Select } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
 import FormItem from "antd/es/form/FormItem";
+import { MedicationType } from "@constants/types";
 
 type MedicationFormPropsType = {
   fields: MedicationType;

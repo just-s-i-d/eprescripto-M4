@@ -4,12 +4,11 @@ import { Input, Table } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 
 import ErrorBoundary from "@components/ErrorBoundary";
-import { GenericObjectType } from "@constants/types";
 import { ColumnsType } from "antd/es/table";
 
 type TableCardPropType = {
-  tableData?: GenericObjectType[];
-  columns: ColumnsType<GenericObjectType>;
+  tableData?: Record<string, string | number>[];
+  columns: ColumnsType<Record<string, string | number>>;
   setLoading: React.Dispatch<SetStateAction<boolean>>;
   loading: boolean;
   pageSize?: number;
@@ -57,7 +56,7 @@ const TableCard = ({
         refreshComponent={() => setRefresh((prev) => !prev)}
       >
         <Table
-          className={`custom-table ${className ? className : ""}`}
+          className={`custom-table ${className || ""}`}
           columns={columns}
           dataSource={filteredData}
           loading={loading}

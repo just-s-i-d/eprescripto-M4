@@ -310,7 +310,7 @@ export const createOptions = (data: PatientInfoType[]) => {
   }));
 };
 
-let inputFieldCount = 1;
+let inputFieldCount = 0;
 export const medicationInputFieldGenerator = (): MedicationType => {
   ++inputFieldCount;
   return {

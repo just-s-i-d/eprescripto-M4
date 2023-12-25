@@ -5,7 +5,7 @@ import { useContext, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 const GoogleAuthPage = () => {
-  const userContext = useContext(UserContext);
+  const { setIsLoggedIn, getRole } = useContext(UserContext);
   const [params] = useSearchParams();
   const navigate = useNavigate();
   useEffect(() => {
@@ -14,7 +14,8 @@ const GoogleAuthPage = () => {
     if (idToken && accessToken) {
       getJwtToken(idToken, accessToken)
         .then(() => {
-          setIsLoggedIn(true);
+          setIsLoggedIn && setIsLoggedIn(true);
+          getRole && getRole();
           navigate("/dashboard", { replace: true });
         })
         .catch(() => {
@@ -22,8 +23,6 @@ const GoogleAuthPage = () => {
         });
     }
   }, []);
-  if (!userContext) return <Loading />;
-  const { setIsLoggedIn } = userContext;
   return <Loading />;
 };
 export default GoogleAuthPage;
