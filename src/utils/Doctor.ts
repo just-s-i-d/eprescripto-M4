@@ -1,39 +1,37 @@
-import axios from "axios";
-
 import { getLabels } from "@constants/constants";
 import {
   ApiResponseDataType,
+  ApiUserDataResponseType,
   AppointmentDataType,
+  AppointmentType,
+  ErrorType,
+  GenericObjectType,
   LineChartApiResDataType,
   LineChartDataType,
+  PatientInfoType,
+  UserCredentialsType,
+  UserDataGenericType,
 } from "@constants/types";
+import { axiosInstance } from "./AxiosInstance";
+import axios from "axios";
+import { showToast } from "./common";
+import { MedicationType } from "../constants/types";
 
 //strapi endpoints for data
-export const infoCardDataEndPoint = `${
-  import.meta.env.VITE_BASE_URL
-}/api/infocards`;
-
-export const appointmentsEndPoint = `${
-  import.meta.env.VITE_BASE_URL
-}/api/appointments`;
-
-export const doughnutChartDataEndPoint = `${
-  import.meta.env.VITE_BASE_URL
-}/api/doughnut-chart`;
-export const lineChartDataEndPoint = `${
-  import.meta.env.VITE_BASE_URL
-}/api/line-chart`;
-export const barChartDataEndPoint = `${
-  import.meta.env.VITE_BASE_URL
-}/api/bar-chart`;
-export const prescriptionsDataEndPoint = `${
-  import.meta.env.VITE_BASE_URL
-}/api/prescriptions`;
-export const reviewsDataEndPoint = `${
-  import.meta.env.VITE_BASE_URL
-}/api/reviews`;
+export const BASE_URL = "http://localhost:1337";
+export const infoCardDataEndPoint = `${BASE_URL}/api/infocards`;
+export const appointmentsEndPoint = `${BASE_URL}/api/appointments`;
+export const doughnutChartDataEndPoint = `${BASE_URL}/api/doughnut-chart`;
+export const lineChartDataEndPoint = `${BASE_URL}/api/line-chart`;
+export const barChartDataEndPoint = `${BASE_URL}/api/bar-chart`;
+export const prescriptionsDataEndPoint = `${BASE_URL}/api/prescriptions`;
+export const reviewsDataEndPoint = `${BASE_URL}/api/reviews`;
+export const usersEndpoint = `${BASE_URL}/api/users`;
+export const userLoginEndpoint = `${BASE_URL}/api/auth/local`;
+export const jwtTokenEndpoint = `${BASE_URL}/api/auth/google/callback`;
+export const patientsEndpoint = "/api/patients";
+export const doctorPrescriptionEndpoint = "/api/doctor-prescriptions";
 //end of strapi endpoints
-
 export function formatDateReadable(dateString: string) {
   const options: Intl.DateTimeFormatOptions = {
     day: "numeric",
@@ -47,25 +45,25 @@ export function formatDateReadable(dateString: string) {
   return formattedDate;
 }
 
-const headers = {
-  Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`,
-};
-export const getData = async (endPoint: string) => {
+export const getData = async <Type>(endPoint: string): Promise<Type> => {
   return new Promise((resolve, reject) => {
-    try {
-      axios
-        .get(endPoint, {
-          headers,
-        })
-        .then((res) => {
-          resolve(res.data.data);
-        })
-        .catch(() => {
-          reject({ message: "Cannot get data", type: "error" });
-        });
-    } catch {
-      reject({ message: "Server error", type: "error" });
-    }
+    axiosInstance
+      .get(endPoint)
+      .then((res) => {
+        resolve(res.data.data);
+      })
+      .catch((error) => {
+        switch (error.response?.status) {
+          case 403:
+            reject("You cannot access this data");
+            break;
+          case 404:
+            reject("Data not found");
+            break;
+          default:
+            reject("Server Error");
+        }
+      });
   });
 };
 

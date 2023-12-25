@@ -12,6 +12,7 @@ import {
   ApiResponseData,
   AppointmentApiResponseDataType,
   AppointmentsApiResonseType,
+  GenericObjectType,
   PrescriptionDataType,
 } from "@constants/types";
 import {
@@ -23,22 +24,25 @@ import {
 import useStatesHook from "../../hooks/useStatesHook";
 import { columns } from "@constants/constants";
 import { showToast } from "@utils/common";
+import { ColumnGroupType } from "antd/es/table";
 
 type NextPatientCardProps = {
   appointment?: AppointmentApiResponseDataType;
   error: boolean;
   appointments: ReturnType<typeof useStatesHook<AppointmentsApiResonseType>>;
+  getDataForAppointments: () => void;
 };
 
 const NextPatientCard = ({
   appointment,
   appointments,
+  getDataForAppointments,
 }: NextPatientCardProps) => {
   const [open, setOpen] = useState(false);
   const [visibililty, setVisibility] = useState(false);
-  const prescriptions = useStatesHook<ApiResponseData<PrescriptionDataType>>();
+  const prescriptions = useStatesHook();
   const setPrescriptionsData = () => {
-    getData(prescriptionsDataEndPoint)
+    getData<ApiResponseData<PrescriptionDataType>>(prescriptionsDataEndPoint)
       .then((res) => {
         const data = res.map((element) => element.attributes);
         prescriptions.setData(data);
@@ -56,8 +60,14 @@ const NextPatientCard = ({
   };
   const confirmHandler = async () => {
     if (appointment) {
-      const response = await cancelAppointment(appointment);
-      response && showToast(response.message, response.type);
+      cancelAppointment(appointment)
+        .then((res) => {
+          showToast(res.message, res.type);
+          getDataForAppointments();
+        })
+        .catch((error) => {
+          showToast(error.message, error.type);
+        });
     }
   };
   useEffect(() => {
@@ -65,10 +75,9 @@ const NextPatientCard = ({
   }, [prescriptions.refresh]); //eslint-disable-line
   return (
     <Card
-      className="w-[32%] max-xxl:h-[60vh] max-h-[59vh] max-xl:w-[48%] max-md:w-9/12 max-sm:w-full max-sm:max-h-[60vh]"
+      className="xs:w-full sm:w-9/12 md:w-[48%] xxl:w-[32%]"
       bordered={false}
     >
-      <CardTitle>Next Patient</CardTitle>
       <ErrorBoundary
         error={appointments.error}
         refreshComponent={() => appointments.setRefresh((prev) => !prev)}

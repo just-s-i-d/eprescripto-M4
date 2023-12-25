@@ -9,6 +9,7 @@ module.exports = {
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
   rules: {
-    "no-console": "error"
+    "no-console": "error",
+    "react-hooks/exhaustive-deps": "off",
   }
 }
