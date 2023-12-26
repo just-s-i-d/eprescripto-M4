@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card Title Test matches snapshot 1`] = `
+<DocumentFragment>
+  <h1
+    class="text-xl font-bold mb-6 test"
+  >
+    Test Title
+  </h1>
+</DocumentFragment>
+`;

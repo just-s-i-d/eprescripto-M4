@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Description Test Snapsot test 1`] = `
+<DocumentFragment>
+  <h1
+    class="text-sm font-bold mb-1 text-slate-400 test"
+  >
+    Test Description
+  </h1>
+</DocumentFragment>
+`;

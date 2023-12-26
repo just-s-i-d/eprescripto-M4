@@ -5,6 +5,12 @@ import Description from "../Description";
 describe("Description Test", () => {
   const description = "Test Description";
   const className = "test";
+  it("Snapsot test", () => {
+    const { asFragment } = render(
+      <Description className={className}>{description}</Description>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
   it("Title test", () => {
     render(<Description className={className}>{description}</Description>);
     const descriptionElement = screen.getByText(description);
