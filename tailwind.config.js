@@ -17,6 +17,8 @@ export default {
     },
     extend: {
       colors: {
+        primary: "#5ac1c7",
+        secondary: "#19504c",
         infoCardColors: {
           color1: "#02c39a",
           color2: "#c8b6ff",
@@ -31,6 +33,9 @@ export default {
           bgColor: "#fff2f0",
           borderColor: "#fe4d50",
         }
+      },
+      backgroundImage: {
+        loginPageGradient: "linear-gradient(to top, #fff1eb 0%, #ace0f9 100%)"
       },
       animation: {
         loading: "loading 0.8s infinite alternate linear"

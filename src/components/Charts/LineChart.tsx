@@ -14,17 +14,23 @@ import type { ChartOptions } from "chart.js";
 
 import ErrorBoundary from "@components/ErrorBoundary";
 import { useEffect, useState } from "react";
-import { LineChartApiResDataType, LineChartDataType } from "@constants/types";
+import {
+  ApiResponseDataType,
+  LineChartApiResDataType,
+  LineChartDataType,
+} from "@constants/types";
 import useStatesHook from "src/hooks/useStatesHook";
 
 ChartJs.register(LineElement, CategoryScale, LinearScale, PointElement, scales);
 
 type LineChartProps = {
-  chartData: LineChartApiResDataType | undefined;
+  chartData?: ApiResponseDataType<LineChartApiResDataType>;
   title: string;
   xAxesTitle: string;
   yAxesTitle: string;
-  lineChart: ReturnType<typeof useStatesHook<LineChartApiResDataType>>;
+  lineChart: ReturnType<
+    typeof useStatesHook<ApiResponseDataType<LineChartApiResDataType>>
+  >;
   getDataForLineGraph: (
     data: LineChartApiResDataType,
     days?: number,
@@ -48,13 +54,13 @@ const LineChart = ({
   const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
     if (chartData) {
-      setCurrentLineChartData(getDataForLineGraph(chartData));
+      setCurrentLineChartData(getDataForLineGraph(chartData.attributes));
       setLoading(false);
     }
   }, [chartData, getDataForLineGraph]);
   const handleChange = (value: number) => {
     if (chartData)
-      setCurrentLineChartData(getDataForLineGraph(chartData, value));
+      setCurrentLineChartData(getDataForLineGraph(chartData.attributes, value));
   };
   const data = {
     labels: currentLineChartData?.labels,
@@ -97,24 +103,27 @@ const LineChart = ({
   };
   return (
     <Card
-      className="w-[49%] max-xl:w-[48%] max-md:w-9/12 max-sm:w-full"
+      className="w-[49%] max-xl:w-[48%] max-xxl:w-[48%] max-md:w-9/12 max-sm:w-full"
       bordered={false}
     >
       <ErrorBoundary
         refreshComponent={() => lineChart.setRefresh((prev) => !prev)}
         error={lineChart.error}
       >
-        <CardTitle>{title}</CardTitle>
-        <Select
-          className="w-[200px] max-sm:w-[150px] float-right mr-2"
-          options={selectOptions}
-          onChange={handleChange}
-          defaultValue={7}
-        />
+        <div className="flex justify-between">
+          <CardTitle>{title}</CardTitle>
+          <Select
+            className="xs:w-[120px] xxl:w-[200px] float-right mr-2"
+            options={selectOptions}
+            onChange={handleChange}
+            defaultValue={7}
+          />
+        </div>
+
         {loading ? (
           <Skeleton.Avatar size={200} className="mt-2" active shape="square" />
         ) : (
-          <Line data={data} options={options} />
+          <Line data={data} options={options} className="overflow-scroll" />
         )}
       </ErrorBoundary>
     </Card>

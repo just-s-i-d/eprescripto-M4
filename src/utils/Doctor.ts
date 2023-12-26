@@ -1,117 +1,69 @@
-import axios from "axios";
-
 import { getLabels } from "@constants/constants";
 import {
+  ApiResponseDataType,
+  ApiUserDataResponseType,
   AppointmentDataType,
-  AppointmentsDataType,
-  ChartApiDataType,
-  DoctorAppointmentsDataType,
-  InfoCardDetailsType,
+  AppointmentType,
+  ErrorType,
+  GenericObjectType,
   LineChartApiResDataType,
   LineChartDataType,
-  PrescrtionsDataType,
-  ReviewsDataType,
+  PatientInfoType,
+  UserCredentialsType,
+  UserDataGenericType,
 } from "@constants/types";
+import { axiosInstance } from "./AxiosInstance";
+import axios from "axios";
+import { showToast } from "./common";
+import { MedicationType } from "../constants/types";
 
-//endpoints for data
-export const infoCardDataEndPoint =
-  "https://api.npoint.io/bd6151d98738374a2236";
-
-export const appointmentEndPoint = "https://api.npoint.io/9cc072a9f2c41c77a40a";
-
-export const prescriptionsEndPoint =
-  "https://api.npoint.io/7c31657f364397ae7175";
-
-export const pieChartDataEndPoint =
-  "https://api.npoint.io/f8eeff1048038038110e";
-
-export const lineChartDataEndPoint =
-  "https://api.npoint.io/75d76a4af2cc563e20a8";
-
-export const barChartDataEndPoint =
-  "https://api.npoint.io/bb362ddf298c94c14975";
-
-export const doctorAppointmentsEndPoint =
-  "https://api.npoint.io/a7f8fadf08c1b182fc98";
-
-export const doctorReviewsEndPoint =
-  "https://api.npoint.io/d21b0ee032131e268c76";
-
+//strapi endpoints for data
+export const BASE_URL = "http://localhost:1337";
+export const infoCardDataEndPoint = `${BASE_URL}/api/infocards`;
+export const appointmentsEndPoint = `${BASE_URL}/api/appointments`;
+export const doughnutChartDataEndPoint = `${BASE_URL}/api/doughnut-chart`;
+export const lineChartDataEndPoint = `${BASE_URL}/api/line-chart`;
+export const barChartDataEndPoint = `${BASE_URL}/api/bar-chart`;
+export const prescriptionsDataEndPoint = `${BASE_URL}/api/prescriptions`;
+export const reviewsDataEndPoint = `${BASE_URL}/api/reviews`;
+export const usersEndpoint = `${BASE_URL}/api/users`;
+export const userLoginEndpoint = `${BASE_URL}/api/auth/local`;
+export const jwtTokenEndpoint = `${BASE_URL}/api/auth/google/callback`;
+export const patientsEndpoint = "/api/patients";
+export const doctorPrescriptionEndpoint = "/api/doctor-prescriptions";
+//end of strapi endpoints
 export function formatDateReadable(dateString: string) {
-  const options = { year: "numeric", month: "long", day: "numeric" };
+  const options: Intl.DateTimeFormatOptions = {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  };
   const formattedDate = new Date(dateString).toLocaleDateString(
     undefined,
     options,
   );
   return formattedDate;
 }
-export const getInfoCardsData = async (): Promise<InfoCardDetailsType> => {
-  return new Promise((resolve, reject) => {
-    try {
-      axios
-        .get(infoCardDataEndPoint)
-        .then((res) => {
-          resolve(res.data.infoCardsData);
-        })
-        .catch(() => {
-          reject("Cannot get data");
-        });
-    } catch {
-      reject("Server error");
-    }
-  });
-};
 
-export const getAppointmentData = async (): Promise<AppointmentsDataType> => {
+export const getData = async <Type>(endPoint: string): Promise<Type> => {
   return new Promise((resolve, reject) => {
-    try {
-      axios
-        .get(appointmentEndPoint)
-        .then((res) => {
-          resolve(res.data.appointments);
-        })
-        .catch(() => {
-          reject("Cannot get data");
-        });
-    } catch {
-      reject("Server error");
-    }
-  });
-};
-
-export const getChartData = async (
-  endPoint: string,
-): Promise<ChartApiDataType> => {
-  return new Promise((resolve, reject) => {
-    try {
-      axios
-        .get(endPoint)
-        .then((res) => {
-          resolve(res.data);
-        })
-        .catch(() => {
-          reject("Cannot get data");
-        });
-    } catch (error) {
-      reject("Server Connection Error");
-    }
-  });
-};
-
-export const getPrescriptions = async (): Promise<PrescrtionsDataType> => {
-  return new Promise((resolve, reject) => {
-    try {
-      axios
-        .get(prescriptionsEndPoint)
-        .then((res) => {
-          resolve(res.data.prescriptions);
-        })
-        .catch(() => {
-          reject("Cannot get data");
-        });
-    } catch (error) {
-      reject("Server Connection Error");
-    }
+    axiosInstance
+      .get(endPoint)
+      .then((res) => {
+        resolve(res.data.data);
+      })
+      .catch((error) => {
+        switch (error.response?.status) {
+          case 403:
+            reject("You cannot access this data");
+            break;
+          case 404:
+            reject("Data not found");
+            break;
+          default:
+            reject("Server Error");
+        }
+      });
   });
 };
 
@@ -138,55 +90,234 @@ export const getDataForLineGraph = (
   }
 };
 
-export const cancelAppointment = async (appointment: AppointmentDataType) => {
-  try {
-    const { pId } = appointment;
-    const res = await axios.get(appointmentEndPoint);
-    if (res.status >= 200 && res.status <= 299) {
-      const appointments = res.data.appointments;
-      appointments.filter(
-        (patient: AppointmentDataType) => patient.pId !== pId,
-      );
-      return { message: "Appointment Cancelled", type: "success" };
-    } else {
-      return { message: "Server error", type: "error" };
-    }
-  } catch (error) {
-    return { message: "Server Connection Error", type: "error" };
-  }
+export const cancelAppointment = async (
+  appointment: ApiResponseDataType<AppointmentType> | AppointmentDataType,
+): Promise<{ message: string; type: "success" | "error" }> => {
+  return new Promise((resolve, reject) => {
+    const { id } = appointment;
+    axiosInstance
+      .delete(`${appointmentsEndPoint}/${id}`)
+      .then((res) => {
+        if (res.status >= 200 && res.status <= 299)
+          resolve({ message: "Appointment Cancelled", type: "success" });
+      })
+      .catch((error) => {
+        switch (error.response?.status) {
+          case 403:
+            reject({ message: "You cannot access this data", type: "error" });
+            break;
+          case 404:
+            reject({ message: "Data not found", type: "error" });
+            break;
+          default:
+            reject({ message: "Server Error", type: "error" });
+        }
+      });
+  });
 };
 
-export const getDoctorAppointmentsData =
-  async (): Promise<DoctorAppointmentsDataType> => {
-    return new Promise((resolve, reject) => {
-      try {
-        axios
-          .get(doctorAppointmentsEndPoint)
-          .then((res) => {
-            resolve(res.data.appointments);
-          })
-          .catch(() => {
-            reject("Cannot get data");
-          });
-      } catch {
-        reject("Server error");
-      }
-    });
-  };
-
-export const getReviewsData = async (): Promise<ReviewsDataType> => {
+export const registerUser = (user: GenericObjectType): Promise<ErrorType> => {
   return new Promise((resolve, reject) => {
-    try {
-      axios
-        .get(doctorReviewsEndPoint)
-        .then((res) => {
-          resolve(res.data.reviews);
-        })
-        .catch(() => {
-          reject("Cannot get data");
-        });
-    } catch {
-      reject("Server error");
-    }
+    axios
+      .post(usersEndpoint, { ...user, username: user.email, role: 3 })
+      .then(() => {
+        userLogin({ email: user.email, password: user.password })
+          .then(() => {
+            resolve({
+              message: "Account created, logging in",
+              type: "success",
+            });
+          })
+          .catch((error) => {
+            reject({ message: error.response.message, type: "error" });
+          });
+      })
+      .catch((error) => {
+        reject({ message: error.response.message, type: "error" });
+      });
   });
+};
+
+export const checkUserAlreadyExists = (email: string) => {
+  return new Promise((resolve, reject) => {
+    axios
+      .get(`${usersEndpoint}?filters[email][$eq]=${email.toLowerCase()}`)
+      .then((res) => {
+        if (res.data.length) reject("Email already exists");
+        resolve("done");
+      })
+      .catch((error) => {
+        reject({ message: error.response.message, type: "error" });
+      });
+  });
+};
+
+export const userLogin = (credentials: UserCredentialsType) => {
+  return new Promise((resolve, reject) => {
+    axios
+      .post(userLoginEndpoint, {
+        identifier: credentials.email,
+        ...credentials,
+      })
+      .then((res) => {
+        localStorage.setItem("token", res.data.jwt);
+        localStorage.setItem("user", res.data);
+        setTimeout(() => {
+          location.assign("/dashboard");
+        }, 1000);
+        resolve("done");
+      })
+      .catch((error) => {
+        if (
+          error.response.data.error.message === "Invalid identifier or password"
+        )
+          reject({ message: "Invalid email or password", type: "error" });
+      });
+  });
+};
+
+export const logout = () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+  showToast("Logging out", "success");
+  setTimeout(() => {
+    location.assign("/auth");
+  }, 1000);
+};
+
+export const getUserData = (): Promise<ApiUserDataResponseType> => {
+  return new Promise((resolve, reject) => {
+    axiosInstance
+      .get(`${usersEndpoint}/me?populate=*`)
+      .then((res) => {
+        resolve(res.data);
+      })
+      .catch((error) => {
+        switch (error.response?.status) {
+          case 403:
+            reject({ message: "You cannot access this data", type: "error" });
+            break;
+          case 404:
+            reject({ message: "User not found", type: "error" });
+            break;
+          default:
+            reject({ message: "Server Error", type: "error" });
+        }
+      });
+  });
+};
+
+export const updateUserData = (newUserData: UserDataGenericType) => {
+  return new Promise((resolve, reject) => {
+    axiosInstance
+      .put(`${usersEndpoint}/${newUserData.id}`, newUserData)
+      .then((res) => {
+        showToast("User details updated", "success");
+        resolve(res);
+      })
+      .catch((error) => {
+        switch (error.response?.status) {
+          case 403:
+            showToast("Access Forbidden", "error");
+            reject("error");
+            break;
+          case 404:
+            showToast("User not found", "error");
+            reject("error");
+            break;
+          case 413:
+            showToast("Image size too large", "error");
+            reject("error");
+            break;
+          default:
+            showToast("Server Error", "error");
+        }
+      });
+  });
+};
+
+export const getJwtToken = (id_token: string, access_token: string) => {
+  return new Promise((resolve, reject) => {
+    axios
+      .get(jwtTokenEndpoint, {
+        params: {
+          id_token,
+          access_token,
+        },
+      })
+      .then((res) => {
+        localStorage.setItem("token", res.data.jwt);
+        resolve("done");
+      })
+      .catch((error) => {
+        showToast(error.response.data.error.message, "error");
+        reject("error");
+      });
+  });
+};
+
+export const deleteAccount = () => {
+  axiosInstance.get(`${usersEndpoint}/me`).then((res) => {
+    const id = res.data.id;
+    axiosInstance
+      .delete(`${usersEndpoint}/${id}`)
+      .then((res) => {
+        if (res.status === 200) {
+          showToast("Account deleted,logging out", "success");
+          localStorage.removeItem("token");
+          localStorage.removeItem("user");
+          setTimeout(() => {
+            location.assign("/auth");
+          }, 1200);
+        }
+      })
+      .catch(() => {
+        showToast("Server error", "error");
+      });
+  });
+};
+
+export const addNewPatient = (patientInfo: PatientInfoType) => {
+  return new Promise((resolve, reject) => {
+    axiosInstance
+      .post(patientsEndpoint, { data: patientInfo })
+      .then(() => resolve({ message: "New Patient Added", type: "success" }))
+      .catch((error) => {
+        reject({ message: error.response.message, type: "error" });
+      });
+  });
+};
+
+export const createNewPrescription = (
+  prescription: GenericObjectType,
+): Promise<ErrorType> => {
+  return new Promise((resolve, reject) => {
+    axiosInstance
+      .post(doctorPrescriptionEndpoint, { data: { data: prescription } })
+      .then(() => {
+        resolve({ message: "Prescription Added", type: "success" });
+      })
+      .catch(() => {
+        reject({ message: "Server error", type: "error" });
+      });
+  });
+};
+
+export const createOptions = (data: PatientInfoType[]) => {
+  return data.map((element) => ({
+    value: element.id,
+    label: `${element.pName} (${element.contactNo})`,
+  }));
+};
+
+let inputFieldCount = 0;
+export const medicationInputFieldGenerator = (): MedicationType => {
+  ++inputFieldCount;
+  return {
+    id: inputFieldCount,
+    medicine: `medicine${inputFieldCount}`,
+    dosage: `dosage${inputFieldCount}`,
+    timesPerDay: `timesPerDay${inputFieldCount}`,
+    instruction: `instruction${inputFieldCount}`,
+  };
 };

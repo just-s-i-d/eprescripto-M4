@@ -8,41 +8,46 @@ import BarChart from "@components/Charts/BarChart";
 import AppoinmentsCard from "@components/Doctor/AppoinmentsCard";
 import DoughnutChart from "@components/Charts/DoughnutChart";
 import {
+  appointmentsEndPoint,
   barChartDataEndPoint,
-  getAppointmentData,
-  getChartData,
+  doughnutChartDataEndPoint,
+  getData,
   getDataForLineGraph,
-  getInfoCardsData,
+  infoCardDataEndPoint,
   lineChartDataEndPoint,
-  pieChartDataEndPoint,
 } from "@utils/Doctor";
 import useStatesHook from "../../hooks/useStatesHook";
 import {
-  AppointmentsDataType,
+  ApiResponseData,
+  ApiResponseDataType,
+  AppointmentDataType,
   ChartDataType,
+  CommonPropsTypeDarkMode,
   InfoCardDetailsType,
   LineChartApiResDataType,
 } from "@constants/types";
 
-const DoctorDashboardPage: React.FC = () => {
-  const infoCards = useStatesHook<InfoCardDetailsType>();
-  const appointments = useStatesHook<AppointmentsDataType>();
-  const doughnutChart = useStatesHook<ChartDataType>();
-  const barChart = useStatesHook<ChartDataType>();
-  const lineChart = useStatesHook<LineChartApiResDataType>();
+const DoctorDashboardPage = ({ darkMode }: CommonPropsTypeDarkMode) => {
+  const infoCards = useStatesHook<ApiResponseData<InfoCardDetailsType>>();
+  const appointments = useStatesHook<ApiResponseData<AppointmentDataType>>();
+  const doughnutChart = useStatesHook<ApiResponseDataType<ChartDataType>>();
+  const barChart = useStatesHook<ApiResponseDataType<ChartDataType>>();
+  const lineChart =
+    useStatesHook<ApiResponseDataType<LineChartApiResDataType>>();
   useEffect(() => {
-    getInfoCardsData()
+    getData<ApiResponseData<InfoCardDetailsType>>(infoCardDataEndPoint)
       .then((res) => {
         infoCards.setData(res);
+        infoCards.setLoading(false);
         infoCards.setError(false);
       })
       .catch(() => {
+        infoCards.setLoading(false);
         infoCards.setError(true);
       });
-  }, [infoCards.refresh]); //eslint-disable-line
-
-  useEffect(() => {
-    getAppointmentData()
+  }, [infoCards.refresh]);
+  const getDataForAppointments = () => {
+    getData<ApiResponseData<AppointmentDataType>>(appointmentsEndPoint)
       .then((res) => {
         appointments.setData(res);
         appointments.setLoading(false);
@@ -52,40 +57,44 @@ const DoctorDashboardPage: React.FC = () => {
         appointments.setError(true);
         appointments.setLoading(false);
       });
-  }, [appointments.refresh]); //eslint-disable-line
+  };
+  useEffect(() => {
+    getDataForAppointments();
+  }, [appointments.refresh]);
 
   useEffect(() => {
-    getChartData(pieChartDataEndPoint)
+    getData<ApiResponseDataType<ChartDataType>>(doughnutChartDataEndPoint)
       .then((res) => {
-        doughnutChart.setData(res.pieChartData);
+        doughnutChart.setData(res);
+        doughnutChart.setLoading(false);
         doughnutChart.setError(false);
       })
       .catch(() => {
         doughnutChart.setError(true);
       });
-  }, [doughnutChart.refresh]); //eslint-disable-line
+  }, [doughnutChart.refresh]);
 
   useEffect(() => {
-    getChartData(lineChartDataEndPoint)
+    getData<ApiResponseDataType<LineChartApiResDataType>>(lineChartDataEndPoint)
       .then((res) => {
-        lineChart.setData(res.lineChartData);
+        lineChart.setData(res);
         lineChart.setError(false);
       })
       .catch(() => {
         lineChart.setError(true);
       });
-  }, [lineChart.refresh]); //eslint-disable-line
+  }, [lineChart.refresh]);
 
   useEffect(() => {
-    getChartData(barChartDataEndPoint)
+    getData<ApiResponseDataType<ChartDataType>>(barChartDataEndPoint)
       .then((res) => {
-        barChart.setData(res.barChartData);
+        barChart.setData(res);
         barChart.setError(false);
       })
       .catch(() => {
         barChart.setError(true);
       });
-  }, [barChart.refresh]); //eslint-disable-line
+  }, [barChart.refresh]);
 
   return (
     <>
@@ -95,9 +104,10 @@ const DoctorDashboardPage: React.FC = () => {
             <ErrorBoundary>
               <InfoCards cardDetails={infoCards.data} infoCards={infoCards} />
             </ErrorBoundary>
-            <div className="flex flex-wrap justify-between gap-y-6 max-tablet:justify-center">
+            <div className="flex flex-wrap justify-between gap-y-6 max-md:justify-center">
               <ErrorBoundary>
                 <NextPatientCard
+                  getDataForAppointments={getDataForAppointments}
                   appointments={appointments}
                   appointment={appointments.data && appointments.data[0]}
                   error={appointments.error}
@@ -105,6 +115,7 @@ const DoctorDashboardPage: React.FC = () => {
               </ErrorBoundary>
               <ErrorBoundary>
                 <DoughnutChart
+                  darkMode={darkMode}
                   doughnutChart={doughnutChart}
                   chartData={doughnutChart.data}
                   title="Ratings Composition"
@@ -113,6 +124,7 @@ const DoctorDashboardPage: React.FC = () => {
               </ErrorBoundary>
               <ErrorBoundary>
                 <AppoinmentsCard
+                  getDataForAppointments={getDataForAppointments}
                   appointmentsState={appointments}
                   appointments={appointments.data}
                   loading={appointments.loading}
@@ -122,7 +134,7 @@ const DoctorDashboardPage: React.FC = () => {
                 <LineChart
                   lineChart={lineChart}
                   chartData={lineChart.data}
-                  title="Patients in Last 7 Days"
+                  title="Patients in Last Days"
                   xAxesTitle="Dates"
                   yAxesTitle="Number of Patients"
                   getDataForLineGraph={getDataForLineGraph}
@@ -134,7 +146,7 @@ const DoctorDashboardPage: React.FC = () => {
                   chartData={barChart.data}
                   title="Age Groups Comparison"
                   label="Patients"
-                  xAxesTitle="Different Age Groups (In Years)"
+                  xAxesTitle="Age Groups (In Years)"
                   yAxesTitle="Number of Patients"
                 />
               </ErrorBoundary>

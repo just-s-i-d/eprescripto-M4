@@ -1,5 +1,4 @@
-@import "./variable.scss";
-
+@import "./variables.scss";
 .pending {
   color: $colorTextPending;
 }
@@ -29,8 +28,8 @@ span.active {
 .ant-select-selector:focus,
 .ant-select-selector:active,
 .ant-select-open .ant-select-selector {
-  border-color: $primaryBorderActiveColor !important;
-  box-shadow: none !important;
+  border-color: $primaryBorderActiveColor;
+  box-shadow: none;
 }
 .info-cards-body > .ant-card-body {
   display: flex;
@@ -38,21 +37,36 @@ span.active {
   width: 100%;
 }
 
-:where(.css-dev-only-do-not-override-x2px2j).ant-dropdown
-  .ant-table-filter-dropdown
-  .ant-dropdown-menu-item-selected
-  .ant-checkbox-wrapper
-  + span {
-  color: $secondaryTextColor;
-}
-
 .appointment-table-card > .ant-card-body {
   padding-bottom: 0;
 }
-.info-card > .ant-card-body {
+.custom-card > .ant-card-body {
   padding: 0;
   display: flex;
   align-items: center;
+}
+
+.custom-card-login > .ant-card-body {
+  height: 100%;
+}
+
+@media (min-width: 375px) and (max-width: 787px) {
+  .custom-card-login > .ant-card-body {
+    flex-direction: column;
+    width: 100%;
+  }
+  .ant-steps-item-description {
+    visibility: hidden;
+  }
+}
+
+.ant-form-item .ant-form-item-explain-error {
+  position: absolute;
+}
+.ant-btn-default:disabled,
+.ant-btn-default.ant-btn-disabled {
+  color: $buttonDisabledColorLight;
+  background-color: $buttonDisabledColorLightBg;
 }
 .custom-table .ant-pagination-item:not(.ant-pagination-item-active):hover a {
   color: $secondaryTextColor;
@@ -68,4 +82,55 @@ span.active {
   color: $secondaryTextColor;
   border-color: $secondaryTextColor;
   background-color: $primaryBgColor;
+}
+
+.ant-dropdown .ant-dropdown-menu .ant-dropdown-menu-item-selected {
+  background-color: $secondayBgColor;
+}
+.ant-dropdown .ant-dropdown-menu .ant-dropdown-menu-item-selected:hover {
+  background-color: $secondayBgColorLight;
+}
+
+.custom-form .ant-form-item {
+  margin-bottom: 10px;
+}
+.custom-form .ant-form-item .ant-form-item-label > label {
+  font-size: 1.3em;
+  height: auto;
+}
+.custom-card .ant-steps-item-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ant-steps .ant-steps-item-finish .ant-steps-item-icon > .ant-steps-icon {
+  color: $secondaryTextColor;
+}
+
+.ant-steps
+  .ant-steps-item-finish
+  > .ant-steps-item-container
+  > .ant-steps-item-tail::after {
+  background-color: $secondaryTextColor;
+}
+.custom-form-profile .ant-input,
+.custom-form-profile
+  .ant-select-single:not(.ant-select-customize-input)
+  .ant-select-selector {
+  border-radius: 8px;
+}
+.ant-table-wrapper .ant-table {
+  min-height: 63vh;
+}
+.dark .ant-input[disabled],
+.dark .ant-btn-default:disabled,
+.ant-btn-default.ant-btn-disabled {
+  color: $buttonDisabledColorDark;
+}
+
+.ant-picker-large {
+  width: 100%;
+}
+.ant-picker-focused.ant-picker {
+  box-shadow: none;
 }

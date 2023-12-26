@@ -9,71 +9,15 @@ import {
   ProfileOutlined,
 } from "@ant-design/icons";
 
-import profileAvatar from "@assets/profilepic.png";
 import patientPng from "@assets/profile.png";
 import appointmentPng from "@assets/appointment.png";
 import starPng from "@assets/star-rating.png";
 import { PrescriptionDataType } from "./types";
-
-export const NEXT_PATIENT_INFORMATION = {
-  avatar: profileAvatar,
-  pName: "Siddharth Paneri",
-  email: "abc@abc.com",
-  pId: "ABC1",
-  timeSlot: "10 am to 11 am",
-  lastVisited: "12-11-2023",
-  contact: "91+99xxxxxx99",
-  gender: "Male",
-};
-
-export interface PatientAppointmentDataType {
-  key: string;
-  pName: string;
-  timeSlot: string;
-  contact: string;
-  status: "Completed" | "Pending" | "Cancelled";
-  profilePic: string;
-}
-
-export const APPOINTMENT_TABLE_DATA: PatientAppointmentDataType[] = [
-  {
-    key: "1",
-    pName: "John Brown",
-    timeSlot: "10 am to 11 am",
-    contact: "+919999999999",
-    status: "Completed",
-    profilePic:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=a72ca28288878f8404a795f39642a46f",
-  },
-  {
-    key: "2",
-    pName: "Jacob Blue",
-    timeSlot: "1 pm to 2 pm",
-    contact: "+919999999999",
-    status: "Pending",
-    profilePic:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=a72ca28288878f8404a795f39642a46f",
-  },
-  {
-    key: "3",
-    pName: "Aunt Jane",
-    timeSlot: "3 pm to 4pm",
-    contact: "+919999999999",
-    status: "Cancelled",
-    profilePic:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=a72ca28288878f8404a795f39642a46f",
-  },
-  {
-    key: "4",
-    pName: "Siddharth Paneri",
-    timeSlot: "5 pm to 6pm",
-    contact: "+919999999999",
-    status: "Pending",
-    profilePic:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=a72ca28288878f8404a795f39642a46f",
-  },
-];
-
+import { formatDateReadable } from "@utils/Doctor";
+import PersonalInfoForm from "@pages/Auth/SignUp/PersonalInfoForm";
+import AddressForm from "@pages/Auth/SignUp/AddressForm";
+import ProfessionalInfoForm from "@pages/Auth/SignUp/ProfessionalInfoForm";
+import PasswordForm from "@pages/Auth/SignUp/PasswordForm";
 type NavLinksType = { label: string; icon: ReactNode; key: string }[];
 
 export const DOCTOR_NAV_LINKS: NavLinksType = [
@@ -99,15 +43,20 @@ export const formattedDate = () => {
   return `${date}/${month}/${year}`;
 };
 
-export const getLabels = (days: number) => {
+export const getLabels = (days: number): string[] => {
   const todayDate = new Date();
-  const month = todayDate.getMonth() + 1;
-  const endDate = todayDate.getDate();
-  const startDate = endDate - days;
   const dates = [];
-  for (let i = startDate + 1; i <= endDate; i++) {
-    dates.push(`${i}/${month}`);
+
+  for (let i = 0; i < days; i++) {
+    const currentDate = new Date(todayDate);
+    currentDate.setDate(todayDate.getDate() - i);
+
+    const day = currentDate.getDate().toString().padStart(2, "0");
+    const month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
+
+    dates.unshift(`${day}/${month}`);
   }
+
   return dates;
 };
 
@@ -123,6 +72,7 @@ export const columns: ColumnsType<PrescriptionDataType> = [
   {
     title: "Date",
     dataIndex: "date",
+    render: formatDateReadable,
   },
   {
     title: "Duration",
@@ -152,11 +102,14 @@ export const columns: ColumnsType<PrescriptionDataType> = [
         value: "On Hold",
       },
     ],
-    onFilter: (value, record) => record.status.indexOf(value) === 0,
+    onFilter: (value, record) => record.status.indexOf(value.toString()) === 0,
   },
   {
     title: "Notes",
     dataIndex: "notes",
+    render: (notes: string) => (
+      <span className="max-w-[50px]">{notes || "NA"}</span>
+    ),
   },
 ];
 
@@ -166,4 +119,49 @@ export const CARD_PROPERTIES: CardPropertiesType = [
   appointmentPng,
   starPng,
   patientPng,
+];
+
+export const STEPPER_STEPS = [
+  {
+    title: "Step 1",
+    description: "Personal Info",
+  },
+  {
+    title: "Step 2",
+    description: "Personal Address",
+  },
+  {
+    title: "Step 3",
+    description: "Professional Info",
+  },
+  { title: "Step 4", description: "Finish" },
+];
+
+export const SIGNUP_FORM_STEPS = [
+  {
+    title: "Personal Information",
+    description: "Please enter your personal information",
+    content: <PersonalInfoForm />,
+  },
+  {
+    title: "Personal Address",
+    description: "Please enter your address",
+    content: <AddressForm />,
+  },
+  {
+    title: "Professional Information",
+    description: "Please enter your professtional information",
+    content: <ProfessionalInfoForm />,
+  },
+  {
+    title: "New Password",
+    description: "Please enter new password",
+    content: <PasswordForm />,
+  },
+];
+
+export const SELECT_GENDER_OPTIONS = [
+  { value: "male", label: "Male" },
+  { value: "female", label: "Female" },
+  { value: "other", label: "Other" },
 ];

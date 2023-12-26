@@ -3,33 +3,37 @@ import { useEffect, useState } from "react";
 import { Card, Skeleton } from "antd";
 import { ArcElement, Chart as ChartJs, Legend, Tooltip } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
-import type { ChartOptions, Chart } from "chart.js";
+import type { Chart, ChartOptions } from "chart.js";
 
 import CardTitle from "@components/ui/CardTitle";
 import ErrorBoundary from "@components/ErrorBoundary";
-import { ChartDataType } from "@constants/types";
+import { ApiResponseDataType, ChartDataType } from "@constants/types";
 import useStatesHook from "src/hooks/useStatesHook";
 
 ChartJs.register(ArcElement, Tooltip, Legend);
 export const options: ChartOptions = {
   plugins: {
     legend: {
-      display: false,
+      display: true,
+      position: "bottom",
     },
   },
 };
 
 type PieChartPropsType = {
-  chartData: ChartDataType | undefined;
+  chartData?: ApiResponseDataType<ChartDataType>;
   title: string;
   label: string;
-  doughnutChart: ReturnType<typeof useStatesHook<ChartDataType>>;
+  doughnutChart: ReturnType<
+    typeof useStatesHook<ApiResponseDataType<ChartDataType>>
+  >;
+  darkMode: boolean;
 };
 const colors: string[] = [
-  "#f7a825",
-  "#3159a4",
-  "#3db5e8",
   "#96CCA3",
+  "#3db5e8",
+  "#3159a4",
+  "#f7a825",
   "#ec6424",
 ];
 const DoughnutChart = ({
@@ -43,11 +47,11 @@ const DoughnutChart = ({
     if (chartData) setLoading(false);
   }, [chartData]);
   const data = {
-    labels: chartData?.labels,
+    labels: chartData?.attributes?.labels,
     datasets: [
       {
         label: label,
-        data: chartData?.data,
+        data: chartData?.attributes?.data,
         backgroundColor: colors,
         borderColor: colors,
         borderWidth: 1,
@@ -67,13 +71,13 @@ const DoughnutChart = ({
         ctx.textBaseline = "top";
         const text1 = "Total Ratings",
           textX1 = Math.round((width - ctx.measureText(text1).width) / 2),
-          textY1 = height / 2.6;
+          textY1 = height / 2.9;
         ctx.fillText(text1, textX1, textY1);
         fontSize = (height / 100).toFixed(2);
         ctx.font = fontSize + "em sans-serif";
-        const text2 = `${chartData?.totalCount}`,
+        const text2 = `${chartData?.attributes?.totalCount}`,
           textX2 = Math.round((width - ctx.measureText(text2).width) / 2),
-          textY2 = height / 2.2;
+          textY2 = height / 2.4;
         ctx.fillText(text2, textX2, textY2);
         ctx.save();
       },
@@ -81,7 +85,7 @@ const DoughnutChart = ({
   ];
   return (
     <Card
-      className="w-[32%] max-xxl:h-[59vh] max-xl:w-[48%] max-md:w-9/12 max-sm:w-full max-h-[60vh]"
+      className="w-[32%] max-h-[60vh] max-xxl:w-[48%] max-xxl:h-[59vh] max-xl:w-[48%] max-md:w-9/12 max-sm:w-full"
       bordered={false}
     >
       <ErrorBoundary
@@ -92,7 +96,9 @@ const DoughnutChart = ({
         {loading ? (
           <Skeleton.Avatar active size={250} />
         ) : (
-          <Doughnut data={data} options={options} plugins={plugins} />
+          <div className="h-[400px] flex justify-center items-center">
+            <Doughnut data={data} options={options} plugins={plugins} />
+          </div>
         )}
       </ErrorBoundary>
     </Card>

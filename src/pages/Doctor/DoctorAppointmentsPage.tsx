@@ -5,39 +5,37 @@ import { Card, Tooltip } from "antd";
 import { PhoneTwoTone, CloseCircleTwoTone } from "@ant-design/icons";
 
 import ErrorBoundary from "@components/ErrorBoundary";
-import useStatesHook from "../../hooks/useStatesHook";
+import useStatesHook from "@hooks/useStatesHook";
 
 import {
+  appointmentsEndPoint,
   cancelAppointment,
   formatDateReadable,
-  getDoctorAppointmentsData,
+  getData,
 } from "@utils/Doctor";
 import {
+  ApiResponseData,
   AppointmentDataType,
-  DoctorAppointmentsDataType,
+  AppointmentType,
 } from "@constants/types";
 import TableCard from "@components/ui/TableCard";
 import PopModal from "@components/ui/PopModal";
 import { showToast } from "@utils/common";
 
 const DoctorAppointmentsPage = () => {
-  const appointmentsTable = useStatesHook<DoctorAppointmentsDataType>();
+  const appointmentsTable = useStatesHook<AppointmentDataType[]>();
   const [open, setOpen] = useState(false);
   const [selectedPatient, setSelectedPatient] = useState<AppointmentDataType>();
-  const handlerCancleAppointment = (patient: AppointmentDataType) => {
-    setOpen(true);
-    setSelectedPatient(patient);
-  };
-  const confirmHandler = async () => {
-    if (selectedPatient) {
-      const response = await cancelAppointment(selectedPatient);
-      response && showToast(response.message, response.type);
-    }
-  };
-  useEffect(() => {
-    getDoctorAppointmentsData()
+  const getDataForAppointments = () => {
+    getData<ApiResponseData<AppointmentType>>(appointmentsEndPoint)
       .then((res) => {
-        appointmentsTable.setData(res);
+        const data = res.map(({ id, attributes }) => {
+          return {
+            id,
+            ...attributes,
+          };
+        });
+        appointmentsTable.setData(data);
         appointmentsTable.setError(false);
         appointmentsTable.setLoading(false);
       })
@@ -45,6 +43,25 @@ const DoctorAppointmentsPage = () => {
         appointmentsTable.setError(true);
         appointmentsTable.setLoading(false);
       });
+  };
+  const handlerCancleAppointment = (patient: AppointmentDataType) => {
+    setOpen(true);
+    setSelectedPatient(patient);
+  };
+  const confirmHandler = async () => {
+    if (selectedPatient) {
+      cancelAppointment(selectedPatient)
+        .then((res) => {
+          showToast(res.message, res.type);
+          getDataForAppointments();
+        })
+        .catch((error) => {
+          showToast(error.message, error.type);
+        });
+    }
+  };
+  useEffect(() => {
+    getDataForAppointments();
   }, []);
   const doctorAppointmentsTableColumns: ColumnsType<AppointmentDataType> = [
     {
@@ -75,7 +92,8 @@ const DoctorAppointmentsPage = () => {
     },
     {
       title: "Referrer",
-      dataIndex: "referer",
+      dataIndex: "referrer",
+      render: (referrer: string) => referrer || "NA",
       width: 100,
     },
     {
@@ -118,13 +136,24 @@ const DoctorAppointmentsPage = () => {
   return (
     <>
       <ErrorBoundary>
-        <Card className="appointment-table-card h-min w-full overflow-x-scroll">
+        <Card className="appointment-table-card h-min w-full overflow-scroll">
           <TableCard
-            className="min-w-[1100px]"
-            columns={doctorAppointmentsTableColumns}
-            tableData={appointmentsTable.data}
-            pageSize={8}
+            className="min-w-[1200px]"
+            setRefresh={appointmentsTable.setRefresh}
+            error={appointmentsTable.error}
+            columns={
+              doctorAppointmentsTableColumns as ColumnsType<
+                Record<string, string | number>
+              >
+            }
+            tableData={
+              appointmentsTable.data as Record<string, string | number>[]
+            }
+            pageSize={7}
+            setLoading={appointmentsTable.setLoading}
+            loading={appointmentsTable.loading}
           />
+
           <PopModal
             setOpen={setOpen}
             open={open}

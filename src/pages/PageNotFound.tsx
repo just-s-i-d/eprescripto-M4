@@ -1,17 +1,23 @@
-import { Result, Button } from "antd";
+import { Result, Button, Layout } from "antd";
 
 const PageNotFound = () => {
   return (
-    <Result
-      status="404"
-      title="404"
-      subTitle="Sorry the page you visited,does not exist"
-      extra={
-        <Button href="/" type="primary">
-          Home
-        </Button>
-      }
-    />
+    <Layout className="w-full h-screen flex items-center justify-center">
+      <Result
+        status="404"
+        title="404"
+        subTitle="Sorry the page you visited,does not exist"
+        extra={
+          <Button
+            href="/dashboard"
+            type="default"
+            className="text-white bg-secondary"
+          >
+            Home
+          </Button>
+        }
+      />
+    </Layout>
   );
 };
 export default PageNotFound;

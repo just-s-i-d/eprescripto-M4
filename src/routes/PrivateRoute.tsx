@@ -2,24 +2,19 @@ import { useContext } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 
 import { UserContext } from "@context/UserProvider";
-import Loading from "@components/ui/Loading";
 
 type PrivateRouteProps = {
   allowedRoles: string[];
 };
 const PrivateRoute = ({ allowedRoles }: PrivateRouteProps) => {
-  const userContext = useContext(UserContext);
-
-  if (userContext === null) return <Loading />;
-  const { isLoggedIn, role } = userContext;
-
+  const { isLoggedIn, role } = useContext(UserContext);
   return (
     <>
-      {!isLoggedIn && <Navigate to="/unauthorized" />}
-      {isLoggedIn && allowedRoles.includes(role) && <Outlet />}
-      {isLoggedIn && !allowedRoles.includes(role) && (
+      {!isLoggedIn && <Navigate to="/auth" />}
+      {isLoggedIn && role && !allowedRoles.includes(role) && (
         <Navigate to="/forbidden" />
       )}
+      {isLoggedIn && role && allowedRoles.includes(role) && <Outlet />}
     </>
   );
 };

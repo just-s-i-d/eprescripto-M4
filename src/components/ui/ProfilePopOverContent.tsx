@@ -1,9 +1,11 @@
+import { logout } from "@utils/Doctor";
+
 const ProfilePopOverContent = () => {
   return (
     <div>
-      <p>Notifications</p>
-      <p>Profile</p>
-      <p>Logout</p>
+      <button onClick={logout} className="border-none">
+        Logout
+      </button>
     </div>
   );
 };
