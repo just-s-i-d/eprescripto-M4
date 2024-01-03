@@ -22,6 +22,7 @@ module.exports = {
         "^.+\\.[t|j]sx?$": "babel-jest",
         '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
             '<rootDir>/fileTransformer.cjs',
-
     },
+    collectCoverage: false,
+    collectCoverageFrom: ["<rootDir>/src/**/*.{ts,tsx}", "!<rootDir>/src/theme/*.ts", "!<rootDir>/src/constants/*.{ts,tsx}", "!<rootDir>/src/__test__/{matchMedia,setup}.ts", "!<rootDir>/src/**/*.d.ts", "!<rootDir>/src/constants/*.test.*", "!<rootDir>/src/pages/PatientDashboardPage.tsx", "!<rootDir>/src/utils/AxiosInstance.ts", "!<rootDir>/src/main.tsx"],
 };
