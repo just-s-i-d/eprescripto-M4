@@ -37,12 +37,9 @@ describe("PopModal Component", () => {
       </PopModal>,
     );
     fireEvent.click(screen.getByText("Sure"));
-    await waitFor(
-      () => {
-        expect(confirmHandler).toHaveBeenCalled();
-      },
-      { timeout: 2000 },
-    );
+    await waitFor(() => {
+      expect(confirmHandler).toHaveBeenCalled();
+    });
   });
 
   it("closes the modal when Cancel button is clicked", () => {
