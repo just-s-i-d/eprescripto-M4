@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GoogleLogin Component renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="ant-divider css-dev-only-do-not-override-gzal6t ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center w-9/12 min-w-9/12"
+    role="separator"
+  >
+    <span
+      class="ant-divider-inner-text"
+    >
+      Or
+    </span>
+  </div>
+  <div
+    class="flex justify-center"
+  >
+    <a
+      class="ant-btn css-dev-only-do-not-override-gzal6t ant-btn-default flex items-center gap-2 py-5 px-8 text-base bg-white"
+      href="http://localhost:1337/api/connect/google"
+      tabindex="0"
+    >
+      <div
+        class="ant-image css-dev-only-do-not-override-gzal6t"
+        style="width: 20px;"
+      >
+        <img
+          alt="google"
+          class="ant-image-img css-dev-only-do-not-override-gzal6t"
+          src="google.svg"
+          width="20"
+        />
+      </div>
+      <span>
+         Sign in with Google
+      </span>
+    </a>
+  </div>
+</DocumentFragment>
+`;
