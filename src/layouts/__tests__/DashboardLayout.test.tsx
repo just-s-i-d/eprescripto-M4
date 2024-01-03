@@ -20,10 +20,8 @@ describe("DashboardLayout", () => {
       </MemoryRouter>,
     );
     await waitFor(() => {
-      setTimeout(() => {
-        expect(screen.findByText("ePrescripto")).toBeInTheDocument();
-        expect(screen.findByRole("switch")).toBeInTheDocument();
-      }, 500);
+      expect(screen.getByText("ePrescripto")).toBeInTheDocument();
+      expect(screen.getByRole("switch")).toBeInTheDocument();
     });
   });
 });
