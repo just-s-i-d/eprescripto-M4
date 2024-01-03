@@ -1,15 +1,16 @@
 import { SetStateAction, useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
-import { Menu, Switch, theme } from "antd";
-import Sider from "antd/es/layout/Sider";
+import { Menu, Switch, theme, Layout } from "antd";
 
 import { DOCTOR_NAV_LINKS, PATIENT_NAV_LINKS } from "@constants/constants";
 
+const { Sider } = Layout;
+
 type SideBarProps = {
-  role: string;
+  role?: string;
   textColor: string;
-  setIsDarkTheme: React.Dispatch<SetStateAction<boolean>>;
+  setIsDarkTheme?: React.Dispatch<SetStateAction<boolean>>;
   collapsed: boolean;
   setCollapsed: React.Dispatch<SetStateAction<boolean>>;
 };
@@ -71,7 +72,7 @@ const SideBar: React.FC<SideBarProps> = ({
           style={{ backgroundColor: colorPrimaryBg }}
           checkedChildren="Dark"
           unCheckedChildren="Light"
-          onChange={(value) => setIsDarkTheme(value)}
+          onChange={(value) => setIsDarkTheme && setIsDarkTheme(value)}
         />
       </Menu>
     </Sider>
