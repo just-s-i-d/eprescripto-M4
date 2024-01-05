@@ -37,6 +37,7 @@ const InfoCards = ({ cardDetails, infoCards }: InfoCardsProps) => {
     <Card
       className="info-cards-body w-full h-[22vh] max-md:h-full flex justify-center"
       bordered={false}
+      data-testid="info-cards"
     >
       <ErrorBoundary
         error={infoCards.error}

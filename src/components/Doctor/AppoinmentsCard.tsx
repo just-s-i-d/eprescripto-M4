@@ -131,6 +131,7 @@ const AppoinmentsCard = ({
                         {item.attributes.status === "Pending" && (
                           <CloseCircleTwoTone
                             className="cursor-pointer"
+                            data-testid="cancel-appointment-btn"
                             onClick={() => handlerCancleAppointment(item)}
                           />
                         )}

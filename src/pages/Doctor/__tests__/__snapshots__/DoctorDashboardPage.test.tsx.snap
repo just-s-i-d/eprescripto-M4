@@ -1,0 +1,269 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Doctor Dashboard Page test Test to check if all cards rendered correctly or not 1`] = `
+<DocumentFragment>
+  <div
+    class="max-w-full flex"
+  >
+    <div
+      class="w-full flex flex-col gap-6"
+    >
+      <div
+        class="ant-card info-cards-body w-full h-[22vh] max-md:h-full flex justify-center css-dev-only-do-not-override-1adbn6x"
+        data-testid="info-cards"
+      >
+        <div
+          class="ant-card-body"
+        >
+          <div
+            class="ant-row w-full max-md:flex max-md:flex-wrap gap-y-6 justify-center max-lg:flex-nowrap css-dev-only-do-not-override-1adbn6x"
+            style="margin-left: -15px; margin-right: -15px;"
+          />
+        </div>
+      </div>
+      <div
+        class="flex flex-wrap justify-between gap-y-6 max-md:justify-center"
+      >
+        <div
+          class="ant-card xs:w-full sm:w-9/12 md:w-[48%] xxl:w-[32%] css-dev-only-do-not-override-1adbn6x"
+        >
+          <div
+            class="ant-card-body"
+          >
+            <h1
+              class="text-xl font-bold mb-6 undefined"
+            >
+              Next Patient
+            </h1>
+            <div
+              class="flex flex-col items-center"
+            >
+              <div
+                class="ant-skeleton ant-skeleton-element ant-skeleton-active css-dev-only-do-not-override-1adbn6x"
+              >
+                <span
+                  class="ant-skeleton-avatar ant-skeleton-avatar-circle"
+                  style="width: 90px; height: 90px; line-height: 90px;"
+                />
+              </div>
+              <div
+                class="ant-space css-dev-only-do-not-override-1adbn6x ant-space-vertical ant-space-align-center ant-space-gap-row-small ant-space-gap-col-small mt-2"
+              >
+                <div
+                  class="ant-space-item"
+                >
+                  <div
+                    class="ant-skeleton ant-skeleton-element ant-skeleton-active css-dev-only-do-not-override-1adbn6x"
+                  >
+                    <span
+                      class="ant-skeleton-input"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="ant-space-item"
+                >
+                  <div
+                    class="ant-skeleton ant-skeleton-element ant-skeleton-active css-dev-only-do-not-override-1adbn6x"
+                  >
+                    <span
+                      class="ant-skeleton-input"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ant-space css-dev-only-do-not-override-1adbn6x ant-space-horizontal ant-space-align-center ant-space-gap-row-small ant-space-gap-col-small flex items-start text-lg mt-2"
+              >
+                <div
+                  class="ant-space-item"
+                >
+                  <div
+                    class="ant-skeleton ant-skeleton-active css-dev-only-do-not-override-1adbn6x"
+                  >
+                    <div
+                      class="ant-skeleton-content"
+                    >
+                      <ul
+                        class="ant-skeleton-paragraph"
+                      >
+                        <li
+                          style="width: 250px;"
+                        />
+                        <li
+                          style="width: 250px;"
+                        />
+                        <li
+                          style="width: 250px;"
+                        />
+                        <li
+                          style="width: 250px;"
+                        />
+                        <li
+                          style="width: 250px;"
+                        />
+                        <li
+                          style="width: 250px;"
+                        />
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-card w-[32%] max-h-[60vh] max-xxl:w-[48%] max-xxl:h-[59vh] max-xl:w-[48%] max-md:w-9/12 max-sm:w-full css-dev-only-do-not-override-1adbn6x"
+        >
+          <div
+            class="ant-card-body"
+          >
+            <h1
+              class="text-xl font-bold mb-6 undefined"
+            >
+              Ratings Composition
+            </h1>
+            <div
+              class="h-[400px] flex justify-center items-center"
+            >
+              <canvas
+                data-testid="doughnut-chart"
+                height="150"
+                role="img"
+                width="300"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-card w-[32%] max-xxl:h-[59vh] max-h-[59vh] max-xl:max-h-[60vh] max-xxl:w-[48%] max-xl:w-[48%] max-md:w-9/12 max-sm:w-full  css-dev-only-do-not-override-1adbn6x"
+        >
+          <div
+            class="ant-card-body"
+          >
+            <h1
+              class="text-xl font-bold mb-6 undefined"
+            >
+              Today's Appointments
+            </h1>
+            <div
+              class="mx-auto px-4 h-[44vh] overflow-y-auto"
+            >
+              <ul
+                class="mt-1 divide-y"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-card w-[49%] max-xl:w-[48%] max-xxl:w-[48%] max-md:w-9/12 max-sm:w-full css-dev-only-do-not-override-1adbn6x"
+        >
+          <div
+            class="ant-card-body"
+          >
+            <div
+              class="flex justify-between"
+            >
+              <h1
+                class="text-xl font-bold mb-6 undefined"
+              >
+                Patients in Last Days
+              </h1>
+              <div
+                class="ant-select xs:w-[120px] xxl:w-[200px] float-right mr-2 css-dev-only-do-not-override-1adbn6x ant-select-single ant-select-show-arrow"
+              >
+                <div
+                  class="ant-select-selector"
+                >
+                  <span
+                    class="ant-select-selection-search"
+                  >
+                    <input
+                      aria-autocomplete="list"
+                      aria-controls="rc_select_TEST_OR_SSR_list"
+                      aria-expanded="false"
+                      aria-haspopup="listbox"
+                      aria-owns="rc_select_TEST_OR_SSR_list"
+                      autocomplete="off"
+                      class="ant-select-selection-search-input"
+                      id="rc_select_TEST_OR_SSR"
+                      readonly=""
+                      role="combobox"
+                      style="opacity: 0;"
+                      type="search"
+                      unselectable="on"
+                      value=""
+                    />
+                  </span>
+                  <span
+                    class="ant-select-selection-item"
+                    title="Last 7 days"
+                  >
+                    Last 7 days
+                  </span>
+                </div>
+                <span
+                  aria-hidden="true"
+                  class="ant-select-arrow"
+                  style="user-select: none;"
+                  unselectable="on"
+                >
+                  <span
+                    aria-label="down"
+                    class="anticon anticon-down ant-select-suffix"
+                    role="img"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      data-icon="down"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <path
+                        d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                      />
+                    </svg>
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div
+              class="ant-skeleton ant-skeleton-element ant-skeleton-active mt-2 css-dev-only-do-not-override-1adbn6x"
+            >
+              <span
+                class="ant-skeleton-avatar ant-skeleton-avatar-square"
+                style="width: 200px; height: 200px; line-height: 200px;"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-card w-[49%] max-xl:w-[48%] max-xxl:w-[48%] max-md:w-9/12 max-sm:w-full css-dev-only-do-not-override-1adbn6x"
+        >
+          <div
+            class="ant-card-body"
+          >
+            <h1
+              class="text-xl font-bold mb-6 mb-14"
+            >
+              Age Groups Comparison
+            </h1>
+            <div
+              class="ant-skeleton ant-skeleton-element ant-skeleton-active mt-2 ml-4 css-dev-only-do-not-override-1adbn6x"
+            >
+              <span
+                class="ant-skeleton-avatar ant-skeleton-avatar-square"
+                style="width: 200px; height: 200px; line-height: 200px;"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -1,0 +1,172 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Info Cards tests Test to check if Info cards renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="ant-card info-cards-body w-full h-[22vh] max-md:h-full flex justify-center css-dev-only-do-not-override-1adbn6x"
+    data-testid="info-cards"
+  >
+    <div
+      class="ant-card-body"
+    >
+      <div
+        class="ant-row w-full max-md:flex max-md:flex-wrap gap-y-6 justify-center max-lg:flex-nowrap css-dev-only-do-not-override-1adbn6x"
+        style="margin-left: -15px; margin-right: -15px;"
+      >
+        <div
+          class="ant-col basis-3/12 max-md:basis-6/12 max-sm:basis-9/12 css-dev-only-do-not-override-1adbn6x"
+          style="padding-left: 15px; padding-right: 15px;"
+        >
+          <div
+            class="ant-card custom-card h-[17vh] py-8 px-4 max-sm:py-5 max-w-[390px] max-xl:h-[16vh] max-xl:min-w-[135px] max-sm:h-[150px] bg-infoCardColors-color1 text-white css-dev-only-do-not-override-1adbn6x"
+          >
+            <div
+              class="ant-card-body"
+            >
+              <div>
+                <div
+                  class="flex items-center gap-4 mb-2 mt-2"
+                >
+                  <div
+                    class="ant-image css-dev-only-do-not-override-1adbn6x"
+                  >
+                    <img
+                      alt="Icon image"
+                      class="ant-image-img w-[50px] max-xxl:w-[35px] max-md:w-[40px] css-dev-only-do-not-override-1adbn6x"
+                      src="profile.png"
+                    />
+                  </div>
+                  <span
+                    class="ant-typography text-4xl max-xl:text-3xl text-white max-md:text-4xl css-dev-only-do-not-override-1adbn6x"
+                  >
+                    10
+                  </span>
+                </div>
+                <h1
+                  class="text-xl font-bold mb-6 max-xxl:text-lg max-xl:text-base max-md:text-lg"
+                >
+                  Patients
+                </h1>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-col basis-3/12 max-md:basis-6/12 max-sm:basis-9/12 css-dev-only-do-not-override-1adbn6x"
+          style="padding-left: 15px; padding-right: 15px;"
+        >
+          <div
+            class="ant-card custom-card h-[17vh] py-8 px-4 max-sm:py-5 max-w-[390px] max-xl:h-[16vh] max-xl:min-w-[135px] max-sm:h-[150px] bg-infoCardColors-color2 text-white css-dev-only-do-not-override-1adbn6x"
+          >
+            <div
+              class="ant-card-body"
+            >
+              <div>
+                <div
+                  class="flex items-center gap-4 mb-2 mt-2"
+                >
+                  <div
+                    class="ant-image css-dev-only-do-not-override-1adbn6x"
+                  >
+                    <img
+                      alt="Icon image"
+                      class="ant-image-img w-[50px] max-xxl:w-[35px] max-md:w-[40px] css-dev-only-do-not-override-1adbn6x"
+                      src="appointment.png"
+                    />
+                  </div>
+                  <span
+                    class="ant-typography text-4xl max-xl:text-3xl text-white max-md:text-4xl css-dev-only-do-not-override-1adbn6x"
+                  >
+                    5
+                  </span>
+                </div>
+                <h1
+                  class="text-xl font-bold mb-6 max-xxl:text-lg max-xl:text-base max-md:text-lg"
+                >
+                  Appointments
+                </h1>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-col basis-3/12 max-md:basis-6/12 max-sm:basis-9/12 css-dev-only-do-not-override-1adbn6x"
+          style="padding-left: 15px; padding-right: 15px;"
+        >
+          <div
+            class="ant-card custom-card h-[17vh] py-8 px-4 max-sm:py-5 max-w-[390px] max-xl:h-[16vh] max-xl:min-w-[135px] max-sm:h-[150px] bg-infoCardColors-color3 text-white css-dev-only-do-not-override-1adbn6x"
+          >
+            <div
+              class="ant-card-body"
+            >
+              <div>
+                <div
+                  class="flex items-center gap-4 mb-2 mt-2"
+                >
+                  <div
+                    class="ant-image css-dev-only-do-not-override-1adbn6x"
+                  >
+                    <img
+                      alt="Icon image"
+                      class="ant-image-img w-[50px] max-xxl:w-[35px] max-md:w-[40px] css-dev-only-do-not-override-1adbn6x"
+                      src="star-rating.png"
+                    />
+                  </div>
+                  <span
+                    class="ant-typography text-4xl max-xl:text-3xl text-white max-md:text-4xl css-dev-only-do-not-override-1adbn6x"
+                  >
+                    3
+                  </span>
+                </div>
+                <h1
+                  class="text-xl font-bold mb-6 max-xxl:text-lg max-xl:text-base max-md:text-lg"
+                >
+                  New Patients
+                </h1>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-col basis-3/12 max-md:basis-6/12 max-sm:basis-9/12 css-dev-only-do-not-override-1adbn6x"
+          style="padding-left: 15px; padding-right: 15px;"
+        >
+          <div
+            class="ant-card custom-card h-[17vh] py-8 px-4 max-sm:py-5 max-w-[390px] max-xl:h-[16vh] max-xl:min-w-[135px] max-sm:h-[150px] bg-infoCardColors-color4 text-white css-dev-only-do-not-override-1adbn6x"
+          >
+            <div
+              class="ant-card-body"
+            >
+              <div>
+                <div
+                  class="flex items-center gap-4 mb-2 mt-2"
+                >
+                  <div
+                    class="ant-image css-dev-only-do-not-override-1adbn6x"
+                  >
+                    <img
+                      alt="Icon image"
+                      class="ant-image-img w-[50px] max-xxl:w-[35px] max-md:w-[40px] css-dev-only-do-not-override-1adbn6x"
+                      src="profile.png"
+                    />
+                  </div>
+                  <span
+                    class="ant-typography text-4xl max-xl:text-3xl text-white max-md:text-4xl css-dev-only-do-not-override-1adbn6x"
+                  >
+                    4.5
+                  </span>
+                </div>
+                <h1
+                  class="text-xl font-bold mb-6 max-xxl:text-lg max-xl:text-base max-md:text-lg"
+                >
+                  Overall Rating
+                </h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
