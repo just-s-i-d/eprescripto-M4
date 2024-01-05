@@ -1,0 +1,158 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NextPatientCard Test to check if it renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="ant-card xs:w-full sm:w-9/12 md:w-[48%] xxl:w-[32%] css-dev-only-do-not-override-1adbn6x"
+  >
+    <div
+      class="ant-card-body"
+    >
+      <h1
+        class="text-xl font-bold mb-6 undefined"
+      >
+        Next Patient
+      </h1>
+      <div
+        class="flex flex-col items-center"
+      >
+        <div
+          class="ant-image css-dev-only-do-not-override-1adbn6x"
+          style="width: 100px;"
+        >
+          <img
+            alt="profile-pic"
+            class="ant-image-img rounded-[50%] css-dev-only-do-not-override-1adbn6x"
+            src="profile-pic-url"
+            width="100"
+          />
+        </div>
+        <div
+          class="ant-space css-dev-only-do-not-override-1adbn6x ant-space-vertical ant-space-align-center ant-space-gap-row-small ant-space-gap-col-small mt-2"
+        >
+          <div
+            class="ant-space-item"
+          >
+            <span
+              class="xxl:text-[22px] max-xl:text-[18px] font-extrabold"
+            >
+              John doe
+            </span>
+          </div>
+          <div
+            class="ant-space-item"
+          >
+            <span
+              class="text-base font-bold"
+            >
+              abc@abc.com
+            </span>
+          </div>
+        </div>
+        <div
+          class="ant-space css-dev-only-do-not-override-1adbn6x ant-space-horizontal ant-space-align-center ant-space-gap-row-small ant-space-gap-col-small flex items-start text-lg mt-2"
+        >
+          <div
+            class="ant-space-item"
+          >
+            <table
+              class="text-base"
+            >
+              <tbody>
+                <tr>
+                  <td
+                    class="px-2 py-1 text-gray-500 font-semibold"
+                  >
+                    Patient Id
+                  </td>
+                  <td
+                    class="px-2 py-1 text-lg"
+                  >
+                    A01
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="px-2 py-1 text-gray-500 font-semibold"
+                  >
+                    Time Slot
+                  </td>
+                  <td
+                    class="px-2 py-1 text-lg"
+                  >
+                    10:00 am to 11:00 am
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="px-2 py-1 text-gray-500 font-semibold"
+                  >
+                    Last Visited
+                  </td>
+                  <td
+                    class="px-2 py-1 text-lg"
+                  >
+                    28 Dec 2023
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="px-2 py-1 text-gray-500 font-semibold"
+                  >
+                    Phone
+                  </td>
+                  <td
+                    class="px-2 py-1 text-lg"
+                  >
+                    9876543210
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="px-2 py-1 text-gray-500 font-semibold"
+                  >
+                    Gender
+                  </td>
+                  <td
+                    class="px-2 py-1 text-lg"
+                  >
+                    Male
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div
+              class="ant-space css-dev-only-do-not-override-1adbn6x ant-space-horizontal ant-space-align-center ant-space-gap-row-small ant-space-gap-col-small mt-5"
+            >
+              <div
+                class="ant-space-item"
+              >
+                <button
+                  class="ant-btn css-dev-only-do-not-override-1adbn6x ant-btn-default ant-btn-dangerous"
+                  type="button"
+                >
+                  <span>
+                    Cancel Appointment
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
+              >
+                <button
+                  class="ant-btn css-dev-only-do-not-override-1adbn6x ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    Prescriptions
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

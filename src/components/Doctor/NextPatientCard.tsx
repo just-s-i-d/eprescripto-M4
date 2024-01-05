@@ -12,7 +12,6 @@ import {
   ApiResponseData,
   AppointmentApiResponseDataType,
   AppointmentsApiResonseType,
-  GenericObjectType,
   PrescriptionDataType,
 } from "@constants/types";
 import {
@@ -97,6 +96,7 @@ const NextPatientCard = ({
                 src={appointment?.attributes.profilePic || profilePic}
                 preview={false}
                 width={100}
+                alt="profile-pic"
                 className="rounded-[50%]"
               />
             )}
@@ -131,7 +131,7 @@ const NextPatientCard = ({
                         Patient Id
                       </td>
                       <td className="px-2 py-1 text-lg">
-                        {appointment?.attributes.pId}
+                        {appointment?.attributes?.pId}
                       </td>
                     </tr>
                     <tr>
@@ -139,7 +139,7 @@ const NextPatientCard = ({
                         Time Slot
                       </td>
                       <td className="px-2 py-1 text-lg">
-                        {appointment?.attributes.timeSlot}
+                        {appointment?.attributes?.timeSlot}
                       </td>
                     </tr>
                     <tr>
@@ -149,7 +149,7 @@ const NextPatientCard = ({
                       <td className="px-2 py-1 text-lg">
                         {appointment &&
                           formatDateReadable(
-                            appointment.attributes.lastVisited,
+                            appointment?.attributes?.lastVisited,
                           )}
                       </td>
                     </tr>
@@ -158,7 +158,7 @@ const NextPatientCard = ({
                         Phone
                       </td>
                       <td className="px-2 py-1 text-lg">
-                        {appointment?.attributes.contact}
+                        {appointment?.attributes?.contact}
                       </td>
                     </tr>
                     <tr>
@@ -166,7 +166,7 @@ const NextPatientCard = ({
                         Gender
                       </td>
                       <td className="px-2 py-1 text-lg">
-                        {appointment?.attributes.gender}
+                        {appointment?.attributes?.gender}
                       </td>
                     </tr>
                   </tbody>
