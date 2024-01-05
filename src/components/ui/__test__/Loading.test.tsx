@@ -3,12 +3,9 @@ import "@testing-library/jest-dom";
 import Loading from "../Loading";
 
 describe("Loading test", () => {
-  it("Snapshot test", () => {
+  it("Test to check if loading renders or not", () => {
     const { asFragment } = render(<Loading />);
-    expect(asFragment()).toMatchSnapshot();
-  });
-  it("Title test", () => {
-    render(<Loading />);
     expect(screen.getByAltText("loader")).toBeInTheDocument();
+    expect(asFragment()).toMatchSnapshot();
   });
 });
