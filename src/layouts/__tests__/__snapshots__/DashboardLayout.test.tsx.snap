@@ -1,18 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DashboardLayout Snapshot test 1`] = `
+exports[`DashboardLayout Test to check if NavBar and Sidebar is rendered 1`] = `
 <DocumentFragment>
   <div
-    class="ant-layout min-h-screen h-screen relative overflow-hidden css-dev-only-do-not-override-gzal6t"
+    class="ant-layout min-h-screen h-screen relative overflow-hidden css-dev-only-do-not-override-1adbn6x"
   >
     <header
-      class="ant-layout-header px-6 sticky top-0 z-10 flex items-center justify-between h-[8vh] css-dev-only-do-not-override-gzal6t"
+      class="ant-layout-header px-6 sticky top-0 z-10 flex items-center justify-between h-[8vh] css-dev-only-do-not-override-1adbn6x"
     >
       <span
         class="text-3xl text-white"
       >
         <button
-          class="ant-btn css-dev-only-do-not-override-gzal6t ant-btn-text ant-btn-icon-only text-sm text-white w-8 h-8"
+          class="ant-btn css-dev-only-do-not-override-1adbn6x ant-btn-text ant-btn-icon-only text-sm text-white w-8 h-8"
           data-testid="side-menu-btn"
           type="button"
         >
@@ -47,16 +47,16 @@ exports[`DashboardLayout Snapshot test 1`] = `
         </a>
       </span>
       <div
-        class="ant-space css-dev-only-do-not-override-gzal6t ant-space-horizontal ant-space-align-center ant-space-gap-row-small ant-space-gap-col-small"
+        class="ant-space css-dev-only-do-not-override-1adbn6x ant-space-horizontal ant-space-align-center ant-space-gap-row-small ant-space-gap-col-small"
       >
         <div
           class="ant-space-item"
         >
           <span
-            class="ant-badge css-dev-only-do-not-override-gzal6t"
+            class="ant-badge css-dev-only-do-not-override-1adbn6x"
           >
             <span
-              class="ant-avatar ant-avatar-circle ant-avatar-icon css-dev-only-do-not-override-gzal6t"
+              class="ant-avatar ant-avatar-circle ant-avatar-icon css-dev-only-do-not-override-1adbn6x"
               style="width: 42px; height: 42px; line-height: 42px; font-size: 21px;"
             >
               <span
@@ -84,7 +84,7 @@ exports[`DashboardLayout Snapshot test 1`] = `
       </div>
     </header>
     <div
-      class="ant-layout ant-layout-has-sider flex flex-row css-dev-only-do-not-override-gzal6t"
+      class="ant-layout ant-layout-has-sider flex flex-row css-dev-only-do-not-override-1adbn6x"
     >
       <aside
         class="ant-layout-sider ant-layout-sider-dark h-[92vh] max-xl:top-[8vh] left-0 max-xl:sticky max-lg:fixed z-10"
@@ -94,7 +94,7 @@ exports[`DashboardLayout Snapshot test 1`] = `
           class="ant-layout-sider-children"
         >
           <ul
-            class="ant-menu ant-menu-root ant-menu-inline ant-menu-light h-full text-xl px-2 relative css-dev-only-do-not-override-gzal6t"
+            class="ant-menu ant-menu-root ant-menu-inline ant-menu-light h-full text-xl px-2 relative css-dev-only-do-not-override-1adbn6x"
             data-menu-list="true"
             role="menu"
             tabindex="0"
@@ -289,7 +289,7 @@ exports[`DashboardLayout Snapshot test 1`] = `
             </li>
             <button
               aria-checked="false"
-              class="ant-switch absolute bottom-6 css-dev-only-do-not-override-gzal6t"
+              class="ant-switch absolute bottom-6 css-dev-only-do-not-override-1adbn6x"
               eventkey="tmp_key-5"
               role="switch"
               style="background-color: rgb(230, 244, 255);"
@@ -320,7 +320,7 @@ exports[`DashboardLayout Snapshot test 1`] = `
           >
             <button
               aria-checked="false"
-              class="ant-switch absolute bottom-6 css-dev-only-do-not-override-gzal6t"
+              class="ant-switch absolute bottom-6 css-dev-only-do-not-override-1adbn6x"
               eventkey="tmp_key-5"
               role="switch"
               style="background-color: rgb(230, 244, 255);"
@@ -348,16 +348,16 @@ exports[`DashboardLayout Snapshot test 1`] = `
         </div>
       </aside>
       <div
-        class="ant-layout pb-6 px-6 max-sm:px-3 overflow-y-scroll overflow-x-hidden css-dev-only-do-not-override-gzal6t"
+        class="ant-layout pb-6 px-6 max-sm:px-3 overflow-y-scroll overflow-x-hidden css-dev-only-do-not-override-1adbn6x"
       >
         <div
-          class="ant-space css-dev-only-do-not-override-gzal6t ant-space-horizontal ant-space-align-center ant-space-gap-row-small ant-space-gap-col-small flex justify-between"
+          class="ant-space css-dev-only-do-not-override-1adbn6x ant-space-horizontal ant-space-align-center ant-space-gap-row-small ant-space-gap-col-small flex justify-between"
         >
           <div
             class="ant-space-item"
           >
             <nav
-              class="ant-breadcrumb text-2xl my-4 css-dev-only-do-not-override-gzal6t"
+              class="ant-breadcrumb text-2xl my-4 css-dev-only-do-not-override-1adbn6x"
             >
               <ol>
                 <li>

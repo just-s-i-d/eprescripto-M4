@@ -6,23 +6,14 @@ import { MemoryRouter } from "react-router-dom";
 
 describe("NavBar component tests", () => {
   const mockedFunction = jest.fn();
-  it("Snapshot test", () => {
+  it("Test to check if the Navbar renders correctly", () => {
     const { asFragment } = render(
       <MemoryRouter>
         <NavBar collapsed={false} setCollapsed={mockedFunction} />
       </MemoryRouter>,
     );
+    expect(screen.getByText("ePrescripto")).toBeInTheDocument();
     expect(asFragment()).toMatchSnapshot();
-  });
-
-  it("NavBar render test", () => {
-    render(
-      <MemoryRouter>
-        <NavBar collapsed={false} setCollapsed={mockedFunction} />
-      </MemoryRouter>,
-    );
-    const brandName = screen.getByText("ePrescripto");
-    expect(brandName).toBeInTheDocument();
   });
 
   it("NavBar side menu button test", () => {

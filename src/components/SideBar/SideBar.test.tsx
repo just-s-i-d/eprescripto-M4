@@ -7,7 +7,7 @@ import { act } from "react-dom/test-utils";
 describe("SideBar Component", () => {
   const setIsDarkThemeMock = jest.fn();
   const setCollapsedMock = jest.fn();
-  it("Snapshot test", () => {
+  it("Test to check if the side bar renders correctly for doctor role", () => {
     const role = "doctor";
     const { asFragment } = render(
       <MemoryRouter>
@@ -20,26 +20,13 @@ describe("SideBar Component", () => {
         />
       </MemoryRouter>,
     );
+    expect(screen.getByText("Write Prescription")).toBeInTheDocument();
+    expect(screen.getByText("Reviews")).toBeInTheDocument();
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it("renders SideBar with doctor role", () => {
-    render(
-      <MemoryRouter>
-        <SideBar
-          textColor="white"
-          role="doctor"
-          setIsDarkTheme={setIsDarkThemeMock}
-          collapsed={false}
-          setCollapsed={setCollapsedMock}
-        />
-      </MemoryRouter>,
-    );
-    expect(screen.getByText("Write Prescription")).toBeInTheDocument();
-    expect(screen.getByText("Reviews")).toBeInTheDocument();
-  });
-  it("renders SideBar with patient role", () => {
-    render(
+  it("Test to check if the side bar renders correctly for patient role", () => {
+    const { asFragment } = render(
       <MemoryRouter>
         <SideBar
           textColor="white"
@@ -52,8 +39,10 @@ describe("SideBar Component", () => {
     );
     expect(screen.getByText("Prescriptions")).toBeInTheDocument();
     expect(screen.getByText("Doctors")).toBeInTheDocument();
+    expect(asFragment()).toMatchSnapshot();
   });
-  it("Dark theme switch test", () => {
+
+  it("Test to check of the theme swtich button works correctly", () => {
     render(
       <MemoryRouter>
         <SideBar
