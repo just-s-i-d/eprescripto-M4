@@ -1,0 +1,120 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Address form test Render the Address fields correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="ant-form-item css-dev-only-do-not-override-1adbn6x"
+  >
+    <div
+      class="ant-row ant-form-item-row css-dev-only-do-not-override-1adbn6x"
+    >
+      <div
+        class="ant-col ant-form-item-label css-dev-only-do-not-override-1adbn6x"
+      >
+        <label
+          class="ant-form-item-required"
+          for="country"
+          title="Country"
+        >
+          Country
+        </label>
+      </div>
+      <div
+        class="ant-col ant-form-item-control css-dev-only-do-not-override-1adbn6x"
+      >
+        <div
+          class="ant-form-item-control-input"
+        >
+          <div
+            class="ant-form-item-control-input-content"
+          >
+            <input
+              aria-required="true"
+              class="ant-input css-dev-only-do-not-override-1adbn6x"
+              id="country"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="ant-form-item css-dev-only-do-not-override-1adbn6x"
+  >
+    <div
+      class="ant-row ant-form-item-row css-dev-only-do-not-override-1adbn6x"
+    >
+      <div
+        class="ant-col ant-form-item-label css-dev-only-do-not-override-1adbn6x"
+      >
+        <label
+          class="ant-form-item-required"
+          for="state"
+          title="State"
+        >
+          State
+        </label>
+      </div>
+      <div
+        class="ant-col ant-form-item-control css-dev-only-do-not-override-1adbn6x"
+      >
+        <div
+          class="ant-form-item-control-input"
+        >
+          <div
+            class="ant-form-item-control-input-content"
+          >
+            <input
+              aria-required="true"
+              class="ant-input css-dev-only-do-not-override-1adbn6x"
+              id="state"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="ant-form-item css-dev-only-do-not-override-1adbn6x"
+  >
+    <div
+      class="ant-row ant-form-item-row css-dev-only-do-not-override-1adbn6x"
+    >
+      <div
+        class="ant-col ant-form-item-label css-dev-only-do-not-override-1adbn6x"
+      >
+        <label
+          class="ant-form-item-required"
+          for="city"
+          title="City"
+        >
+          City
+        </label>
+      </div>
+      <div
+        class="ant-col ant-form-item-control css-dev-only-do-not-override-1adbn6x"
+      >
+        <div
+          class="ant-form-item-control-input"
+        >
+          <div
+            class="ant-form-item-control-input-content"
+          >
+            <input
+              aria-required="true"
+              class="ant-input css-dev-only-do-not-override-1adbn6x"
+              id="city"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
