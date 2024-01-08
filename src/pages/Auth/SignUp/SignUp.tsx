@@ -2,12 +2,13 @@ import Description from "@components/ui/Description";
 import { SIGNUP_FORM_STEPS, STEPPER_STEPS } from "@constants/constants";
 import { UserDetailsType } from "@constants/types";
 import { Button, Form, Space, Steps } from "antd";
-import { useForm, useWatch } from "antd/es/form/Form";
 import { SetStateAction, useEffect, useState } from "react";
 import CardSider from "../CardSider";
 import { checkUserAlreadyExists, registerUser } from "@utils/Doctor";
 import { showToast } from "@utils/common";
 import useDirectionHook from "@hooks/useDirectionHook";
+
+const { useForm, useWatch } = Form;
 
 type SignUpPropsType = {
   setShowSignIn: React.Dispatch<SetStateAction<boolean>>;
@@ -88,6 +89,7 @@ const SignUp = ({ setShowSignIn }: SignUpPropsType) => {
           size="large"
           layout="vertical"
           onFinish={onFinish}
+          data-testid="sign-up-form"
           initialValues={userDetails}
         >
           {SIGNUP_FORM_STEPS[current].content}
@@ -115,6 +117,7 @@ const SignUp = ({ setShowSignIn }: SignUpPropsType) => {
                 className="text-white w-[90px] bg-primary disabled:opacity-50"
                 onClick={onSubmitHandler}
                 disabled={disabled}
+                data-testid="submit-btn"
               >
                 Submit
               </Button>
