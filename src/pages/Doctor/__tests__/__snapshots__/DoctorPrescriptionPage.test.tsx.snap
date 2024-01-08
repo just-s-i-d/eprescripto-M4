@@ -1,0 +1,730 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Doctor Prescriptions Page tests Renders the prescription form 1`] = `
+<DocumentFragment>
+  <div
+    class="ant-card ant-card-bordered css-dev-only-do-not-override-1adbn6x"
+  >
+    <div
+      class="ant-card-body"
+    >
+      <h1
+        class="text-xl font-bold mb-6 flex justify-between"
+      >
+        Prescription Form 
+        <button
+          class="ant-btn css-dev-only-do-not-override-1adbn6x ant-btn-default text-white bg-secondary"
+          data-testid="add-patient-btn"
+          type="button"
+        >
+          <span>
+            New Patient
+          </span>
+        </button>
+      </h1>
+      <form
+        class="ant-form ant-form-vertical css-dev-only-do-not-override-1adbn6x custom-form custom-form-profile"
+        data-testid="prescription-form"
+      >
+        <div
+          class="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-3"
+        >
+          <div
+            class="ant-form-item w-full css-dev-only-do-not-override-1adbn6x"
+          >
+            <div
+              class="ant-row ant-form-item-row css-dev-only-do-not-override-1adbn6x"
+            >
+              <div
+                class="ant-col ant-form-item-label css-dev-only-do-not-override-1adbn6x"
+              >
+                <label
+                  class="ant-form-item-required"
+                  for="pId"
+                  title="Patient"
+                >
+                  Patient
+                </label>
+              </div>
+              <div
+                class="ant-col ant-form-item-control css-dev-only-do-not-override-1adbn6x"
+              >
+                <div
+                  class="ant-form-item-control-input"
+                >
+                  <div
+                    class="ant-form-item-control-input-content"
+                  >
+                    <div
+                      aria-required="true"
+                      class="ant-select ant-select-in-form-item css-dev-only-do-not-override-1adbn6x ant-select-single ant-select-show-arrow"
+                      data-testid="patient-select"
+                    >
+                      <div
+                        class="ant-select-selector"
+                      >
+                        <span
+                          class="ant-select-selection-search"
+                        >
+                          <input
+                            aria-autocomplete="list"
+                            aria-controls="pId_list"
+                            aria-expanded="false"
+                            aria-haspopup="listbox"
+                            aria-owns="pId_list"
+                            aria-required="true"
+                            autocomplete="off"
+                            class="ant-select-selection-search-input"
+                            id="pId"
+                            readonly=""
+                            role="combobox"
+                            style="opacity: 0;"
+                            type="search"
+                            unselectable="on"
+                            value=""
+                          />
+                        </span>
+                        <span
+                          class="ant-select-selection-placeholder"
+                        >
+                          Select a Patient
+                        </span>
+                      </div>
+                      <span
+                        aria-hidden="true"
+                        class="ant-select-arrow"
+                        style="user-select: none;"
+                        unselectable="on"
+                      >
+                        <span
+                          aria-label="down"
+                          class="anticon anticon-down ant-select-suffix"
+                          role="img"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            data-icon="down"
+                            fill="currentColor"
+                            focusable="false"
+                            height="1em"
+                            viewBox="64 64 896 896"
+                            width="1em"
+                          >
+                            <path
+                              d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                            />
+                          </svg>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-form-item w-full  css-dev-only-do-not-override-1adbn6x"
+          >
+            <div
+              class="ant-row ant-form-item-row css-dev-only-do-not-override-1adbn6x"
+            >
+              <div
+                class="ant-col ant-form-item-label css-dev-only-do-not-override-1adbn6x"
+              >
+                <label
+                  class="ant-form-item-required"
+                  for="pName"
+                  title="Patient Name"
+                >
+                  Patient Name
+                </label>
+              </div>
+              <div
+                class="ant-col ant-form-item-control css-dev-only-do-not-override-1adbn6x"
+              >
+                <div
+                  class="ant-form-item-control-input"
+                >
+                  <div
+                    class="ant-form-item-control-input-content"
+                  >
+                    <input
+                      aria-required="true"
+                      class="ant-input ant-input-disabled css-dev-only-do-not-override-1adbn6x"
+                      disabled=""
+                      id="pName"
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-form-item w-full css-dev-only-do-not-override-1adbn6x"
+          >
+            <div
+              class="ant-row ant-form-item-row css-dev-only-do-not-override-1adbn6x"
+            >
+              <div
+                class="ant-col ant-form-item-label css-dev-only-do-not-override-1adbn6x"
+              >
+                <label
+                  class="ant-form-item-required"
+                  for="dob"
+                  title="Date of Birth"
+                >
+                  Date of Birth
+                </label>
+              </div>
+              <div
+                class="ant-col ant-form-item-control css-dev-only-do-not-override-1adbn6x"
+              >
+                <div
+                  class="ant-form-item-control-input"
+                >
+                  <div
+                    class="ant-form-item-control-input-content"
+                  >
+                    <input
+                      aria-required="true"
+                      class="ant-input ant-input-disabled css-dev-only-do-not-override-1adbn6x"
+                      disabled=""
+                      id="dob"
+                      type="date"
+                      value=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-form-item xs:w-full css-dev-only-do-not-override-1adbn6x"
+          >
+            <div
+              class="ant-row ant-form-item-row css-dev-only-do-not-override-1adbn6x"
+            >
+              <div
+                class="ant-col ant-form-item-label css-dev-only-do-not-override-1adbn6x"
+              >
+                <label
+                  class="ant-form-item-required"
+                  for="gender"
+                  title="Gender"
+                >
+                  Gender
+                </label>
+              </div>
+              <div
+                class="ant-col ant-form-item-control css-dev-only-do-not-override-1adbn6x"
+              >
+                <div
+                  class="ant-form-item-control-input"
+                >
+                  <div
+                    class="ant-form-item-control-input-content"
+                  >
+                    <div
+                      aria-required="true"
+                      class="ant-select ant-select-in-form-item css-dev-only-do-not-override-1adbn6x ant-select-single ant-select-show-arrow ant-select-disabled"
+                    >
+                      <div
+                        class="ant-select-selector"
+                      >
+                        <span
+                          class="ant-select-selection-search"
+                        >
+                          <input
+                            aria-autocomplete="list"
+                            aria-controls="gender_list"
+                            aria-expanded="false"
+                            aria-haspopup="listbox"
+                            aria-owns="gender_list"
+                            aria-required="true"
+                            autocomplete="off"
+                            class="ant-select-selection-search-input"
+                            disabled=""
+                            id="gender"
+                            readonly=""
+                            role="combobox"
+                            style="opacity: 0;"
+                            type="search"
+                            unselectable="on"
+                            value=""
+                          />
+                        </span>
+                        <span
+                          class="ant-select-selection-placeholder"
+                        >
+                          Select a gender
+                        </span>
+                      </div>
+                      <span
+                        aria-hidden="true"
+                        class="ant-select-arrow"
+                        style="user-select: none;"
+                        unselectable="on"
+                      >
+                        <span
+                          aria-label="down"
+                          class="anticon anticon-down ant-select-suffix"
+                          role="img"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            data-icon="down"
+                            fill="currentColor"
+                            focusable="false"
+                            height="1em"
+                            viewBox="64 64 896 896"
+                            width="1em"
+                          >
+                            <path
+                              d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                            />
+                          </svg>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-form-item xs:w-full css-dev-only-do-not-override-1adbn6x"
+          >
+            <div
+              class="ant-row ant-form-item-row css-dev-only-do-not-override-1adbn6x"
+            >
+              <div
+                class="ant-col ant-form-item-label css-dev-only-do-not-override-1adbn6x"
+              >
+                <label
+                  class="ant-form-item-required"
+                  for="prescriptionName"
+                  title="Prescription Name"
+                >
+                  Prescription Name
+                </label>
+              </div>
+              <div
+                class="ant-col ant-form-item-control css-dev-only-do-not-override-1adbn6x"
+              >
+                <div
+                  class="ant-form-item-control-input"
+                >
+                  <div
+                    class="ant-form-item-control-input-content"
+                  >
+                    <input
+                      aria-required="true"
+                      class="ant-input css-dev-only-do-not-override-1adbn6x"
+                      id="prescriptionName"
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-form-item xs:w-full css-dev-only-do-not-override-1adbn6x"
+          >
+            <div
+              class="ant-row ant-form-item-row css-dev-only-do-not-override-1adbn6x"
+            >
+              <div
+                class="ant-col ant-form-item-label css-dev-only-do-not-override-1adbn6x"
+              >
+                <label
+                  class=""
+                  for="nextVisit"
+                  title="Next Visit"
+                >
+                  Next Visit
+                </label>
+              </div>
+              <div
+                class="ant-col ant-form-item-control css-dev-only-do-not-override-1adbn6x"
+              >
+                <div
+                  class="ant-form-item-control-input"
+                >
+                  <div
+                    class="ant-form-item-control-input-content"
+                  >
+                    <input
+                      class="ant-input css-dev-only-do-not-override-1adbn6x"
+                      id="nextVisit"
+                      placeholder="In Days"
+                      type="number"
+                      value=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-form-item w-full css-dev-only-do-not-override-1adbn6x"
+          >
+            <div
+              class="ant-row ant-form-item-row css-dev-only-do-not-override-1adbn6x"
+            >
+              <div
+                class="ant-col ant-form-item-label css-dev-only-do-not-override-1adbn6x"
+              >
+                <label
+                  class=""
+                  for="notes"
+                  title="Important Notes"
+                >
+                  Important Notes
+                </label>
+              </div>
+              <div
+                class="ant-col ant-form-item-control css-dev-only-do-not-override-1adbn6x"
+              >
+                <div
+                  class="ant-form-item-control-input"
+                >
+                  <div
+                    class="ant-form-item-control-input-content"
+                  >
+                    <textarea
+                      class="ant-input css-dev-only-do-not-override-1adbn6x"
+                      id="notes"
+                      rows="1"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="w-full mt-4"
+        >
+          <div
+            class="mt-4 mb-2 flex justify-between"
+          >
+            <h2
+              class="text-xl"
+            >
+              Medication
+            </h2>
+          </div>
+          <div
+            class="w-full grid sm:grid-cols-2 md:grid-cols-4 gap-x-5 gap-y-3"
+          >
+            <div
+              class="ant-form-item w-full css-dev-only-do-not-override-1adbn6x"
+            >
+              <div
+                class="ant-row ant-form-item-row css-dev-only-do-not-override-1adbn6x"
+              >
+                <div
+                  class="ant-col ant-form-item-label css-dev-only-do-not-override-1adbn6x"
+                >
+                  <label
+                    class="ant-form-item-required"
+                    for="medicine1"
+                    title="Medicine Name"
+                  >
+                    Medicine Name
+                  </label>
+                </div>
+                <div
+                  class="ant-col ant-form-item-control css-dev-only-do-not-override-1adbn6x"
+                >
+                  <div
+                    class="ant-form-item-control-input"
+                  >
+                    <div
+                      class="ant-form-item-control-input-content"
+                    >
+                      <input
+                        aria-required="true"
+                        class="ant-input css-dev-only-do-not-override-1adbn6x"
+                        id="medicine1"
+                        type="text"
+                        value=""
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="ant-form-item w-full css-dev-only-do-not-override-1adbn6x"
+            >
+              <div
+                class="ant-row ant-form-item-row css-dev-only-do-not-override-1adbn6x"
+              >
+                <div
+                  class="ant-col ant-form-item-label css-dev-only-do-not-override-1adbn6x"
+                >
+                  <label
+                    class="ant-form-item-required"
+                    for="dosage1"
+                    title="Dosage"
+                  >
+                    Dosage
+                  </label>
+                </div>
+                <div
+                  class="ant-col ant-form-item-control css-dev-only-do-not-override-1adbn6x"
+                >
+                  <div
+                    class="ant-form-item-control-input"
+                  >
+                    <div
+                      class="ant-form-item-control-input-content"
+                    >
+                      <input
+                        aria-required="true"
+                        class="ant-input css-dev-only-do-not-override-1adbn6x"
+                        id="dosage1"
+                        type="text"
+                        value=""
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="ant-form-item w-full css-dev-only-do-not-override-1adbn6x"
+            >
+              <div
+                class="ant-row ant-form-item-row css-dev-only-do-not-override-1adbn6x"
+              >
+                <div
+                  class="ant-col ant-form-item-label css-dev-only-do-not-override-1adbn6x"
+                >
+                  <label
+                    class="ant-form-item-required"
+                    for="timesPerDay1"
+                    title="Frequency"
+                  >
+                    Frequency
+                  </label>
+                </div>
+                <div
+                  class="ant-col ant-form-item-control css-dev-only-do-not-override-1adbn6x"
+                >
+                  <div
+                    class="ant-form-item-control-input"
+                  >
+                    <div
+                      class="ant-form-item-control-input-content"
+                    >
+                      <div
+                        aria-required="true"
+                        class="ant-select ant-select-in-form-item css-dev-only-do-not-override-1adbn6x ant-select-single ant-select-show-arrow"
+                      >
+                        <div
+                          class="ant-select-selector"
+                        >
+                          <span
+                            class="ant-select-selection-search"
+                          >
+                            <input
+                              aria-autocomplete="list"
+                              aria-controls="timesPerDay1_list"
+                              aria-expanded="false"
+                              aria-haspopup="listbox"
+                              aria-owns="timesPerDay1_list"
+                              aria-required="true"
+                              autocomplete="off"
+                              class="ant-select-selection-search-input"
+                              id="timesPerDay1"
+                              readonly=""
+                              role="combobox"
+                              style="opacity: 0;"
+                              type="search"
+                              unselectable="on"
+                              value=""
+                            />
+                          </span>
+                          <span
+                            class="ant-select-selection-placeholder"
+                          />
+                        </div>
+                        <span
+                          aria-hidden="true"
+                          class="ant-select-arrow"
+                          style="user-select: none;"
+                          unselectable="on"
+                        >
+                          <span
+                            aria-label="down"
+                            class="anticon anticon-down ant-select-suffix"
+                            role="img"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              data-icon="down"
+                              fill="currentColor"
+                              focusable="false"
+                              height="1em"
+                              viewBox="64 64 896 896"
+                              width="1em"
+                            >
+                              <path
+                                d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                              />
+                            </svg>
+                          </span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="flex gap-6"
+            >
+              <div
+                class="ant-form-item w-full css-dev-only-do-not-override-1adbn6x"
+              >
+                <div
+                  class="ant-row ant-form-item-row css-dev-only-do-not-override-1adbn6x"
+                >
+                  <div
+                    class="ant-col ant-form-item-label css-dev-only-do-not-override-1adbn6x"
+                  >
+                    <label
+                      class="ant-form-item-required"
+                      for="instruction1"
+                      title="Instruction"
+                    >
+                      Instruction
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control css-dev-only-do-not-override-1adbn6x"
+                  >
+                    <div
+                      class="ant-form-item-control-input"
+                    >
+                      <div
+                        class="ant-form-item-control-input-content"
+                      >
+                        <div
+                          aria-required="true"
+                          class="ant-select ant-select-in-form-item css-dev-only-do-not-override-1adbn6x ant-select-single ant-select-show-arrow"
+                        >
+                          <div
+                            class="ant-select-selector"
+                          >
+                            <span
+                              class="ant-select-selection-search"
+                            >
+                              <input
+                                aria-autocomplete="list"
+                                aria-controls="instruction1_list"
+                                aria-expanded="false"
+                                aria-haspopup="listbox"
+                                aria-owns="instruction1_list"
+                                aria-required="true"
+                                autocomplete="off"
+                                class="ant-select-selection-search-input"
+                                id="instruction1"
+                                readonly=""
+                                role="combobox"
+                                style="opacity: 0;"
+                                type="search"
+                                unselectable="on"
+                                value=""
+                              />
+                            </span>
+                            <span
+                              class="ant-select-selection-placeholder"
+                            />
+                          </div>
+                          <span
+                            aria-hidden="true"
+                            class="ant-select-arrow"
+                            style="user-select: none;"
+                            unselectable="on"
+                          >
+                            <span
+                              aria-label="down"
+                              class="anticon anticon-down ant-select-suffix"
+                              role="img"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                data-icon="down"
+                                fill="currentColor"
+                                focusable="false"
+                                height="1em"
+                                viewBox="64 64 896 896"
+                                width="1em"
+                              >
+                                <path
+                                  d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                                />
+                              </svg>
+                            </span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex justify-between mt-2 mb-8"
+          >
+            <button
+              class="ant-btn css-dev-only-do-not-override-1adbn6x ant-btn-default"
+              type="button"
+            >
+              <span>
+                Add medication
+              </span>
+            </button>
+            <button
+              class="ant-btn css-dev-only-do-not-override-1adbn6x ant-btn-default"
+              type="button"
+            >
+              <span>
+                Show Patient Allergies
+              </span>
+            </button>
+          </div>
+        </div>
+        <div
+          class="flex gap-4"
+        >
+          <button
+            class="ant-btn css-dev-only-do-not-override-1adbn6x ant-btn-default text-white bg-secondary disabled:opacity-50"
+            type="button"
+          >
+            <span>
+              Create Prescription
+            </span>
+          </button>
+          <button
+            class="ant-btn css-dev-only-do-not-override-1adbn6x ant-btn-default"
+            type="button"
+          >
+            <span>
+              Cancel
+            </span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</DocumentFragment>
+`;
