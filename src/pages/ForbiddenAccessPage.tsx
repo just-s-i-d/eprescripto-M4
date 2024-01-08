@@ -11,6 +11,7 @@ const ForbiddenAccessPage: React.FC = () => (
           href="/dashboard"
           type="default"
           className="text-white bg-secondary"
+          data-testid="home-btn"
         >
           Home
         </Button>
