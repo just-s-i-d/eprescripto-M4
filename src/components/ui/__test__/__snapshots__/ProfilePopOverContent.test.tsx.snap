@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Profile Pop Over Log out Button Snapshot test 1`] = `
+<DocumentFragment>
+  <div>
+    <button
+      class="border-none"
+    >
+      Logout
+    </button>
+  </div>
+</DocumentFragment>
+`;

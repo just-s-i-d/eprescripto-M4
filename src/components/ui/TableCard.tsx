@@ -56,6 +56,7 @@ const TableCard = ({
         refreshComponent={() => setRefresh((prev) => !prev)}
       >
         <Table
+          data-testid="custom-table"
           className={`custom-table ${className || ""}`}
           columns={columns}
           dataSource={filteredData}
