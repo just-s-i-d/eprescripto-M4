@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-import { useForm, useWatch } from "antd/es/form/Form";
 import { Button, Card, Form, Input, Select, Space } from "antd";
 
 import CardTitle from "@components/ui/CardTitle";
@@ -8,6 +7,7 @@ import { updateUserData } from "@utils/Doctor";
 import ErrorBoundary from "@components/ErrorBoundary";
 import { UserDataPropsType } from "./PersonalInfoCard";
 
+const { useForm, useWatch } = Form;
 const ProfessionalInfoCard = ({ userData }: UserDataPropsType) => {
   const [disabled, setDisabled] = useState(true);
   const [buttonLoading, setButtonLoading] = useState(false);
