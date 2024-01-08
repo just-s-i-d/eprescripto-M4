@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Sign in component tests Snapshot test 1`] = `
+exports[`Sign in component tests Test to check if it renders with sign up button correctly 1`] = `
 <DocumentFragment>
   <div
     class="ant-space css-dev-only-do-not-override-1adbn6x ant-space-vertical ant-space-gap-row-small ant-space-gap-col-small xs:w-full xs:mb-8 xs:h-[20%] md:mb-0 md:w-[45%] bg-primary rounded-[30px] px-6 md:h-full flex justify-center items-center"

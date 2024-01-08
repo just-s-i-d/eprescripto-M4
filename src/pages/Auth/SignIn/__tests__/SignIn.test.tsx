@@ -19,17 +19,15 @@ jest.mock("@utils/common", () => ({
 
 describe("Sign in component tests", () => {
   const setSignInMocked = jest.fn();
-  it("Snapshot test", () => {
+  it("Test to check if it renders with sign up button correctly", () => {
     const { asFragment } = render(<SignIn setShowSignIn={setSignInMocked} />);
-    expect(asFragment()).toMatchSnapshot();
-  });
-  it("Sign up btn test", async () => {
-    render(<SignIn setShowSignIn={setSignInMocked} />);
     const signUpBtn = screen.getByText("Sign Up");
     expect(signUpBtn).toBeInTheDocument();
     fireEvent.click(signUpBtn);
     expect(setSignInMocked).toHaveBeenCalled();
+    expect(asFragment()).toMatchSnapshot();
   });
+
   it("User successfull login test", async () => {
     render(<SignIn setShowSignIn={setSignInMocked} />);
     const signInForm = screen.getByTestId("sign-in-form");
