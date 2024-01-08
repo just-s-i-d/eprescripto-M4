@@ -5,7 +5,6 @@ import {
   AppointmentDataType,
   AppointmentType,
   ErrorType,
-  GenericObjectType,
   LineChartApiResDataType,
   LineChartDataType,
   PatientInfoType,
@@ -17,20 +16,22 @@ import axios from "axios";
 import { showToast } from "./common";
 import { MedicationType } from "../constants/types";
 
-//strapi endpoints for data
-export const BASE_URL = "http://localhost:1337";
-export const infoCardDataEndPoint = `${BASE_URL}/api/infocards`;
-export const appointmentsEndPoint = `${BASE_URL}/api/appointments`;
-export const doughnutChartDataEndPoint = `${BASE_URL}/api/doughnut-chart`;
-export const lineChartDataEndPoint = `${BASE_URL}/api/line-chart`;
-export const barChartDataEndPoint = `${BASE_URL}/api/bar-chart`;
-export const prescriptionsDataEndPoint = `${BASE_URL}/api/prescriptions`;
-export const reviewsDataEndPoint = `${BASE_URL}/api/reviews`;
-export const usersEndpoint = `${BASE_URL}/api/users`;
-export const userLoginEndpoint = `${BASE_URL}/api/auth/local`;
-export const jwtTokenEndpoint = `${BASE_URL}/api/auth/google/callback`;
-export const patientsEndpoint = "/api/patients";
-export const doctorPrescriptionEndpoint = "/api/doctor-prescriptions";
+//strapi endpoints
+// export const BASE_URL = import.meta.env.VITE_HOST;
+export const BASE_URL = "http://localhost:1337/";
+
+export const infoCardDataEndPoint = `${BASE_URL}api/infocards`;
+export const appointmentsEndPoint = `${BASE_URL}api/appointments`;
+export const doughnutChartDataEndPoint = `${BASE_URL}api/doughnut-chart`;
+export const lineChartDataEndPoint = `${BASE_URL}api/line-chart`;
+export const barChartDataEndPoint = `${BASE_URL}api/bar-chart`;
+export const prescriptionsDataEndPoint = `${BASE_URL}api/prescriptions`;
+export const reviewsDataEndPoint = `${BASE_URL}api/reviews`;
+export const usersEndpoint = `${BASE_URL}api/users`;
+export const userLoginEndpoint = `${BASE_URL}api/auth/local`;
+export const jwtTokenEndpoint = `${BASE_URL}api/auth/google/callback`;
+export const patientsEndpoint = "api/patients";
+export const doctorPrescriptionEndpoint = "api/doctor-prescriptions";
 //end of strapi endpoints
 export function formatDateReadable(dateString: string) {
   const options: Intl.DateTimeFormatOptions = {
@@ -116,7 +117,9 @@ export const cancelAppointment = async (
   });
 };
 
-export const registerUser = (user: GenericObjectType): Promise<ErrorType> => {
+export const registerUser = (
+  user: Record<string, string>,
+): Promise<ErrorType> => {
   return new Promise((resolve, reject) => {
     axios
       .post(usersEndpoint, { ...user, username: user.email, role: 3 })
@@ -144,7 +147,7 @@ export const checkUserAlreadyExists = (email: string) => {
       .get(`${usersEndpoint}?filters[email][$eq]=${email.toLowerCase()}`)
       .then((res) => {
         if (res.data.length) reject("Email already exists");
-        resolve("done");
+        resolve("Email doesn't exist");
       })
       .catch((error) => {
         reject({ message: error.response.message, type: "error" });
@@ -289,7 +292,7 @@ export const addNewPatient = (patientInfo: PatientInfoType) => {
 };
 
 export const createNewPrescription = (
-  prescription: GenericObjectType,
+  prescription: Record<string, string>,
 ): Promise<ErrorType> => {
   return new Promise((resolve, reject) => {
     axiosInstance

@@ -17,9 +17,6 @@ import {
 } from "@utils/Doctor";
 import { showToast } from "@utils/common";
 import { Button, Card, Form, Input, Select } from "antd";
-import { useForm, useWatch } from "antd/es/form/Form";
-import FormItem from "antd/es/form/FormItem";
-import TextArea from "antd/es/input/TextArea";
 import { useEffect, useState } from "react";
 import { MedicationType } from "../../constants/types";
 import {
@@ -27,7 +24,8 @@ import {
   medicationInputFieldGenerator,
 } from "../../utils/Doctor";
 import { SELECT_GENDER_OPTIONS } from "@constants/constants";
-
+const { useForm, useWatch } = Form;
+const { TextArea } = Input;
 const DoctorPrescriptionPage = () => {
   const [open, setOpen] = useState(false);
   const [showAllergies, setShowAllergies] = useState(false);
@@ -124,44 +122,45 @@ const DoctorPrescriptionPage = () => {
           <Button
             className="text-white bg-secondary"
             onClick={() => setOpen(true)}
+            data-testid="add-patient-btn"
           >
             New Patient
           </Button>
         </CardTitle>
         <Form
+          data-testid="prescription-form"
           form={prescriptionForm}
           layout="vertical"
           className="custom-form custom-form-profile"
           initialValues={selectedPatient}
         >
           <div className="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-3">
-            <FormItem name="pId" label="Patient" className="xs:w-full" required>
-              <div className="flex xs:flex-wrap sm:flex-nowrap gap-4">
-                <Select
-                  placeholder="Select a Patient"
-                  options={options}
-                  onChange={onChangeHanlder}
-                  value={selectedPatient?.id}
-                />
-              </div>
-            </FormItem>
-            <FormItem
+            <Form.Item name="pId" label="Patient" className="w-full" required>
+              <Select
+                data-testid="patient-select"
+                placeholder="Select a Patient"
+                options={options}
+                onChange={onChangeHanlder}
+                value={selectedPatient?.id}
+              />
+            </Form.Item>
+            <Form.Item
               className="w-full "
               name="pName"
               label="Patient Name"
               required
             >
               <Input disabled />
-            </FormItem>
-            <FormItem
+            </Form.Item>
+            <Form.Item
               className="w-full"
               name="dob"
               label="Date of Birth"
               required
             >
               <Input type="date" disabled />
-            </FormItem>
-            <FormItem
+            </Form.Item>
+            <Form.Item
               className="xs:w-full"
               name="gender"
               label="Gender"
@@ -178,8 +177,8 @@ const DoctorPrescriptionPage = () => {
                 placeholder="Select a gender"
                 options={SELECT_GENDER_OPTIONS}
               />
-            </FormItem>
-            <FormItem
+            </Form.Item>
+            <Form.Item
               name="prescriptionName"
               label="Prescription Name"
               className="xs:w-full"
@@ -204,18 +203,18 @@ const DoctorPrescriptionPage = () => {
               ]}
             >
               <Input />
-            </FormItem>
-            <FormItem
+            </Form.Item>
+            <Form.Item
               className="xs:w-full"
               name="nextVisit"
               label="Next Visit"
               rules={[{ pattern: /^[0-9]+$/, message: "Enter valid integer" }]}
             >
               <Input type="number" placeholder="In Days" />
-            </FormItem>
-            <FormItem name="notes" label="Important Notes" className="w-full">
+            </Form.Item>
+            <Form.Item name="notes" label="Important Notes" className="w-full">
               <TextArea rows={1} />
-            </FormItem>
+            </Form.Item>
           </div>
           <div className="w-full mt-4">
             {medicationInputFields.map((item, index) => (
@@ -228,7 +227,7 @@ const DoctorPrescriptionPage = () => {
             ))}
             <div className="flex justify-between mt-2 mb-8">
               <Button onClick={addMedicationInput}>Add medication</Button>
-              <Button className="" onClick={() => setShowAllergies(true)}>
+              <Button onClick={() => setShowAllergies(true)}>
                 Show Patient Allergies
               </Button>
             </div>

@@ -125,6 +125,7 @@ const DoctorAppointmentsPage = () => {
           </Tooltip>
           {record.status === "Pending" && (
             <CloseCircleTwoTone
+              data-testid="cancel-appointment-btn"
               className="cursor-pointer"
               onClick={() => handlerCancleAppointment(record)}
             />

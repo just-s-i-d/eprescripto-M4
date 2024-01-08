@@ -103,7 +103,7 @@ export type UserDataGenericType = {
   [key: string]: string | number;
 };
 export type CommonPropsTypeDarkMode = {
-  darkMode: boolean;
+  darkMode?: boolean;
 };
 
 export type PatientDataType = {
@@ -125,25 +125,25 @@ export type UserRoleType = {
 };
 export type ApiUserDataResponseType = {
   role?: UserRoleType;
-  blocked: boolean;
-  city: string;
-  confirmed: true;
-  country: string;
-  createdAt: string;
-  dob: string;
-  docName: string;
-  email: string;
-  experience: 10;
-  gender: string;
-  id: number;
-  licenseNo: number;
-  organizationName: string;
-  organizationType: string;
-  provider: string;
-  speciality: string;
-  state: string;
-  updatedAt: string;
-  username: string;
+  blocked?: boolean;
+  city?: string;
+  confirmed?: true;
+  country?: string;
+  createdAt?: string;
+  dob?: string;
+  docName?: string;
+  email?: string;
+  experience?: number;
+  gender?: string;
+  id?: number;
+  licenseNo?: number;
+  organizationName?: string;
+  organizationType?: string;
+  provider?: string;
+  speciality?: string;
+  state?: string;
+  updatedAt?: string;
+  username?: string;
   profilePic?: string;
 };
 

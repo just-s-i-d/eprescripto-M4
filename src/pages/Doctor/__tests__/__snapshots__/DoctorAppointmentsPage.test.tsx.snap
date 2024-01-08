@@ -1,0 +1,461 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Doctor Appointments Page tests renders the component and displays appointments 1`] = `
+<DocumentFragment>
+  <div
+    class="ant-card ant-card-bordered appointment-table-card h-min w-full overflow-scroll css-dev-only-do-not-override-1adbn6x"
+  >
+    <div
+      class="ant-card-body"
+    >
+      <div
+        class="marginTop-12 minHeight-74"
+      >
+        <div
+          class="margin-bottom-12"
+        >
+          <span
+            class="ant-input-affix-wrapper custom-search css-dev-only-do-not-override-1adbn6x"
+          >
+            <span
+              class="ant-input-prefix"
+            >
+              <span
+                aria-label="search"
+                class="anticon anticon-search"
+                role="img"
+              >
+                <svg
+                  aria-hidden="true"
+                  data-icon="search"
+                  fill="currentColor"
+                  focusable="false"
+                  height="1em"
+                  viewBox="64 64 896 896"
+                  width="1em"
+                >
+                  <path
+                    d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0011.6 0l43.6-43.5a8.2 8.2 0 000-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z"
+                  />
+                </svg>
+              </span>
+            </span>
+            <input
+              class="ant-input css-dev-only-do-not-override-1adbn6x"
+              placeholder="Search"
+              type="text"
+              value=""
+            />
+          </span>
+        </div>
+        <div
+          class="ant-table-wrapper custom-table min-w-[1200px] css-dev-only-do-not-override-1adbn6x"
+        >
+          <div
+            class="ant-spin-nested-loading css-dev-only-do-not-override-1adbn6x"
+          >
+            <div
+              class="ant-spin-container"
+            >
+              <div
+                class="ant-table"
+                data-testid="custom-table"
+              >
+                <div
+                  class="ant-table-container"
+                >
+                  <div
+                    class="ant-table-content"
+                  >
+                    <table
+                      style="table-layout: auto;"
+                    >
+                      <colgroup>
+                        <col
+                          style="width: 50px;"
+                        />
+                        <col
+                          style="width: 150px;"
+                        />
+                        <col
+                          style="width: 200px;"
+                        />
+                        <col
+                          style="width: 150px;"
+                        />
+                        <col
+                          style="width: 100px;"
+                        />
+                        <col
+                          style="width: 50px;"
+                        />
+                        <col
+                          style="width: 100px;"
+                        />
+                      </colgroup>
+                      <thead
+                        class="ant-table-thead"
+                      >
+                        <tr>
+                          <th
+                            class="ant-table-cell"
+                            scope="col"
+                          >
+                            Patient Id
+                          </th>
+                          <th
+                            class="ant-table-cell"
+                            scope="col"
+                          >
+                            Patient Name
+                          </th>
+                          <th
+                            class="ant-table-cell"
+                            scope="col"
+                          >
+                            Email
+                          </th>
+                          <th
+                            class="ant-table-cell"
+                            scope="col"
+                          >
+                            Date
+                          </th>
+                          <th
+                            class="ant-table-cell"
+                            scope="col"
+                          >
+                            Referrer
+                          </th>
+                          <th
+                            class="ant-table-cell"
+                            scope="col"
+                          >
+                            <div
+                              class="ant-table-filter-column"
+                            >
+                              <span
+                                class="ant-table-column-title"
+                              >
+                                Status
+                              </span>
+                              <span
+                                class="ant-dropdown-trigger ant-table-filter-trigger"
+                                role="button"
+                                tabindex="-1"
+                              >
+                                <span
+                                  aria-label="filter"
+                                  class="anticon anticon-filter"
+                                  role="img"
+                                >
+                                  <svg
+                                    aria-hidden="true"
+                                    data-icon="filter"
+                                    fill="currentColor"
+                                    focusable="false"
+                                    height="1em"
+                                    viewBox="64 64 896 896"
+                                    width="1em"
+                                  >
+                                    <path
+                                      d="M349 838c0 17.7 14.2 32 31.8 32h262.4c17.6 0 31.8-14.3 31.8-32V642H349v196zm531.1-684H143.9c-24.5 0-39.8 26.7-27.5 48l221.3 376h348.8l221.3-376c12.1-21.3-3.2-48-27.7-48z"
+                                    />
+                                  </svg>
+                                </span>
+                              </span>
+                            </div>
+                          </th>
+                          <th
+                            class="ant-table-cell"
+                            scope="col"
+                          >
+                            Action
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody
+                        class="ant-table-tbody"
+                      >
+                        <tr
+                          class="ant-table-row ant-table-row-level-0"
+                        >
+                          <td
+                            class="ant-table-cell"
+                          >
+                            1
+                          </td>
+                          <td
+                            class="ant-table-cell"
+                          >
+                            John Doe
+                          </td>
+                          <td
+                            class="ant-table-cell"
+                          >
+                            john.doe@example.com
+                          </td>
+                          <td
+                            class="ant-table-cell"
+                          >
+                            <div
+                              class="flex flex-col"
+                            >
+                              <span>
+                                28 December 2023
+                              </span>
+                              <span>
+                                10:00 AM - 11:00 AM
+                              </span>
+                            </div>
+                          </td>
+                          <td
+                            class="ant-table-cell"
+                          >
+                            Dr. Smith
+                          </td>
+                          <td
+                            class="ant-table-cell"
+                          >
+                            <span
+                              class="py-1 px-2 rounded-lg pending"
+                            >
+                              Pending
+                            </span>
+                          </td>
+                          <td
+                            class="ant-table-cell"
+                          >
+                            <div
+                              class="flex gap-4 text-lg"
+                            >
+                              <span
+                                aria-label="phone"
+                                class="anticon anticon-phone rotate-90 cursor-pointer fill-[#19504c]"
+                                href="tel:123-456-7890"
+                                role="img"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="phone"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M721.7 184.9L610.9 295.8l120.8 120.7-8 21.6A481.29 481.29 0 01438 723.9l-21.6 8-.9-.9-119.8-120-110.8 110.9 104.5 104.5c10.8 10.7 26 15.7 40.8 13.2 117.9-19.5 235.4-82.9 330.9-178.4s158.9-213.1 178.4-331c2.5-14.8-2.5-30-13.3-40.8L721.7 184.9z"
+                                    fill="#e6f4ff"
+                                  />
+                                  <path
+                                    d="M877.1 238.7L770.6 132.3c-13-13-30.4-20.3-48.8-20.3s-35.8 7.2-48.8 20.3L558.3 246.8c-13 13-20.3 30.5-20.3 48.9 0 18.5 7.2 35.8 20.3 48.9l89.6 89.7a405.46 405.46 0 01-86.4 127.3c-36.7 36.9-79.6 66-127.2 86.6l-89.6-89.7c-13-13-30.4-20.3-48.8-20.3a68.2 68.2 0 00-48.8 20.3L132.3 673c-13 13-20.3 30.5-20.3 48.9 0 18.5 7.2 35.8 20.3 48.9l106.4 106.4c22.2 22.2 52.8 34.9 84.2 34.9 6.5 0 12.8-.5 19.2-1.6 132.4-21.8 263.8-92.3 369.9-198.3C818 606 888.4 474.6 910.4 342.1c6.3-37.6-6.3-76.3-33.3-103.4zm-37.6 91.5c-19.5 117.9-82.9 235.5-178.4 331s-213 158.9-330.9 178.4c-14.8 2.5-30-2.5-40.8-13.2L184.9 721.9 295.7 611l119.8 120 .9.9 21.6-8a481.29 481.29 0 00285.7-285.8l8-21.6-120.8-120.7 110.8-110.9 104.5 104.5c10.8 10.8 15.8 26 13.3 40.8z"
+                                    fill="#1677ff"
+                                  />
+                                </svg>
+                              </span>
+                              <span
+                                aria-label="close-circle"
+                                class="anticon anticon-close-circle cursor-pointer"
+                                data-testid="cancel-appointment-btn"
+                                role="img"
+                                tabindex="-1"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="close-circle"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                                    fill="#1677ff"
+                                  />
+                                  <path
+                                    d="M512 140c-205.4 0-372 166.6-372 372s166.6 372 372 372 372-166.6 372-372-166.6-372-372-372zm171.8 527.1c1.2 1.5 1.9 3.3 1.9 5.2 0 4.5-3.6 8-8 8l-66-.3-99.3-118.4-99.3 118.5-66.1.3c-4.4 0-8-3.6-8-8 0-1.9.7-3.7 1.9-5.2L471 512.3l-130.1-155a8.32 8.32 0 01-1.9-5.2c0-4.5 3.6-8 8-8l66.1.3 99.3 118.4 99.4-118.5 66-.3c4.4 0 8 3.6 8 8 0 1.9-.6 3.8-1.8 5.2l-130.1 155 129.9 154.9z"
+                                    fill="#e6f4ff"
+                                  />
+                                  <path
+                                    d="M685.8 352c0-4.4-3.6-8-8-8l-66 .3-99.4 118.5-99.3-118.4-66.1-.3c-4.4 0-8 3.5-8 8 0 1.9.7 3.7 1.9 5.2l130.1 155-130.1 154.9a8.32 8.32 0 00-1.9 5.2c0 4.4 3.6 8 8 8l66.1-.3 99.3-118.5L611.7 680l66 .3c4.4 0 8-3.5 8-8 0-1.9-.7-3.7-1.9-5.2L553.9 512.2l130.1-155c1.2-1.4 1.8-3.3 1.8-5.2z"
+                                    fill="#1677ff"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr
+                          class="ant-table-row ant-table-row-level-0"
+                        >
+                          <td
+                            class="ant-table-cell"
+                          >
+                            2
+                          </td>
+                          <td
+                            class="ant-table-cell"
+                          >
+                            Jane Smith
+                          </td>
+                          <td
+                            class="ant-table-cell"
+                          >
+                            jane.smith@example.com
+                          </td>
+                          <td
+                            class="ant-table-cell"
+                          >
+                            <div
+                              class="flex flex-col"
+                            >
+                              <span>
+                                28 December 2023
+                              </span>
+                              <span>
+                                11:30 AM - 12:30 PM
+                              </span>
+                            </div>
+                          </td>
+                          <td
+                            class="ant-table-cell"
+                          >
+                            Dr. Johnson
+                          </td>
+                          <td
+                            class="ant-table-cell"
+                          >
+                            <span
+                              class="py-1 px-2 rounded-lg attended"
+                            >
+                              Attended
+                            </span>
+                          </td>
+                          <td
+                            class="ant-table-cell"
+                          >
+                            <div
+                              class="flex gap-4 text-lg"
+                            >
+                              <span
+                                aria-label="phone"
+                                class="anticon anticon-phone rotate-90 cursor-pointer fill-[#19504c]"
+                                href="tel:987-654-3210"
+                                role="img"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="phone"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M721.7 184.9L610.9 295.8l120.8 120.7-8 21.6A481.29 481.29 0 01438 723.9l-21.6 8-.9-.9-119.8-120-110.8 110.9 104.5 104.5c10.8 10.7 26 15.7 40.8 13.2 117.9-19.5 235.4-82.9 330.9-178.4s158.9-213.1 178.4-331c2.5-14.8-2.5-30-13.3-40.8L721.7 184.9z"
+                                    fill="#e6f4ff"
+                                  />
+                                  <path
+                                    d="M877.1 238.7L770.6 132.3c-13-13-30.4-20.3-48.8-20.3s-35.8 7.2-48.8 20.3L558.3 246.8c-13 13-20.3 30.5-20.3 48.9 0 18.5 7.2 35.8 20.3 48.9l89.6 89.7a405.46 405.46 0 01-86.4 127.3c-36.7 36.9-79.6 66-127.2 86.6l-89.6-89.7c-13-13-30.4-20.3-48.8-20.3a68.2 68.2 0 00-48.8 20.3L132.3 673c-13 13-20.3 30.5-20.3 48.9 0 18.5 7.2 35.8 20.3 48.9l106.4 106.4c22.2 22.2 52.8 34.9 84.2 34.9 6.5 0 12.8-.5 19.2-1.6 132.4-21.8 263.8-92.3 369.9-198.3C818 606 888.4 474.6 910.4 342.1c6.3-37.6-6.3-76.3-33.3-103.4zm-37.6 91.5c-19.5 117.9-82.9 235.5-178.4 331s-213 158.9-330.9 178.4c-14.8 2.5-30-2.5-40.8-13.2L184.9 721.9 295.7 611l119.8 120 .9.9 21.6-8a481.29 481.29 0 00285.7-285.8l8-21.6-120.8-120.7 110.8-110.9 104.5 104.5c10.8 10.8 15.8 26 13.3 40.8z"
+                                    fill="#1677ff"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <ul
+                class="ant-pagination ant-table-pagination ant-table-pagination-right css-dev-only-do-not-override-1adbn6x"
+              >
+                <li
+                  aria-disabled="true"
+                  class="ant-pagination-prev ant-pagination-disabled"
+                  title="Previous Page"
+                >
+                  <button
+                    class="ant-pagination-item-link"
+                    disabled=""
+                    tabindex="-1"
+                    type="button"
+                  >
+                    <span
+                      aria-label="left"
+                      class="anticon anticon-left"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="left"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 000 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"
+                        />
+                      </svg>
+                    </span>
+                  </button>
+                </li>
+                <li
+                  class="ant-pagination-item ant-pagination-item-1 ant-pagination-item-active"
+                  tabindex="0"
+                  title="1"
+                >
+                  <a
+                    rel="nofollow"
+                  >
+                    1
+                  </a>
+                </li>
+                <li
+                  aria-disabled="true"
+                  class="ant-pagination-next ant-pagination-disabled"
+                  title="Next Page"
+                >
+                  <button
+                    class="ant-pagination-item-link"
+                    disabled=""
+                    tabindex="-1"
+                    type="button"
+                  >
+                    <span
+                      aria-label="right"
+                      class="anticon anticon-right"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="right"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M765.7 486.8L314.9 134.7A7.97 7.97 0 00302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 000-50.4z"
+                        />
+                      </svg>
+                    </span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
