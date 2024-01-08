@@ -1,16 +1,21 @@
 import ErrorBoundary from "@components/ErrorBoundary";
 import { Form, FormInstance, Input, Select } from "antd";
-import FormItem from "antd/es/form/FormItem";
-import TextArea from "antd/es/input/TextArea";
 
+const { TextArea } = Input;
+const { Item } = Form;
 type NewPatientCardPropType = {
   newPatientForm: FormInstance;
 };
 const NewPatientCard = ({ newPatientForm }: NewPatientCardPropType) => {
   return (
     <ErrorBoundary>
-      <Form form={newPatientForm} layout="vertical" className="mt-6 px-4">
-        <FormItem
+      <Form
+        form={newPatientForm}
+        layout="vertical"
+        className="mt-6 px-4"
+        data-testid="new-patient-form"
+      >
+        <Item
           name="pName"
           label="Patient Name"
           required
@@ -26,8 +31,8 @@ const NewPatientCard = ({ newPatientForm }: NewPatientCardPropType) => {
           ]}
         >
           <Input />
-        </FormItem>
-        <FormItem
+        </Item>
+        <Item
           name="email"
           label="Email"
           required
@@ -43,9 +48,9 @@ const NewPatientCard = ({ newPatientForm }: NewPatientCardPropType) => {
           ]}
         >
           <Input />
-        </FormItem>
+        </Item>
         <div className="flex gap-6">
-          <FormItem
+          <Item
             name="dob"
             label="Date of Birth"
             required
@@ -58,8 +63,8 @@ const NewPatientCard = ({ newPatientForm }: NewPatientCardPropType) => {
             ]}
           >
             <Input type="date" />
-          </FormItem>
-          <FormItem
+          </Item>
+          <Item
             name="gender"
             label="Gender"
             required
@@ -79,9 +84,9 @@ const NewPatientCard = ({ newPatientForm }: NewPatientCardPropType) => {
                 { value: "other", label: "Other" },
               ]}
             />
-          </FormItem>
+          </Item>
         </div>
-        <FormItem
+        <Item
           name="contactNo"
           label="Mobile"
           required
@@ -97,10 +102,10 @@ const NewPatientCard = ({ newPatientForm }: NewPatientCardPropType) => {
           ]}
         >
           <Input />
-        </FormItem>
-        <FormItem name="allergies" label="Mention allergies , if any">
+        </Item>
+        <Item name="allergies" label="Mention allergies , if any">
           <TextArea placeholder="Mention your allergies here" />
-        </FormItem>
+        </Item>
       </Form>
     </ErrorBoundary>
   );

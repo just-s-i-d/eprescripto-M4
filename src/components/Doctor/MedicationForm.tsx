@@ -1,8 +1,8 @@
-import { Input, Select } from "antd";
+import { Input, Select, Form } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
-import FormItem from "antd/es/form/FormItem";
 import { MedicationType } from "@constants/types";
 
+const { Item } = Form;
 type MedicationFormPropsType = {
   fields: MedicationType;
   removeable?: boolean;
@@ -20,13 +20,14 @@ const MedicationForm = ({
         {removeable && (
           <CloseOutlined
             onClick={() => removeMedicationInput(fields.id)}
+            data-testid="remove-field"
             className="text-[16px]"
           />
         )}
       </div>
 
       <div className="w-full grid sm:grid-cols-2 md:grid-cols-4 gap-x-5 gap-y-3">
-        <FormItem
+        <Item
           name={fields.medicine}
           label="Medicine Name"
           className="w-full"
@@ -43,8 +44,8 @@ const MedicationForm = ({
           ]}
         >
           <Input />
-        </FormItem>
-        <FormItem
+        </Item>
+        <Item
           name={fields.dosage}
           label="Dosage"
           className="w-full"
@@ -61,8 +62,8 @@ const MedicationForm = ({
           ]}
         >
           <Input />
-        </FormItem>
-        <FormItem
+        </Item>
+        <Item
           name={fields.timesPerDay}
           label="Frequency"
           className="w-full"
@@ -90,9 +91,9 @@ const MedicationForm = ({
               },
             ]}
           />
-        </FormItem>
+        </Item>
         <div className="flex gap-6">
-          <FormItem
+          <Item
             name={fields.instruction}
             className="w-full"
             label="Instruction"
@@ -116,7 +117,7 @@ const MedicationForm = ({
                 },
               ]}
             />
-          </FormItem>
+          </Item>
         </div>
       </div>
     </>
