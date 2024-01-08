@@ -2,12 +2,12 @@ import CardTitle from "@components/ui/CardTitle";
 import { Button, Card, Form, Input, Select } from "antd";
 import profilePic from "@assets/profilepic.png";
 import { ChangeEvent, useEffect, useState } from "react";
-import { useForm, useWatch } from "antd/es/form/Form";
 import { updateUserData } from "@utils/Doctor";
 import ErrorBoundary from "@components/ErrorBoundary";
 import { ApiUserDataResponseType } from "@constants/types";
 import { SELECT_GENDER_OPTIONS } from "@constants/constants";
 
+const { useForm, useWatch } = Form;
 export type UserDataPropsType = {
   userData?: ApiUserDataResponseType;
 };
