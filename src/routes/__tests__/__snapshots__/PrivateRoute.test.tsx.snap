@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Private Route tests Render to dashboard when user is logged in and has access to dashboard 1`] = `
+<DocumentFragment>
+  <h1>
+    Dashboard
+  </h1>
+</DocumentFragment>
+`;

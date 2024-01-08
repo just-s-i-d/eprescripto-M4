@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Guest Route tests Redirects to dashboard when user is logged in 1`] = `
+<DocumentFragment>
+  <h1>
+    Dashboard
+  </h1>
+</DocumentFragment>
+`;
