@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BarChart Component Test to check if it renders correctly or not 1`] = `
+<DocumentFragment>
+  <div
+    class="ant-card w-[49%] max-xl:w-[48%] max-xxl:w-[48%] max-md:w-9/12 max-sm:w-full css-dev-only-do-not-override-1adbn6x"
+  >
+    <div
+      class="ant-card-body"
+    >
+      <h1
+        class="text-xl font-bold mb-6 mb-14"
+      >
+        Test Title
+      </h1>
+      <canvas
+        data-testid="bar-chart"
+        height="150"
+        role="img"
+        width="300"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;

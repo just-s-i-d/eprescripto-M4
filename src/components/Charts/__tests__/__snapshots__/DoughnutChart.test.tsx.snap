@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DoughnutChart Component Test to check if it renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="ant-card w-[32%] max-h-[60vh] max-xxl:w-[48%] max-xxl:h-[59vh] max-xl:w-[48%] max-md:w-9/12 max-sm:w-full css-dev-only-do-not-override-1adbn6x"
+  >
+    <div
+      class="ant-card-body"
+    >
+      <h1
+        class="text-xl font-bold mb-6 undefined"
+      >
+        Test Title
+      </h1>
+      <div
+        class="h-[400px] flex justify-center items-center"
+      >
+        <canvas
+          data-testid="doughnut-chart"
+          height="150"
+          role="img"
+          width="300"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
