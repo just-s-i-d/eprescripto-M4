@@ -1,11 +1,12 @@
 import { SetStateAction, useEffect, useState } from "react";
 import CardSider from "../CardSider";
 import { Button, Form, Input, Space } from "antd";
-import { useForm, useWatch } from "antd/es/form/Form";
 import { UserCredentialsType } from "@constants/types";
 import GoogleLogin from "@components/ui/GoogleLogin";
-import { userLogin } from "@utils/Doctor";
+import { BASE_URL, userLogin } from "@utils/Doctor";
 import { showToast } from "@utils/common";
+
+const { useForm, useWatch } = Form;
 type SignInPropsType = {
   setShowSignIn: React.Dispatch<SetStateAction<boolean>>;
 };
@@ -45,6 +46,7 @@ const SignIn = ({ setShowSignIn }: SignInPropsType) => {
           size="large"
           layout="vertical"
           onFinish={onFinish}
+          data-testid="sign-in-form"
           initialValues={userCredentials}
         >
           <Form.Item
@@ -93,7 +95,7 @@ const SignIn = ({ setShowSignIn }: SignInPropsType) => {
             Sign In
           </Button>
         </Form>
-        <GoogleLogin />
+        <GoogleLogin host={BASE_URL} />
         <div className="absolute md:bottom-8 xs:bottom-6">
           Don't have an Account ?
           <span
