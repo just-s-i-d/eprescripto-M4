@@ -6,22 +6,18 @@ import { Breadcrumb, Layout, theme, Space } from "antd";
 import NavBar from "@components/NavBar/NavBar";
 import SideBar from "@components/SideBar/Sidebar";
 import { UserContext } from "@context/UserProvider";
-import Loading from "@components/ui/Loading";
 
 type Props = {
-  setIsDarkTheme: React.Dispatch<SetStateAction<boolean>>;
+  setIsDarkTheme?: React.Dispatch<SetStateAction<boolean>>;
 };
 
 const DashboardLayout: React.FC<Props> = ({ setIsDarkTheme }) => {
-  const userContext = useContext(UserContext);
+  const { role } = useContext(UserContext);
   const location = useLocation();
   const [collapsed, setCollapsed] = useState<boolean>(false);
   const {
     token: { colorTextSecondary },
   } = theme.useToken();
-
-  if (userContext === null) return <Loading />;
-  const { role } = userContext;
 
   return (
     <Layout className="min-h-screen h-screen relative overflow-hidden">

@@ -1,14 +1,14 @@
 import React, { SetStateAction, useState } from "react";
 import { Link } from "react-router-dom";
 
-import { Avatar, Badge, Popover, Button, Space } from "antd";
+import { Avatar, Badge, Popover, Button, Space, Layout } from "antd";
 import {
   UserOutlined,
   MenuUnfoldOutlined,
   MenuFoldOutlined,
 } from "@ant-design/icons";
 import ProfilePopOverContent from "../ui/ProfilePopOverContent";
-import { Header } from "antd/es/layout/layout";
+const { Header } = Layout;
 
 interface navBarProps {
   collapsed: boolean;
@@ -27,6 +27,7 @@ const NavBar = ({ collapsed, setCollapsed }: navBarProps) => {
           icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
           onClick={() => setCollapsed(!collapsed)}
           className="text-sm text-white w-8 h-8"
+          data-testid="side-menu-btn"
         />
         <Link to="/">ePrescripto</Link>
       </span>
