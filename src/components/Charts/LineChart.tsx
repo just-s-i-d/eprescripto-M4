@@ -26,6 +26,7 @@ ChartJs.register(LineElement, CategoryScale, LinearScale, PointElement, scales);
 type LineChartProps = {
   chartData?: ApiResponseDataType<LineChartApiResDataType>;
   title: string;
+  error?: boolean;
   xAxesTitle: string;
   yAxesTitle: string;
   lineChart: ReturnType<
@@ -48,6 +49,7 @@ const LineChart = ({
   yAxesTitle,
   getDataForLineGraph,
   lineChart,
+  error,
 }: LineChartProps) => {
   const [currentLineChartData, setCurrentLineChartData] =
     useState<LineChartDataType>();
@@ -73,7 +75,7 @@ const LineChart = ({
       },
     ],
   };
-  const options: ChartOptions = {
+  const options: ChartOptions<"line"> = {
     layout: {
       padding: {
         top: 20,
@@ -108,7 +110,7 @@ const LineChart = ({
     >
       <ErrorBoundary
         refreshComponent={() => lineChart.setRefresh((prev) => !prev)}
-        error={lineChart.error}
+        error={error || lineChart.error}
       >
         <div className="flex justify-between">
           <CardTitle>{title}</CardTitle>

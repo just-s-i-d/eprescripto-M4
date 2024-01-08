@@ -107,7 +107,7 @@ const BarChart = ({
             size={200}
           />
         ) : (
-          <Bar options={options} data={data} />
+          <Bar options={options} data={data} data-testid="bar-chart" />
         )}
       </ErrorBoundary>
     </Card>
